@@ -12,10 +12,10 @@ from datetime import datetime
 
 # 各年のPPP設定
 PPP_CONFIG = {
-    2022: {'PPP_JPY': 92.50, 'PPP_TRY': 4.975},    # 確定値
-    2023: {'PPP_JPY': 92.84, 'PPP_TRY': 8.074},    # 確定値
-    2024: {'PPP_JPY': 93.20, 'PPP_TRY': 12.55},    # 確定値
-    2025: {'PPP_JPY': 93.20, 'PPP_TRY': 18.83},    # 推定値（50%インフレ想定）
+    2022: {'PPP_JPY': 92.50, 'PPP_TRY': 4.975},    # 確定値（World Bank WDI）
+    2023: {'PPP_JPY': 92.84, 'PPP_TRY': 8.074},    # 確定値（World Bank WDI）
+    2024: {'PPP_JPY': 93.20, 'PPP_TRY': 12.55},    # 確定値（World Bank WDI）
+    2025: {'PPP_JPY': 93.20, 'PPP_TRY': 16.63},    # 推定値（32.5%インフレ想定、OECD/IMF予測ベース）
 }
 
 def calculate_mci(s_usdjpy, s_usdtry, ppp_jpy, ppp_try):
