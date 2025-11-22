@@ -41,8 +41,11 @@ USD・JPY・TRY の実データ（為替＋PPP）から、以下を算出する�
 
 #### 1. PPP（GDPベース, LCU per intl $）
 
-**ソース：** World Bank World Development Indicators
-**指標コード：** PA.NUS.PPP（PPP conversion factor, GDP (LCU per international $)）
+**ソース：** IMF World Economic Outlook (WEO)
+**指標：** Implied PPP conversion rate (PPPEX)
+
+**代替ソース：** World Bank WDI（PA.NUS.PPP）、OECD PPP Programme
+※ソース間の差異（1〜2%程度）はMCIの解釈に影響しない（論文第2.5節参照）
 
 **取得対象国：**
 - 日本：country = JPN
@@ -57,6 +60,11 @@ USD・JPY・TRY の実データ（為替＋PPP）から、以下を算出する�
 - USD/TRY の PPPフェアレート ≒ PPP_TRY
 
 とみなして良い。
+
+**IMF WEOの利点：**
+- 年2回更新（4月・10月）で鮮度が高い
+- 予測値（2025年以降）が利用可能
+- APIアクセスが容易
 
 #### 2. 年平均の公定為替レート（LCU per USD, period average）
 
@@ -252,9 +260,9 @@ d_TRYJPY(t) = ln( S_TRYJPY(t) / F_{PPP,TRYJPY}(t) )
 
 ### 1. PPP の選択
 
-基本は **PA.NUS.PPP（GDPベース）** で統一。
+基本は **IMF WEO Implied PPP conversion rate（GDPベース）** で統一。
 
-私的消費ベース（PA.NUS.PPPC）を使う場合は、全通貨で同じ指標に揃えること。
+代替としてWorld Bank WDI（PA.NUS.PPP）も使用可能。ソース間の1〜2%程度の差異はMCIのゼロサム構造により吸収されるため、解釈に影響しない。ただし、**時系列で同一ソースを使い続けること**が重要。
 
 ### 2. 欠損値
 
@@ -279,7 +287,7 @@ d_TRYJPY(t) = ln( S_TRYJPY(t) / F_{PPP,TRYJPY}(t) )
 
 ## 8. データ処理フロー（実装メモ）
 
-> WDI から PA.NUS.PPP（JPN, TUR）と PA.NUS.FCRF（同じく JPN, TUR）の年次データを2005–最新年まで取得。
+> IMF WEO から Implied PPP conversion rate（JPN, TUR）を、WDI/IMF IFS から PA.NUS.FCRF（JPN, TUR）の年次データを2005–最新年まで取得。
 
 そこから上記ステップに従って：
 - d_USDJPY(t), d_USDTRY(t)
@@ -288,6 +296,11 @@ d_TRYJPY(t) = ln( S_TRYJPY(t) / F_{PPP,TRYJPY}(t) )
 を年次時系列で計算。
 
 さらに、d_TRYJPY(t) も出して、「単純PPP乖離」と「Mikan 3-Currency clr Index の三通貨相対座標」の両方を比較できるCSVを出力する。
+
+**IMF WEO APIアクセス例：**
+```
+https://www.imf.org/external/datamapper/api/v1/PPPEX/JPN/TUR
+```
 
 ---
 
@@ -304,5 +317,9 @@ K_i を差し替える場合は、本仕様書の第3章「基本計算」にお
 
 ---
 
-**文書バージョン：** v1.0
-**最終更新日：** 2025-11-20
+**文書バージョン：** v1.1
+**最終更新日：** 2025-11-22
+
+### 変更履歴
+- **v1.1 (2025-11-22)**: PPPデータソースをIMF WEOに変更、データソース選択の影響についての記述追加
+- **v1.0 (2025-11-20)**: 初版
