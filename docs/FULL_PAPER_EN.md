@@ -884,77 +884,310 @@ However, simple PPP analysis is also useful as individual bilateral evaluation, 
 
 # Chapter 6: Regime Shifts and Currency Structure Realignment
 
-## 6.1 Definition of Structural Change
+## 6.1 Purpose of Regime Analysis
 
-We define "regime shift" as follows:
-- Sustained change in the relative position of specific currencies
-- Change in the distance relationship between currencies
-- Transition to a new equilibrium state
+This chapter analyzes **regime shifts** in the three-currency structure through time-series changes in the Mikan 3-Currency clr Index over 20 years from 2005 to 2024.
 
-## 6.2 Major Regime Shifts
+A regime shift refers to a period when the structure of relative currency valuations qualitatively changes. It signifies not mere numerical fluctuation, but a changing of the guard in terms of "which currency is structurally overvalued/undervalued."
 
-### 6.2.1 2011: JPY Dominance Period
+## 6.2 Overview of the Entire Observation Period
 
-**Features**:
-- m[JPY] reaches maximum (+0.410)
-- m[USD] reaches minimum (+0.076)
-- JPY/USD spread maximizes
+### 6.2.1 Long-term Trends of Three Currencies
 
-**Economic Background**:
-- Post-earthquake yen buying
-- US QE2 → Dollar weakness
-- Europe debt crisis → Safe-haven demand for yen
+Statistical characteristics for 2005-2024 (see Chapter 3):
 
-### 6.2.2 2013: Abenomics Shift
+- **m[USD]**: Mean +0.27 (standard deviation 0.15)
+  → Positioned in **positive territory** (overvalued side) throughout observation period
 
-**Features**:
-- m[JPY] sharply declines (+0.410 → +0.256)
-- m[USD] rises (+0.076 → +0.170)
-- Regime change through aggressive monetary easing
+- **m[JPY]**: Mean +0.28 (standard deviation 0.10)
+  → **Positive territory** in first half of observation period, but declined to near zero by 2024
 
-**Economic Background**:
-- BOJ's quantitative and qualitative monetary easing (QQE)
-- 2% inflation target announcement
-- Rapid yen depreciation (80 yen → 100 yen level)
+- **m[TRY]**: Mean -0.55 (standard deviation 0.12)
+  → Positioned in **negative territory** (undervalued side) throughout entire period, with expanding undervaluation
 
-### 6.2.3 2018: Turkish Lira Crisis
+### 6.2.2 Major Structural Characteristics
 
-**Features**:
-- m[TRY] plunges to -0.705
-- TRY isolated from other currencies
-- Stress concentrates in TRY
+- **Negative correlation between USD and JPY** (r = -0.58): When USD becomes overvalued, JPY tends to become undervalued
+- **TRY's isolation** (USD-TRY: r = -0.73, JPY-TRY: r = -0.13): Lira shows independent movement
+- **Structural change around 2013**: Transition from JPY-led period to USD-led period
 
-**Economic Background**:
-- US-Turkey diplomatic friction
-- Insufficient central bank response
-- Capital flight from emerging markets
+## 6.3 Regime Classification and Major Transition Points
 
-### 6.2.4 2022: Dollar One-Strong Period
+The observation period is divided into the following four regimes:
 
-**Features**:
-- m[USD] reaches historical maximum (+0.518)
-- m[JPY] declines, approaches m[TRY]
-- USD isolated in "floating" position
-
-**Economic Background**:
-- Fed aggressive tightening
-- BOJ's continued easing
-- Energy crisis impact
+| Regime | Period | Characteristics | Lead Currency |
+|--------|--------|-----------------|---------------|
+| **I. JPY-Led Period** | 2005-2012 | Yen most overvalued, lira most undervalued | JPY |
+| **II. Transition Period** | 2013-2017 | Handover from yen to dollar | USD ↔ JPY |
+| **III. USD-Led Period** | 2018-2021 | Dollar most overvalued, lira crisis deepens | USD |
+| **IV. Extreme USD High/JPY Plunge Period** | 2022-2024 | Extreme dollar overvaluation, yen neutralization | USD |
 
 ---
 
-## 6.3 Detection of Regime Shifts
+## 6.4 Regime I: JPY-Led Period (2005-2012)
 
-MCI enables detection of the following:
+### 6.4.1 Structural Characteristics
 
-1. **Crossover**: When m[i] and m[j] cross
-   - Example: 2022, m[JPY] approaching m[TRY]
+This period was when **m[JPY] was the highest among the three currencies** (most overvalued), a time when the yen was structurally highly valued.
 
-2. **Spread Change**: Change in distance between specific currencies
-   - Example: 2018, m[USD]-m[TRY] expansion
+**Representative values**:
 
-3. **Volatility Concentration**: Increased volatility in specific currencies
-   - Example: m[TRY]'s high volatility period
+| Year | m[USD] | m[JPY] | m[TRY] | Most Overvalued |
+|------|--------|--------|--------|-----------------|
+| 2005 | +0.165 | **+0.358** | -0.523 | JPY |
+| 2008 | +0.106 | **+0.262** | -0.368 | JPY |
+| 2011 | +0.076 | **+0.410** | -0.486 | JPY |
+| 2012 | +0.092 | **+0.401** | -0.493 | JPY |
+
+### 6.4.2 2011: Peak of Super Yen-High Period
+
+**2011** was the super yen-high period following the Great East Japan Earthquake, and m[JPY] recorded **+0.410**, the highest value for the entire observation period.
+
+- m[USD] = +0.076 (lowest level)
+- m[JPY] = **+0.410** (peak)
+- m[TRY] = -0.486 (undervalued maintained)
+
+This structure indicates that risk-off flight to the yen as a safe asset caused the yen to become extremely overvalued within the basket.
+
+### 6.4.3 Economic Background
+
+- **2005-2007**: Limited yen weakness pressure from Japan's zero interest rate policy and carry trade
+- **2008-2009**: Yen buying pressure from risk-off following Lehman Shock
+- **2010-2012**: Yen strength reaches extreme through European debt crisis and Great East Japan Earthquake
+
+---
+
+## 6.5 Regime II: Transition Period (2013-2017)
+
+### 6.5.1 Structural Transformation by Abenomics
+
+The first major regime shift occurred in **2012→2013**. The magnitude of change during this period was among the largest in the observation period:
+
+- **m[JPY]**: +0.401 → +0.256 (-0.145 large decline)
+- Annual data shows gradual change, but reflects the rapid yen depreciation in early 2013 (BOJ's unprecedented easing)
+
+**Post-2013 structure**:
+
+| Year | m[USD] | m[JPY] | m[TRY] | Most Overvalued |
+|------|--------|--------|--------|-----------------|
+| 2013 | +0.170 | +0.256 | -0.426 | JPY → USD transition |
+| 2014 | +0.226 | +0.231 | -0.456 | JPY/USD balanced |
+| 2015 | **+0.317** | +0.199 | -0.516 | **USD** |
+| 2016 | +0.295 | +0.279 | -0.573 | **USD** |
+| 2017 | +0.345 | +0.280 | -0.625 | **USD** |
+
+### 6.5.2 Changing of the Guard
+
+From **2015** onward, m[USD] > m[JPY] became established, and **the dollar seized the position of structurally most overvalued**.
+
+- 2015: m[USD] = **+0.317** > m[JPY] = +0.199
+- This difference (approximately 0.12) indicates clear structural change
+
+### 6.5.3 Economic Background
+
+- **April 2013**: BOJ's Quantitative and Qualitative Easing (QQE) begins
+- **2014-2015**: US monetary normalization discussion begins, Japan-US monetary policy direction divergence
+- **2016-2017**: Trump administration inaugurated, dollar strength becomes established
+
+---
+
+## 6.6 Regime III: USD-Led Period (2018-2021)
+
+### 6.6.1 Structural Characteristics
+
+This period was when **m[USD] was clearly the highest**, and **the Turkish lira's structural vulnerability** became evident.
+
+**Representative values**:
+
+| Year | m[USD] | m[JPY] | m[TRY] | Most Overvalued | Notes |
+|------|--------|--------|--------|-----------------|-------|
+| 2018 | **+0.382** | +0.323 | **-0.705** | USD | Lira crisis |
+| 2019 | **+0.394** | +0.340 | -0.734 | USD | Lira undervaluation continues |
+| 2020 | **+0.419** | +0.361 | **-0.781** | USD | COVID-19 |
+| 2021 | **+0.429** | +0.323 | **-0.753** | USD | Dollar strength persists |
+
+### 6.6.2 2018: Turkish Lira Crisis
+
+**2018** recorded m[TRY] at **-0.705**, an extreme undervaluation level. This is the second largest undervaluation in the observation period (the maximum was -0.781 in 2020).
+
+**Structural impact**:
+
+- The lira crash made its isolation within the three-currency basket definitive
+- Dollar and yen became relatively overvalued (m[USD] = +0.382, m[JPY] = +0.323)
+- After this year, m[TRY] always remains in deep undervaluation territory below -0.68
+
+### 6.6.3 2020: COVID-19 and Maximum Lira Undervaluation
+
+**2020** recorded m[TRY] = **-0.781**, the **most undervalued** state of the entire observation period.
+
+Simultaneously, m[USD] = +0.419, m[JPY] = +0.361, showing both hard currencies becoming overvalued, indicating risk aversion and emerging market currency selling proceeding simultaneously.
+
+### 6.6.4 Economic Background
+
+- **August 2018**: Turkish central bank independence concerns, lira crash from diplomatic conflict with US
+- **2019-2020**: Turkey's inflation acceleration, central bank's unorthodox monetary policy
+- **March 2020-**: Risk-off from COVID-19, comprehensive emerging market currency weakness
+- **2021**: Coexistence of US monetary easing continuation and dollar strength
+
+---
+
+## 6.7 Regime IV: Extreme USD High/JPY Plunge Period (2022-2024)
+
+### 6.7.1 Structural Characteristics
+
+This period was when **m[USD] recorded the maximum value for the observation period**, while **m[JPY] rapidly declined**.
+
+**Representative values**:
+
+| Year | m[USD] | m[JPY] | m[TRY] | Most Overvalued | Notes |
+|------|--------|--------|--------|-----------------|-------|
+| 2022 | **+0.518** | +0.167 | -0.685 | USD | Observation period maximum |
+| 2023 | +0.498 | +0.084 | -0.582 | USD | Yen's sharp decline |
+| 2024 | +0.483 | **-0.003** | -0.480 | USD | Yen neutralization |
+
+### 6.7.2 2022: Extreme Dollar Strength
+
+**2022's** m[USD] = **+0.518** is the **maximum overvaluation level** in the 20-year observation period.
+
+Year-over-year change was also notable:
+
+- **2021→2022**: m[USD] rose +0.429 → +0.518 (+0.089 increase)
+- **2021→2022**: m[JPY] fell +0.323 → +0.167 (-0.156 decline)
+
+This rapid structural change reflects the **extreme divergence in Japan-US monetary policy**:
+
+- US: Rapid rate hikes (starting March 2022, cumulative +4.25% within the year)
+- Japan: YCC (Yield Curve Control) continuation, monetary easing maintained
+
+### 6.7.3 2023-2024: Yen Neutralization
+
+In **2024**, m[JPY] = **-0.003**, nearly zero, and the yen reached a **neutral** position (neither overvalued nor undervalued) within the basket.
+
+This is the first time since 2005, indicating structural transition:
+
+- **2005-2022**: m[JPY] was always positive (overvalued side)
+- **2024**: m[JPY] ≈ 0 (neutral)
+
+**2023-2024 changes**:
+
+| Currency | 2023→2024 Change | Interpretation |
+|----------|------------------|----------------|
+| USD | +0.498 → +0.483 (-0.015) | Slight decline (high level maintained) |
+| JPY | +0.084 → -0.003 (-0.087) | Sharp decline (neutralization) |
+| TRY | -0.582 → -0.480 (+0.102) | Undervaluation easing |
+
+### 6.7.4 Structural Meaning of Regime IV
+
+The essence of this regime is **bipolarization of the three-currency structure**:
+
+1. **Extreme dollar overvaluation** (m[USD] ≈ +0.5)
+2. **Yen neutralization** (m[JPY] ≈ 0)
+3. **Structural lira undervaluation** (m[TRY] ≈ -0.5)
+
+Due to the zero-sum constraint, the extreme symmetric structure m[USD] ≈ -m[TRY] has emerged. The yen is positioned between both, serving the role of "relative reference point."
+
+### 6.7.5 Economic Background
+
+- **2022**: Fed's rapid rate hikes, BOJ's YCC maintenance, USD/JPY breaches 150 yen
+- **2023**: BOJ YCC modification (ceiling raised), signs of yen carry unwinding
+- **2024**: BOJ monetary policy normalization discussion, dollar strength continues
+
+---
+
+## 6.8 Quantitative Detection of Regime Shifts
+
+### 6.8.1 Identification of Large-Scale Fluctuations
+
+"Large-scale fluctuations" where |Δm[i]| > 0.10 year-over-year are concentrated in the following periods:
+
+| Period | Maximum Change | Primary Currency | Content |
+|--------|----------------|------------------|---------|
+| 2006→2007 | 0.101 | TRY +0.101 | Short-term lira overvaluation |
+| 2008→2009 | 0.114 | JPY +0.101 | Yen appreciation acceleration |
+| **2012→2013** | **0.145** | **JPY -0.145** | **Abenomics transition** |
+| **2021→2022** | **0.156** | **JPY -0.156** | **Japan-US policy divergence** |
+| 2022→2023 | 0.103 | TRY +0.103 | Lira undervaluation easing |
+| 2023→2024 | 0.102 | TRY +0.102 | Continued lira undervaluation easing |
+
+Particularly, **2012→2013** and **2021→2022** are notable as structural transition points.
+
+### 6.8.2 Lineage of Lead Currency
+
+Progression of the "most overvalued currency" over 20 years:
+
+- **2005-2014**: JPY (JPY-led period)
+- **2015-present**: USD (USD-led period)
+
+This changing of the guard is attributable to the **2012→2013 structural transition**.
+
+---
+
+## 6.9 Trajectory in Three-Currency Relative Space
+
+### 6.9.1 Projection onto 2D Simplex
+
+Due to the three-currency zero-sum constraint, (m[USD], m[JPY], m[TRY]) can be visualized as a trajectory on a 2D plane (see Chapter 4 for details).
+
+**Major trajectory patterns**:
+
+1. **2005-2012**: Stable structure with yen positioned at top of ring (overvalued side), lira at bottom (undervalued side)
+2. **2012→2013**: Yen rapidly moves downward, dollar moves upward (changing of the guard)
+3. **2013-2021**: Dollar settles at top, yen fluctuates in middle region
+4. **2018**: Lira protrudes to extreme bottom of ring (most undervalued)
+5. **2021→2022**: Dollar reaches extreme top of ring (most overvalued), yen plunges
+6. **2022→2024**: Yen approaches near zero (ring center), lira gradually rises
+
+### 6.9.2 Emergence of Structural Symmetry (2024)
+
+**2024's** structure shows the following approximate symmetry:
+
+```
+m[USD] ≈ +0.48
+m[JPY] ≈ 0
+m[TRY] ≈ -0.48
+```
+
+This means the dollar and lira are **nearly symmetrically separated**, with the yen functioning as a **neutral reference point**.
+
+This structure suggests that "bipolarization" within the three-currency basket has reached its extreme.
+
+---
+
+## 6.10 Implications of Regime Analysis
+
+### 6.10.1 Regime Persistence and Transition Precursors
+
+- **Regime I (JPY-led period)** persisted for approximately 7 years
+- **Regime II (Transition period)** was a transitional phase of approximately 5 years
+- **Regime III (USD-led period)** lasted approximately 4 years before moving to the next stage
+- **Regime IV (Extreme USD high/JPY plunge period)** is currently ongoing (3rd year)
+
+Precursors of regime transition can be detected as **sudden increases in year-over-year change magnitude** (|Δm[i]| > 0.10).
+
+### 6.10.2 Correspondence Between Monetary Policy and Structural Change
+
+Major regime transitions all correspond to **significant changes in central bank monetary policy**:
+
+- **2013**: BOJ QQE begins → From JPY-led to USD-led
+- **2022**: Fed rapid rate hikes vs. BOJ YCC maintenance → To extreme USD high/JPY plunge
+
+This shows that the Mikan 3-Currency clr Index sensitively reflects relative monetary policy stances.
+
+### 6.10.3 Independence of Emerging Market Currency (TRY)
+
+The lira (TRY) was positioned on the **always undervalued side** throughout the entire observation period, showing independent movement from hard currencies (USD, JPY).
+
+Particularly after 2018, it has been fixed in deep undervaluation territory with m[TRY] < -0.68, indicating continuing **structural vulnerability**.
+
+### 6.10.4 Future Outlook
+
+How the 2024 structure (extreme USD high / JPY neutral / TRY undervalued) will develop depends on the following factors:
+
+1. **Continuation of Japan-US monetary policy convergence/divergence**
+2. **Progress of Turkey's monetary policy normalization**
+3. **Changes in global dollar supply/demand (DXY, etc.)**
+
+Particularly, with the yen now neutralized, the next regime shift may occur in the form of the "USD vs. TRY" bipolar structure breaking down.
 
 ---
 
