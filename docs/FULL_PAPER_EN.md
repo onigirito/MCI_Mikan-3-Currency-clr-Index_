@@ -147,141 +147,175 @@ In this study, we analyze USD, JPY, and TRY, conventionally treating USD as the 
 
 ---
 
-## 2.2 Compositional Data Analysis and Coordinate Transformation
+## 2.2 The Mikan Theorem: Zero-Sum Relationship Among Three Currencies
 
-When simultaneously analyzing three currencies, care must be taken regarding the treatment of relative prices. Currency values mutually constrain each other, so their relationships are essentially compositional. Centered log-ratio (clr) transformation treats multi-component data as coordinates on a simplex, enabling linear operations on relative values.
-
-By analogy, we consider PPP-based absolute positions for each currency and derive relative deviation coordinates. For each currency $i$ (USD, JPY, TRY), define $E[i]$ as the "distance from equilibrium point." From the relationship $d_{A\rightarrow B} = E[A] - E[B]$, we get:
+The **Mikan Theorem** is the proposition that the relative value indicators $m[i]$ for three currencies follow a zero-sum conservation law. In other words, the sum of the three $m[i]$ values is always zero. To satisfy this proposition, we define $m[i]$ from the bilateral deviations $d$ as follows:
 
 $$
-E[\text{USD}] - E[\text{JPY}] = d_{\text{USDJPY}}, \quad E[\text{USD}] - E[\text{TRY}] = d_{\text{USDTRY}}
+\begin{pmatrix}
+m[\text{USD}] \\
+m[\text{JPY}] \\
+m[\text{TRY}]
+\end{pmatrix}
+\equiv
+\begin{pmatrix}
+\frac{d_{USD\rightarrow JPY} + d_{USD\rightarrow TRY}}{3} \\
+\frac{-2\,d_{USD\rightarrow JPY} + d_{USD\rightarrow TRY}}{3} \\
+\frac{d_{USD\rightarrow JPY} - 2\,d_{USD\rightarrow TRY}}{3}
+\end{pmatrix}. \tag{1}
 $$
 
-Here, we can only determine $E[i]$ up to an arbitrary constant shift. Choosing $E[\text{USD}] = 0$ as a reference (i.e., setting USD as the baseline):
+This definition strictly guarantees that $m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0$ (indeed, adding the right-hand sides of equation (1) yields a numerator of $(d_{UJ}+d_{UT}) + (-2d_{UJ}+d_{UT}) + (d_{UJ}-2d_{UT}) = 0$). Here, for brevity, we denote $d_{UJ} \equiv d_{USD\rightarrow JPY}$ and $d_{UT} \equiv d_{USD\rightarrow TRY}$.
 
-$$
-E[\text{JPY}] = -d_{\text{USDJPY}}, \quad E[\text{TRY}] = -d_{\text{USDTRY}}
-$$
+The $m[i]$ defined in equation (1) are mispricing indicators corresponding to USD, JPY, and TRY respectively. A **negative value** indicates that the currency is relatively **undervalued** (valued low) within the basket, while a **positive value** indicates it is **overvalued** (valued high).
 
-This represents "absolute distance from equilibrium." The next step is to convert this to "relative position within the three-currency basket."
+For example, if $m[\text{JPY}] < 0$, JPY is valued lower than other currencies in the basket (its value has fallen too much relative to others). Conversely, if $m[\text{JPY}] > 0$, JPY is relatively overvalued.
+
+The crucial point is that these three indicators always sum to zero, so the overvaluation of one currency necessarily balances with the undervaluation of others. This can be called the **"dynamic balance among three currencies"**—like mikan (mandarin orange) segments pressing against each other to form a ring.
 
 ---
 
-## 2.3 Definition of MCI Coordinates m[i]
+## 2.3 Difference Relationships and Correspondence to Bilateral PPP Deviations
 
-To normalize the three-currency balance, we convert from absolute coordinates $E[i]$ to coordinates centered on the mean. Define the three-currency mean deviation as:
+To make definition (1) intuitively understandable, we interpret it from the relationship with $d$. Taking differences between pairs yields:
 
-$$
-\bar{E} \equiv \frac{E[\text{USD}] + E[\text{JPY}] + E[\text{TRY}]}{3}
-$$
+$$m[\text{USD}] - m[\text{JPY}] = \frac{(d_{UJ}+d_{UT})}{3} - \frac{(-2d_{UJ} + d_{UT})}{3} = d_{UJ},$$
 
-The MCI coordinate $m[i]$ for each currency is:
+$$m[\text{USD}] - m[\text{TRY}] = \frac{(d_{UJ}+d_{UT})}{3} - \frac{(d_{UJ} - 2d_{UT})}{3} = d_{UT},$$
 
-$$
-m[i] = E[i] - \bar{E}
-$$
+$$m[\text{JPY}] - m[\text{TRY}] = \frac{(-2d_{UJ} + d_{UT})}{3} - \frac{(d_{UJ} - 2d_{UT})}{3} = d_{UT} - d_{UJ}.$$
 
-From this definition:
+Thus, the model's indicators $m[i]$ satisfy the following difference relationships:
 
-$$
-m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0
-$$
+- $m[\text{USD}] - m[\text{JPY}] = d_{USD\rightarrow JPY}$
+- $m[\text{USD}] - m[\text{TRY}] = d_{USD\rightarrow TRY}$
+- $m[\text{JPY}] - m[\text{TRY}] = d_{USD\rightarrow TRY} - d_{USD\rightarrow JPY}$ (this equals the direct PPP deviation of JPY against TRY)
 
-This is the **zero-sum constraint**, always mathematically satisfied.
+Or equivalently:
 
-### Interpretation of m[i]
+- $m[\text{JPY}] - m[\text{USD}] = -d_{USD\rightarrow JPY}$
+- $m[\text{TRY}] - m[\text{USD}] = -d_{USD\rightarrow TRY}$
 
-- $m[i] > 0$: Currency $i$ is **overvalued** (high position) within this 3-currency basket
-- $m[i] < 0$: Currency $i$ is **undervalued** (low position) within this 3-currency basket
-- $m[i] \approx 0$: Currency $i$ is near the basket average
+In this way, the difference between each $m[i]$ corresponds to (or equals the sign-reversed version of) the corresponding bilateral PPP deviation $d$.
 
-**Important**: $m[i] = 0$ does not mean PPP deviation rate is zero. It only means "at the average position within this 3-currency basket."
+For example, since $m[\text{USD}] - m[\text{JPY}] = d_{USD\rightarrow JPY}$, if $d_{USD\rightarrow JPY}$ is positive, then $m[\text{USD}] > m[\text{JPY}]$, meaning USD is more **overvalued** than JPY (yen depreciation/dollar appreciation)—this is reflected in the $m$ indicators.
+
+Meanwhile, an increase in $m[\text{USD}]$ (movement toward overvaluation) necessarily causes a decrease in other currencies' $m$ values (movement toward undervaluation), so the total mispricing across the three currencies is conserved. This suggests that during significant Turkish lira fluctuations, the dollar and yen were forced to adjust in opposite directions to maintain the three-way balance.
 
 ---
 
-## 2.4 Basic Formula (Formula 1)
+## 2.4 Connection with clr Transformation and CoDA
 
-Combining the above, the calculation formulas for $m[\text{USD}], m[\text{JPY}], m[\text{TRY}]$ are:
+The definition (1) of $m[i]$ above can also be understood in the context of centered log-ratio (clr) transformation. The clr transformation is an operation that takes the logarithm of each component of a positive-element vector (composition) divided by its geometric mean, and the resulting vector has the property that its sum is zero.
 
-$$
-\boxed{
-\begin{aligned}
-m[\text{USD}] &= \frac{1}{3}\bigl(d_{\text{USDJPY}} + d_{\text{USDTRY}}\bigr) \\[6pt]
-m[\text{JPY}] &= \frac{1}{3}\bigl(-2 d_{\text{USDJPY}} + d_{\text{USDTRY}}\bigr) \\[6pt]
-m[\text{TRY}] &= \frac{1}{3}\bigl(d_{\text{USDJPY}} - 2 d_{\text{USDTRY}}\bigr)
-\end{aligned}
-}
-\quad \text{...(1)}
-$$
+In general, for a composition $x=(x_1,x_2,\dots,x_D)$, letting $g(x) = (x_1 x_2 \cdots x_D)^{1/D}$ be the geometric mean, the clr transformation is defined as:
 
-This is the fundamental formula of the **Mikan 3-Currency clr Index**. When bilateral PPP deviation rates $d_{\text{USDJPY}}$ and $d_{\text{USDTRY}}$ are given, each currency's relative position $m[i]$ is uniquely determined.
+$$\mathrm{clr}(x)_i = \ln \frac{x_i}{g(x)}$$
+
+Here, $\sum_{i=1}^D \ln\frac{x_i}{g(x)} = \ln \frac{x_1 x_2 \cdots x_D}{(x_1 x_2 \cdots x_D)} = 0$, so the output always sums to zero. This is a fundamental technique in Compositional Data Analysis (CoDA) proposed by Aitchison, providing a geometric framework for properly handling ratio data.
+
+Let us apply the clr transformation to our three-currency model. As a measure of undervaluation corresponding to PPP deviation with USD as the base, we define for each currency $i$: $K_i = \frac{S_{USD/i}^{\text{act}}}{S_{USD/i}^{PPP}}$. $K_i$ indicates "how much cheaper currency $i$ is against the dollar at actual rates," where $K_i > 1$ means currency $i$ is undervalued against the dollar, and $K_i < 1$ means it is overvalued. Indeed, $\ln K_i = d_{USD\rightarrow i}$, so $K_i$ is the exponential form of the PPP deviation.
+
+Setting $x=(K_{USD}, K_{JPY}, K_{TRY})$, the clr transformation $\mathrm{clr}(x)$ for each component is:
+
+$$\mathrm{clr}(x)_i = \ln K_i - \frac{1}{3}(\ln K_{USD} + \ln K_{JPY} + \ln K_{TRY})$$
+
+Since $\ln K_{USD} = d_{USD\rightarrow USD} = 0$ (deviation of dollar against itself is 0), this expression exactly matches definition (1) of $m[i]$. That is:
+
+$$m[i] = \mathrm{clr}(K_{USD}, K_{JPY}, K_{TRY})_i$$
+
+This result shows that our model is constructed according to the CoDA framework. Specifically, we obtain the zero-sum $m[i]$ by applying the clr transformation to the "composition of currency values (degrees of undervaluation) $K_i$." In Aitchison geometry, compositions are represented as points on the simplex, and in clr transformation space, they are projected onto Euclidean space. Therefore, the $m[i]$ vector can essentially be viewed as the Euclidean space representation of the "PPP deviation composition."
+
+In this context, the zero-sum relationship shown by the Mikan Theorem is guaranteed as linear dependence (sum equals zero) in clr space. Moreover, the fact that difference relationships correspond to bilateral deviations means that differences in clr space correspond to log-ratios.
+
+From the above, this model can be described as a reformulation of PPP theory in the context of compositional data—a new approach connecting conventional exchange rate analysis with insights from CoDA and clr transformation. This method yields an indicator system that shows the relative positioning of three currencies at a glance, and subsequent chapters demonstrate its application to real data and analysis results.
 
 ---
 
-## 2.5 Mathematical Properties
+## 2.5 Choice of PPP Data Source and Invariance in MCI
 
-The MCI coordinates have the following important properties:
+### 2.5.1 The Problem
 
-### Property 1: Zero-Sum Constraint
+PPP data can be obtained from multiple sources:
+
+- IMF WEO (Implied PPP conversion rate)
+- World Bank WDI (PA.NUS.PPP)
+- OECD PPP Programme
+
+Systematic differences of about 1-2% exist between these sources. This section mathematically examines the impact of such differences on MCI interpretation.
+
+### 2.5.2 Absorption by Zero-Sum Structure
+
+A core property of MCI is the following zero-sum constraint:
 
 $$m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0$$
 
-This is always satisfied regardless of input values.
+Due to this constraint, even if PPP reference values shift overall in "level," the relative positional relationships within the basket are preserved.
 
-### Property 2: Difference Preservation
+Specifically, examining the relative position within the basket (e.g., TRY vs JPY):
 
-The difference between $m[i]$ and $m[j]$ equals the bilateral PPP deviation:
+$$m[\text{TRY}] - m[\text{JPY}] = \frac{(d_{UJ} - 2d_{UT})}{3} - \frac{(-2d_{UJ} + d_{UT})}{3} = d_{UJ} - d_{UT}$$
 
-$$m[i] - m[j] = d_{i \rightarrow j}$$
+This relative position is determined solely by the **difference in bilateral deviation rates**, not by absolute PPP levels.
 
-For example, $m[\text{USD}] - m[\text{JPY}] = d_{\text{USDJPY}}$.
+### 2.5.3 Analysis of Data Source Difference Impact
 
-### Property 3: Linear Transformation
+**Case 1: Common-Direction Small Shift (Realistic Scenario)**
 
-$m[i]$ is a linear function of input $d$. Therefore, if inputs are continuous over time, $m[i]$ is also continuous.
+Consider when all currencies' PPP shifts by $\epsilon$ (about 1-2%) in the same direction:
 
-### Property 4: Basis Independence
+$$\text{PPP}'_i = \text{PPP}_i \cdot (1 + \epsilon)$$
 
-Even if USD is not the base currency (e.g., EUR is used as base), the resulting $m[i]$ values are identical. This represents triangular arbitrage consistency.
+The deviation rate becomes:
+
+$$d'_{A \rightarrow i} = \ln\frac{S}{\text{PPP}'_i} = \ln\frac{S}{\text{PPP}_i} - \ln(1+\epsilon) = d_{A \rightarrow i} - \epsilon'$$
+
+While each $m[i]$ is affected, the relative positions within the basket $m[i] - m[j]$ are determined by differences in $d$, so the common term $\epsilon'$ cancels out.
+
+**Case 2: Currency-Specific Large Divergent Shifts (Hypothetical Scenario)**
+
+If each currency shifts in different directions by 5-10%, the relative positional relationships break down, affecting MCI interpretation.
+
+### 2.5.4 Practical Implications
+
+Real data source differences (1-2%, common direction) are at a level that can be ignored for MCI interpretation.
+
+What matters is:
+
+1. **Consistency**: Using the same source continuously across time series
+2. **Observing changes**: Emphasizing time-series changes over absolute levels
+
+The "0" in MCI is not an absolute numerical value but a concept representing an **equilibrium state**, and minor shifts in the reference point are absorbed by the zero-sum structure. This is the mathematical expression of the fact that MCI measures "states" rather than "values."
 
 ---
 
-## 2.6 Connection with CoDA Theory
+# Chapter 3: Data and Calculation Methods
 
-CoDA (Compositional Data Analysis), proposed by Aitchison (1986), analyzes data on simplexes. Currency relative prices can also be viewed as compositional data, but the present method does not directly target "share" data.
+## 3.1 Data Overview
 
-However, there is an important structural similarity:
-- The clr transformation calculates the log of each component minus the geometric mean
-- The MCI is the "deviation from the arithmetic mean of PPP deviations"
+Exchange rate and PPP data for USD, JPY, and TRY from 2005 to 2024 were used for analysis.
 
-In this sense, the present method applies the "centering" philosophy of CoDA to PPP analysis. Theoretically, it represents a new approach connecting conventional exchange rate analysis with CoDA.
+### 3.1.1 Data Sources
 
----
+**PPP (Purchasing Power Parity):**
 
-## 2.7 Chapter Summary
+- **Source**: IMF World Economic Outlook (WEO)
+- **Indicator**: Implied PPP conversion rate (PPPEX)
+- **Unit**: LCU per international dollar
+- **Target**: Japan (JPN), Turkey (TUR)
 
-From the above, this model can be called a reformulation of PPP theory in the context of compositional data. It represents a new approach connecting conventional exchange rate analysis with insights from CoDA and clr transformation. This method provides an indicator system that shows the relative positioning of three currencies at a glance, and subsequent chapters demonstrate its application to real data and analysis results.
+**Exchange Rates:**
 
----
+- **Source**: World Bank WDI / IMF IFS
+- **Indicator**: PA.NUS.FCRF (Official exchange rate, period average)
+- **Unit**: LCU per USD
+- **Target**: USD/JPY, USD/TRY annual average rates
 
-# Chapter 3: Data and Methods
+### 3.1.2 Nature of PPP Data
 
-## 3.1 Data Sources
+The PPP used in this analysis is the **absolute PPP** conversion factor based on the International Comparison Program (ICP). Unlike relative PPP estimates using CPI, this represents "local currency units per 1 international dollar" calculated by directly comparing price levels across countries.
 
-This study uses the following data:
-
-### 3.1.1 PPP Conversion Rates
-
-**Source**: World Bank World Development Indicators (WDI)
-- Indicator: PPP conversion factor, GDP (LCU per international $)
-- Period: 2005-2024 (20 years)
-- Target currencies: USD, JPY, TRY
-
-### 3.1.2 Market Exchange Rates
-
-**Source**: World Bank WDI, supplemented by IMF IFS
-- Indicator: Official exchange rate (LCU per US$, period average)
-- Period: Same as above
+The IMF WEO Implied PPP conversion rate is broadly consistent with World Bank WDI (PA.NUS.PPP) and OECD PPP Programme, with systematic differences of about 1-2%. However, as shown in Section 2.5, these differences do not substantially affect MCI interpretation.
 
 ### 3.1.3 Data Characteristics
 
@@ -292,63 +326,133 @@ This study uses the following data:
 | Number of currencies | 3 (USD, JPY, TRY) |
 | Number of observations | 20 |
 
----
+Japan's PPP conversion factor remained around 100 JPY/international dollar during the 2010s and declined to around 93 in the early 2020s. Meanwhile, Turkey's PPP conversion factor rose dramatically from about 1.5 TRY/international dollar around 2010 to approximately 12.5 TRY by 2024 due to high inflation.
 
-## 3.2 Calculation Procedure
-
-### Step 1: PPP Deviation Rate Calculation
-
-Using the market exchange rate $S$ and PPP value $P$ for each year:
-
-$$
-d_{\text{USDJPY}} = \ln\left(\frac{S_{\text{USDJPY}}}{P_{\text{JPY}}}\right)
-$$
-
-$$
-d_{\text{USDTRY}} = \ln\left(\frac{S_{\text{USDTRY}}}{P_{\text{TRY}}}\right)
-$$
-
-### Step 2: MCI Coordinate Calculation
-
-Applying the fundamental formula (Formula 1):
-
-$$
-m[\text{USD}] = \frac{1}{3}(d_{\text{USDJPY}} + d_{\text{USDTRY}})
-$$
-
-$$
-m[\text{JPY}] = \frac{1}{3}(-2d_{\text{USDJPY}} + d_{\text{USDTRY}})
-$$
-
-$$
-m[\text{TRY}] = \frac{1}{3}(d_{\text{USDJPY}} - 2d_{\text{USDTRY}})
-$$
-
-### Step 3: Verification
-
-Confirm that zero-sum constraint is satisfied:
-
-$$
-m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0
-$$
+Note that Turkey experienced high inflation and currency revaluation (redenomination in 2005) during the analysis period, resulting in non-linear movements in long-term price indices and exchange rates.
 
 ---
 
-## 3.3 Descriptive Statistics
+## 3.2 Calculation Methods and Statistics
 
-Summary statistics for 2005-2024 data:
+From the above data, bilateral PPP deviations $d_{USD\rightarrow JPY}$ and $d_{USD\rightarrow TRY}$ were calculated for each year, and $m[\text{USD}], m[\text{JPY}], m[\text{TRY}]$ were computed based on Formula (1).
 
-| Statistic | m[USD] | m[JPY] | m[TRY] |
-|-----------|--------|--------|--------|
-| Mean | 0.254 | 0.238 | -0.492 |
-| Std Dev | 0.118 | 0.132 | 0.166 |
-| Min | 0.076 | -0.003 | -0.781 |
-| Max | 0.518 | 0.410 | -0.267 |
+**Restatement of Formula (1)**:
 
-**Characteristics**:
-- m[TRY] is consistently negative (chronic undervaluation)
-- m[USD] and m[JPY] are positive on average (relative overvaluation)
-- m[TRY] has the largest variance (high volatility)
+$$
+\begin{pmatrix}
+m[\text{USD}] \\
+m[\text{JPY}] \\
+m[\text{TRY}]
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{d_{USD\rightarrow JPY} + d_{USD\rightarrow TRY}}{3} \\
+\frac{-2\,d_{USD\rightarrow JPY} + d_{USD\rightarrow TRY}}{3} \\
+\frac{d_{USD\rightarrow JPY} - 2\,d_{USD\rightarrow TRY}}{3}
+\end{pmatrix}
+$$
+
+The mean and standard deviation of each currency's $m$ value over the 20-year analysis period (2005-2024, 20 annual observations) yielded the following statistics:
+
+### Mean Values
+
+- **$m[\text{USD}]$**: Mean approximately **+0.27**, standard deviation approximately **0.15**
+- **$m[\text{JPY}]$**: Mean approximately **+0.28**, standard deviation approximately **0.10**
+- **$m[\text{TRY}]$**: Mean approximately **-0.55**, standard deviation approximately **0.12**
+
+### Interpretation
+
+Thus, USD and JPY are **positive on average** over the period, while TRY is **negative on average**.
+
+- **Positive value** = Overvalued (highly valued)
+- **Negative value** = Undervalued (lowly valued)
+
+Therefore:
+
+- **USD and JPY showed an overvaluation tendency** on average over the period
+- **TRY showed a chronic undervaluation tendency**
+
+This reflects that throughout the analysis period, the Turkish lira was chronically undervalued relative to PPP (the actual exchange rate depreciated far more than warranted by domestic price increases). Meanwhile, USD and JPY were relatively overvalued, though their absolute values were smaller than TRY's deviation.
+
+### Comparison of Standard Deviations
+
+Comparing the standard deviations of $m$ for the three currencies:
+
+- **USD has the largest variation** (standard deviation 0.15)
+- **TRY is second largest** (standard deviation 0.12)
+- **JPY is smallest** (standard deviation 0.10)
+
+In terms of standard deviation ratios, USD shows about 1.5 times the variation of JPY, and TRY shows about 1.2 times that of JPY. This means that the US dollar experienced relatively large exchange rate fluctuations during the period (especially the 2022 dollar strength phase), while the yen was relatively stable with smaller variation. The Turkish lira fluctuated due to sharp declines in 2018 and 2021 as discussed later, but remained within a certain range in terms of $m$ values.
+
+### Correlation Relationships
+
+Note that the three currencies' $m$ values satisfy the relationship $m[\text{USD}]+m[\text{JPY}]+m[\text{TRY}]=0$ each year, so among the three time series, only two are independent. For example, in years when $m[\text{USD}]$ and $m[\text{TRY}]$ fluctuate significantly, $m[\text{JPY}]$ tends to move accordingly (swinging in the opposite direction).
+
+Looking at series correlations over the entire period:
+
+- **$m[\text{USD}]$ and $m[\text{TRY}]$**: Strong negative correlation (correlation coefficient approximately **-0.73**)
+- **$m[\text{USD}]$ and $m[\text{JPY}]$**: Negative correlation (correlation coefficient approximately **-0.58**)
+- **$m[\text{JPY}]$ and $m[\text{TRY}]$**: Weak negative correlation (correlation coefficient approximately **-0.13**)
+
+The strong negative correlation between $m[\text{USD}]$ and $m[\text{TRY}]$ suggests that particularly during significant Turkish lira fluctuations, the dollar was forced to adjust in the opposite direction to maintain the three-way balance. That is, when the lira moves strongly toward undervaluation ($m[\text{TRY}]$ becomes more negative), the dollar relatively shifts toward overvaluation ($m[\text{USD}]$ becomes more positive).
+
+Meanwhile, the weak correlation between $m[\text{JPY}]$ and $m[\text{TRY}]$ (approximately -0.13) suggests that there is little direct dynamic relationship between the yen and lira, and rather an indirect relationship mediated through the dollar is dominant.
+
+---
+
+## 3.3 Data Validity Confirmation
+
+The calculated $m$ values were validated on the following points:
+
+### Zero-Sum Constraint Confirmation
+
+For all 20 years (2005-2024), it was confirmed that $m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0$ holds numerically (strictly 0 except for rounding errors).
+
+### Difference Relationship Confirmation
+
+For any year, the following relationships were confirmed:
+
+- $m[\text{USD}] - m[\text{JPY}] = d_{USD\rightarrow JPY}$
+- $m[\text{USD}] - m[\text{TRY}] = d_{USD\rightarrow TRY}$
+- $m[\text{JPY}] - m[\text{TRY}] = d_{USD\rightarrow TRY} - d_{USD\rightarrow JPY}$
+
+This ensures that $m$ indicators are consistent with bilateral PPP deviations.
+
+### Economic Validity Confirmation
+
+During major regime transition periods (2011 super-yen-high period, 2018 Turkish lira crisis, 2022 dollar strength phase), $m$ values were confirmed to show signs consistent with economic reality.
+
+**Examples**:
+- 2011 (super-yen-high period): $m[\text{JPY}] \approx +0.41$ → Yen is overvalued (correctly reflects yen appreciation)
+- 2018 (lira crisis): $m[\text{TRY}] \approx -0.70$ → Lira is undervalued (correctly reflects crash)
+- 2022 (dollar strength): $m[\text{USD}] \approx +0.52$ → Dollar is overvalued (correctly reflects dollar strength)
+
+---
+
+## 3.4 Data Availability
+
+The data used in this analysis and the calculated $m$ values are published in the following formats to ensure reproducibility and transparency:
+
+- **Dataset**: `mikan_3currency_clr_index_ppp_data.csv` (all data for 2005-2024)
+- **Specification**: Detailed calculation method specifications (`specification_ppp_annual.md`)
+- **Verification script**: Python script for formula verification
+
+This enables third-party verification and extension to other periods or currencies.
+
+---
+
+## Summary
+
+This chapter calculated the Mikan 3-Currency clr Index ($m[\text{USD}], m[\text{JPY}], m[\text{TRY}]$) from exchange rate and price data for USD, JPY, and TRY over 20 years (2005-2024).
+
+Statistical analysis results:
+
+1. **USD and JPY showed overvaluation tendency** on average (mean +0.27, +0.28)
+2. **TRY showed chronic undervaluation tendency** (mean -0.55)
+3. **USD had the largest variation**, JPY the smallest
+4. **Strong negative correlation between USD and TRY** (-0.73)
+
+The following chapter examines year-by-year trends in detail regarding these statistical tendencies.
 
 ---
 
