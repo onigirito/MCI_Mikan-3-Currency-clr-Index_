@@ -19,13 +19,13 @@ This paper proposes a novel relative evaluation index called the "Mikan 3-Curren
 ## Table of Contents
 
 1. [Chapter 1: Introduction](#chapter-1-introduction)
-2. [Chapter 2: Theoretical Framework](#chapter-2-theoretical-framework)
-3. [Chapter 3: Data and Methods](#chapter-3-data-and-methods)
-4. [Chapter 4: Empirical Analysis: Time-Series Interpretation](#chapter-4-empirical-analysis)
-5. [Chapter 5: Comparison with Simple PPP Analysis](#chapter-5-comparison-with-simple-ppp-analysis)
-6. [Chapter 6: Regime Shifts and Currency Structure Realignment](#chapter-6-regime-shifts)
+2. [Chapter 2: Theoretical Framework and Mathematical Definitions](#chapter-2-theoretical-framework-and-mathematical-definitions)
+3. [Chapter 3: Data and Calculation Methods](#chapter-3-data-and-calculation-methods)
+4. [Chapter 4: Empirical Analysis and Time-Series Structure](#chapter-4-empirical-analysis-and-time-series-structure)
+5. [Chapter 5: Comparison with Simple PPP](#chapter-5-comparison-with-simple-ppp)
+6. [Chapter 6: Regime Shifts and Currency Structure Realignment](#chapter-6-regime-shifts-and-currency-structure-realignment)
 7. [Chapter 7: Practical Guidelines](#chapter-7-practical-guidelines)
-8. [Chapter 8: Monthly Analysis and PPP Update Frequency](#chapter-8-monthly-analysis)
+8. [Chapter 8: Monthly Analysis and PPP Update Frequency](#chapter-8-monthly-analysis-and-ppp-update-frequency)
 9. [References](#references)
 
 ---
