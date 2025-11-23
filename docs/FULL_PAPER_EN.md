@@ -1193,65 +1193,430 @@ Particularly, with the yen now neutralized, the next regime shift may occur in t
 
 # Chapter 7: Practical Guidelines
 
-## 7.1 Overview
+## 7.1 Purpose of This Chapter
 
-This chapter provides guidelines for using MCI in practice. Appropriate use of MCI can support investment decisions, risk management, and policy analysis.
+This chapter provides **practical guidelines** for using the Mikan 3-Currency clr Index in real-world applications. We discuss specific methods for investment decisions, risk management, and portfolio allocation, as well as operational considerations.
 
-## 7.2 Signal Interpretation
+---
 
-### 7.2.1 Extreme Value Signals
+## 7.2 Basic Interpretation of the Index
 
-| Signal | Condition | Interpretation |
-|--------|-----------|----------------|
-| Strong Overvaluation | m[i] > +0.4 | Strong mean-reversion pressure |
-| Strong Undervaluation | m[i] < -0.6 | Strong mean-reversion pressure |
-| Neutral | -0.2 < m[i] < +0.2 | Near equilibrium |
+$m[i] > 0$ indicates overvaluation, and $m[i] < 0$ indicates undervaluation (see Section 2.2 for details).
 
-### 7.2.2 Movement Direction Signals
+### 7.2.1 Importance of the Zero-Sum Constraint
 
-| Signal | Condition | Interpretation |
-|--------|-----------|----------------|
-| Convergence | All m[i] approaching 0 | Stress dissipation |
-| Divergence | m[i] spread expanding | Stress accumulation |
-| Isolation | One currency separating | Event concentration |
+The following relationship always holds:
 
-## 7.3 Investment Applications
+$$
+m[\text{USD}](t) + m[\text{JPY}](t) + m[\text{TRY}](t) = 0
+$$
 
-### 7.3.1 Long-Term Strategic Allocation
+This guarantees the relative relationship that "if one currency becomes overvalued, other currencies become undervalued."
 
-MCI can be used as a reference for long-term currency allocation:
-- Reduce weight of currencies with high m[i]
-- Increase weight of currencies with low m[i]
-- Expect mean-reversion over long horizons
+**Example (2024)**:
+- m[USD] = +0.483 (overvalued)
+- m[JPY] = -0.003 (neutral)
+- m[TRY] = -0.480 (undervalued)
+- Total = 0.000 ✓
 
-### 7.3.2 Risk Management
+The dollar being extremely overvalued means the lira is undervalued, with the yen in an intermediate position.
 
-MCI is useful for risk monitoring:
-- Alert when spread expands
-- Hedge when volatility concentrates
-- Adjust positions at regime shifts
+---
 
-## 7.4 Limitations and Cautions
+## 7.3 Application to Investment Decisions
 
-### 7.4.1 What MCI Does NOT Predict
+### 7.3.1 Basic Investment Strategy
 
-- Short-term price movements
-- Timing of mean reversion
-- Impact of external shocks
+The basic strategy based on the Mikan 3-Currency clr Index follows the concept of **mean reversion**:
 
-### 7.4.2 Combination with Other Indicators
+**Strategy Principles**:
 
-MCI should be used with:
-- Interest rate differentials
-- Capital flow data
-- Political/geopolitical factors
-- Technical analysis
+1. **When $m_i(t)$ is largely positive (overvalued)** → Expected to revert to mean in the future → Consider **sell position**
+2. **When $m_i(t)$ is largely negative (undervalued)** → Expected to revert to mean in the future → Consider **buy position**
+3. **When $m_i(t) \approx 0$ (neutral)** → No position, or continue observation
 
-### 7.4.3 Basket Dependency
+### 7.3.2 Threshold Settings
 
-MCI values depend on the selected 3-currency basket:
-- Results change with different currency combinations
-- "JPY's position in G3" differs from "JPY's position in USD-JPY-TRY"
+Thresholds need to be set to determine "largely positive/negative." Recommended values based on 2005–2024 statistics (see Chapter 3):
+
+| Currency | Mean | Std Dev | +1σ Threshold | +2σ Threshold | -1σ Threshold | -2σ Threshold |
+|----------|------|---------|---------------|---------------|---------------|---------------|
+| USD | +0.27 | 0.15 | +0.42 | +0.57 | +0.12 | -0.03 |
+| JPY | +0.28 | 0.10 | +0.38 | +0.48 | +0.18 | +0.08 |
+| TRY | -0.55 | 0.12 | -0.43 | -0.31 | -0.67 | -0.79 |
+
+**Recommended Thresholds**:
+- **Conservative strategy**: Take positions only when exceeding ±2σ
+- **Aggressive strategy**: Take positions when exceeding ±1σ
+
+### 7.3.3 Specific Signal Examples
+
+#### Example 1: 2022 Dollar (Extremely Overvalued)
+
+- **Situation**: m[USD] = +0.518 (+2.5σ above mean of +0.27)
+- **Signal**: Sell dollar (sell USD/JPY, sell USD/TRY)
+- **Rationale**: Historically extreme overvaluation level. Mean reversion expected
+- **Actual outcome**: Decreased to +0.498 in 2023, +0.483 in 2024 (reversion began)
+
+#### Example 2: 2020 Lira (Extremely Undervalued)
+
+- **Situation**: m[TRY] = -0.781 (exceeding -2σ from mean of -0.55)
+- **Signal**: Buy lira (buy TRY/JPY)?
+- **Caution**: However, remained at -0.753 in 2021, -0.685 in 2022 (undervaluation continued)
+- **Lesson**: When structural vulnerabilities exist, mean reversion may be delayed or fail to materialize
+
+#### Example 3: 2024 Yen (Neutral)
+
+- **Situation**: m[JPY] = -0.003 (approximately zero)
+- **Signal**: Position unclear. Continue observation
+- **Consideration**: While deviating downward from long-term mean (+0.28), neutral in absolute terms
+
+### 7.3.4 Pair Trade Strategy
+
+Pair trades utilizing **relative differences** among the three currencies:
+
+**Strategy Example**: When m[USD] - m[JPY] is extremely large
+
+- **2022**: m[USD] - m[JPY] = 0.518 - 0.167 = **+0.351**
+- **Signal**: Sell USD/JPY (sell dollar, buy yen)
+- **Rationale**: Expecting this spread to narrow (dollar weakening/yen strengthening, or both currencies becoming undervalued simultaneously)
+
+**Notes**:
+- Pair trades bet on **changes in the spread**, not absolute levels of either currency
+- Profit is achieved if the spread narrows, even if both currencies become overvalued/undervalued simultaneously
+
+---
+
+## 7.4 Risk Management
+
+### 7.4.1 Volatility Monitoring
+
+The rate of change in $m_i(t)$ (Δm_i) indicates the speed of currency valuation changes.
+
+**Distribution of Annual Rate of Change (Absolute Value) for 2005–2024**:
+
+| Currency | Mean Change | Max Change | Max Change Year |
+|----------|-------------|------------|-----------------|
+| USD | 0.048 | 0.089 | 2021→2022 |
+| JPY | 0.050 | 0.156 | 2021→2022 |
+| TRY | 0.056 | 0.114 | 2008→2009 |
+
+**Risk Management Guidelines**:
+
+1. When **|Δm_i| > 0.10** occurs, high probability of regime transition → Reduce position size
+2. **Consecutive large changes** (|Δm_i| > 0.08 for 2 consecutive years) suggest structural change → Review strategy
+
+### 7.4.2 Stop-Loss Settings
+
+Even in mean-reversion strategies, stop-losses are essential to limit losses.
+
+**Recommended Settings**:
+
+- **Close position if adverse movement exceeds +0.15**
+- Example: After taking a dollar short position at m[USD] = +0.50, cut losses if m[USD] rises to +0.65
+
+### 7.4.3 Leverage Limits
+
+This method is based on annual data for long-term evaluation, and short-term movements in the opposite direction can be large.
+
+**Recommended Leverage**:
+- **When using annual data**: 1x to 2x
+- **When using high-frequency data** (future extension): 2x to 5x
+
+Excessive leverage increases the risk of forced liquidation before mean reversion is realized.
+
+---
+
+## 7.5 Portfolio Allocation
+
+### 7.5.1 Basic Policy for Dynamic Allocation
+
+Dynamically adjust currency exposure based on $m_i(t)$.
+
+**Allocation Rules (Example)**:
+
+1. **Undervalued currencies (m_i < -1σ)**: **Increase** weight
+2. **Currencies in neutral zone (-1σ < m_i < +1σ)**: **Equal** weight
+3. **Overvalued currencies (m_i > +1σ)**: **Reduce** weight
+
+### 7.5.2 Specific Example: 3-Currency Diversified Investment
+
+**2024 Situation**:
+- m[USD] = +0.483 (+1.4σ, overvalued)
+- m[JPY] = -0.003 (neutral)
+- m[TRY] = -0.480 (+0.6σ, slightly undervalued)
+
+**Allocation Proposal**:
+- USD: 20% (low weight due to overvaluation)
+- JPY: 40% (moderate due to neutral)
+- TRY: 40% (moderate considering structural risk despite undervaluation)
+
+**Note**: Although TRY is undervalued, avoid excessive concentration due to structural vulnerabilities (see Chapter 6).
+
+### 7.5.3 Application to Hedging Strategies
+
+When multinational corporations or institutional investors hedge currency risk, they can adjust hedge ratios with reference to $m_i(t)$.
+
+**Hedge Ratio Adjustment Rules**:
+
+| m_i Level | Hedge Ratio for Home Currency Exposure |
+|-----------|----------------------------------------|
+| m_i > +2σ (extremely overvalued) | 80%–100% (high hedge ratio) |
+| +1σ < m_i < +2σ (overvalued) | 50%–80% |
+| -1σ < m_i < +1σ (neutral zone) | 30%–50% (standard) |
+| m_i < -1σ (undervalued) | 0%–30% (low hedge ratio) |
+
+**Rationale**: Overvalued currencies have higher future depreciation risk, so increase hedge ratio. Undervalued currencies have appreciation potential, so reduce hedge ratio.
+
+---
+
+## 7.6 Timing Strategies
+
+### 7.6.1 Entry Timing
+
+**Conservative Approach**:
+- After reaching extreme levels (±2σ), enter after **signs of reversal** appear
+- Example of signs: Change in opposite direction from previous period (sign reversal of Δm_i)
+
+**Aggressive Approach**:
+- Enter immediately upon reaching ±1σ
+- Captures more opportunities but higher drawdown risk
+
+### 7.6.2 Exit Timing
+
+**Profit Taking**:
+- Take profit when m_i reverts to near the mean (mean ± 0.5σ)
+- Example: Short entry at m[USD] = +0.50 → Take profit when it decreases to +0.35
+
+**Stop Loss**:
+- Cut losses when adverse movement exceeds a threshold (e.g., +0.15)
+- Or review when fundamentals change (e.g., central bank policy shift)
+
+### 7.6.3 Rebalancing Frequency
+
+When using annual data, **annual rebalancing** is standard.
+
+- **Timing**: After new year data publication (usually February–March)
+- **When using high-frequency data** (future extension): Consider quarterly or monthly rebalancing
+
+---
+
+## 7.7 Combination with External Indicators
+
+### 7.7.1 Importance of External Indicators
+
+Since $m_i(t)$ shows "relative valuation within the three-currency basket," it cannot directly observe factors outside the basket. Therefore, combination with external indicators is important.
+
+**External Indicators to Use Complementarily**:
+
+| Indicator | Usage | Specific Example |
+|-----------|-------|------------------|
+| **DXY** (Dollar Index) | Global dollar strength/weakness | Correlation analysis with m[USD] |
+| **VIX** (Fear Index) | Risk-on/off environment | Safe currency (JPY) tends to be overvalued when VIX is high |
+| **Interest rate differentials** | Consistency with interest rate parity | Relationship between US-Japan rate differential and m[USD] - m[JPY] |
+| **REER** (Real Effective Exchange Rate) | Comparison with other valuation criteria | Difference analysis between PPP-based and REER-based |
+
+### 7.7.2 Example of Integrated Judgment
+
+**2022 Dollar Strength Episode**:
+
+1. **Mikan Index**: m[USD] = +0.518 (extremely overvalued) → Dollar sell signal
+2. **DXY**: High level above 110 (global dollar strength)
+3. **US-Japan interest rate differential**: +4% or more (supporting dollar strength)
+4. **VIX**: Around 25 (risk-off environment)
+
+**Integrated Judgment**:
+- Mikan Index shows dollar overvaluation, but DXY and interest rate differentials support dollar strength
+- Conflicting signals → **Reduce position size** or **continue observation**
+- Actually, the dollar declined after late 2022 but maintained high levels through 2023–2024
+
+**Lesson**: Even when $m_i(t)$ is extreme, if supported by external factors (interest rate differentials, etc.), mean reversion may be delayed.
+
+---
+
+## 7.8 Operational Considerations
+
+### 7.8.1 Recognition of Method Limitations
+
+Always keep the limitations of this method in mind:
+
+1. **Annual data constraints**: Cannot capture short-term fluctuations
+2. **Scope of this research**: This paper analyzes only 3 currencies (USD/JPY/TRY), excluding major currencies like EUR and CNY (theoretically extensible to N currencies where N≥3)
+3. **PPP limitations**: Short-term exchange rate determinants (interest rate differentials, risk sentiment, etc.) are not directly reflected
+4. **Uncertainty of mean reversion**: Mean reversion may not materialize when structural changes occur
+
+### 7.8.2 Necessity of Backtesting
+
+The strategies presented in this chapter are **theoretical proposals**, and actual performance has not been verified.
+
+**Essential before live trading**:
+- Backtesting with historical data
+- Profitability verification including transaction costs (spreads, commissions)
+- Evaluation of maximum drawdown and Sharpe ratio
+
+### 7.8.3 Response to Structural Changes
+
+When regime transitions occur (see Chapter 6), past means and standard deviations may become unreliable.
+
+**Countermeasures**:
+- **Moving average/standard deviation**: Update statistics using rolling windows such as the most recent 10 years
+- **Regime detection**: When |Δm_i| > 0.10 occurs, pause strategy and review
+
+### 7.8.4 Liquidity Considerations
+
+This research assumes trading in USD/JPY, USD/TRY, and TRY/JPY, but liquidity varies.
+
+**Liquidity Reality**:
+- **USD/JPY**: World's second-highest liquidity, minimal spread
+- **USD/TRY**: Limited liquidity as an emerging market currency pair, large spread
+- **TRY/JPY**: Minor currency pair, low liquidity, very large spread
+
+**Countermeasures**:
+- Limit position size for low-liquidity pairs (TRY/JPY)
+- Use limit orders to avoid unfavorable slippage
+
+### 7.8.5 Geopolitical Risks
+
+Emerging market currencies like TRY are strongly affected by geopolitical risks (political instability, deteriorating foreign relations, etc.).
+
+**Lessons from the 2018 Lira Crisis**:
+- Even when $m[\text{TRY}]$ was undervalued, further collapse occurred due to political risks
+- Also confirm deterioration of fundamentals (high inflation, current account deficit, declining foreign reserves)
+
+**Response**:
+- Limit exposure to emerging market currencies to 10–20% of total assets
+- Regularly reassess country risk
+
+---
+
+## 7.9 Practical Operation Flow
+
+### 7.9.1 Monthly Monitoring (When Using Annual Data)
+
+**Step 1: Data Update**
+- Obtain latest PPP and exchange rate data from World Bank (published annually, usually February–March)
+- Calculate $m_i(t)$ for the latest year
+
+**Step 2: Statistics Update**
+- Recalculate mean and standard deviation for the most recent 10 years or entire period
+- Update ±1σ and ±2σ thresholds
+
+**Step 3: Signal Determination**
+- Check if each currency exceeds thresholds
+- Calculate year-over-year change (Δm_i) to detect signs of regime transition
+
+**Step 4: External Indicator Confirmation**
+- Check external indicators such as DXY, VIX, interest rate differentials
+- Verify consistency with Mikan Index signals
+
+**Step 5: Position Adjustment**
+- Adjust positions or portfolio weights based on signals
+- Operate within risk limits (leverage, maximum drawdown)
+
+**Step 6: Recording and Evaluation**
+- Record adjustments
+- Evaluate performance quarterly
+
+### 7.9.2 Daily Monitoring (When Using High-Frequency Data)
+
+Operation flow when extended to daily data in the future:
+
+**Step 1: Daily Data Update**
+- Obtain daily exchange rates, calculate $m_i(t)$ daily
+
+**Step 2: Update Moving Statistics**
+- Calculate 60-day moving average, 20-day volatility, etc.
+
+**Step 3: Daily Signals**
+- Alert when $m_i(t)$ exceeds moving average ± 2 standard deviations
+
+**Step 4: Entry/Exit Decisions**
+- After alert, confirm external and technical indicators before entering
+- Exit upon reaching target or stop-loss
+
+---
+
+## 7.10 Case Study: 2022–2024 Trading Simulation
+
+### 7.10.1 Initial Situation (Early 2022)
+
+**End of 2021 State**:
+- m[USD] = +0.429 (above +1σ, overvalued)
+- m[JPY] = +0.323 (slightly overvalued)
+- m[TRY] = -0.753 (-1.7σ, undervalued)
+
+**Strategy**:
+- USD: Overvalued → Reduce weight (20%)
+- JPY: Slightly overvalued → Standard weight (40%)
+- TRY: Undervalued → Increase weight (40%)
+
+### 7.10.2 Changes in 2022
+
+**End of 2022 State**:
+- m[USD] = +0.518 (+1.7σ, extremely overvalued)
+- m[JPY] = +0.167 (slightly overvalued but significant decline)
+- m[TRY] = -0.685 (-1.1σ, undervaluation continues)
+
+**Analysis of Changes**:
+- USD became even more overvalued (Δm[USD] = +0.089) → Sign of regime transition
+- JPY declined significantly (Δm[JPY] = -0.156) → Structural change
+
+**Strategy Adjustment**:
+- USD: Extremely overvalued → Consider short position or further reduce weight to 10%
+- JPY: Sharp decline but still positive → Maintain weight
+- TRY: Undervaluation continues but improving trend → Maintain weight
+
+### 7.10.3 Results for 2023–2024
+
+**End of 2024 State**:
+- m[USD] = +0.483 (+1.4σ, overvaluation continues)
+- m[JPY] = -0.003 (approximately zero, neutralized)
+- m[TRY] = -0.480 (+0.6σ, undervaluation eased)
+
+**Evaluation of Results**:
+- USD: +0.518 → +0.483 (-0.035 decrease) → Signs of mean reversion
+- JPY: +0.167 → -0.003 (-0.170 decrease) → Significant structural change
+- TRY: -0.685 → -0.480 (+0.205 increase) → Undervaluation significantly improved
+
+**Performance Estimate** (approximate):
+- **TRY weight increase strategy**: Profit from TRY's relative appreciation
+- **USD weight reduction strategy**: Loss avoidance from USD's relative decline
+- **Overall**: Exposure to TRY drove performance
+
+**Lessons**:
+- Mean reversion from extreme levels was realized but took 2 years (patience required)
+- JPY's sharp decline was an unexpected structural change; external factors (US-Japan interest rate differential) should not have been overlooked
+
+---
+
+## 7.11 Summary: Message to Practitioners
+
+The Mikan 3-Currency clr Index is a new tool for currency valuation in a multi-currency environment. For practical use, keep the following points in mind:
+
+### 7.11.1 Strengths
+
+1. **Consistent multi-currency evaluation**: Expresses relative relationships among three currencies under the zero-sum constraint
+2. **Intuitive visualization**: Trajectories in 2-dimensional space make structural changes easy to grasp
+3. **Economic validity**: Consistent with major economic events (yen appreciation, lira crisis, dollar strength)
+
+### 7.11.2 Weaknesses
+
+1. **Time resolution constraints**: Annual data is unsuitable for short-term investment decisions
+2. **Scope of this research**: This paper covers only 3 currencies (USD/JPY/TRY) and does not represent the global currency environment (theory is extensible to N currencies)
+3. **Uncertainty of mean reversion**: When structural changes occur, reversion may be delayed or fail to materialize
+
+### 7.11.3 Recommended Usage
+
+- Use as a reference indicator for **long-term strategic asset allocation**
+- **Combine with external indicators (DXY, interest rate differentials, VIX, etc.)** for comprehensive judgment
+- **Conduct backtesting** before live trading
+- Consider **extension to high-frequency data** (daily, monthly) to enhance practicality
+
+### 7.11.4 Future Development Expectations
+
+The operational guidelines presented in this chapter are preliminary proposals based on annual data. Future extensions to daily/monthly data, expansion to 4 or more currencies, and construction of predictive models using machine learning will dramatically improve practical usefulness.
+
+Ultimately, we hope that the Mikan 3-Currency clr Index will be established as a **standard monitoring tool** for foreign exchange market practitioners.
 
 ---
 
@@ -1423,26 +1788,112 @@ The monthly analysis presented in this chapter complements the practical operati
 3. **Taylor, A. M., & Taylor, M. P. (2004).** "The Purchasing Power Parity Debate," *Journal of Economic Perspectives*, 18(4), 135–158.
    - Survey of PPP theory's historical development and empirical research
 
+4. **Sarno, L., & Taylor, M. P. (2002).** *The Economics of Exchange Rates*. Cambridge University Press.
+   - Comprehensive textbook on exchange rate determination theory
+
 ## Compositional Data Analysis (CoDA)
 
-4. **Aitchison, J. (1986).** *The Statistical Analysis of Compositional Data*. Chapman & Hall.
-   - Foundational text of CoDA
+5. **Aitchison, J. (1986).** *The Statistical Analysis of Compositional Data*. Chapman & Hall.
+   - Classic monograph establishing the foundations of compositional data analysis
 
-5. **Egozcue, J. J., Pawlowsky-Glahn, V., Mateu-Figueras, G., & Barceló-Vidal, C. (2003).** "Isometric Logratio Transformations for Compositional Data Analysis," *Mathematical Geology*, 35(3), 279–300.
-   - Detailed paper on geometric properties of clr/ilr transformations
+6. **Pawlowsky-Glahn, V., & Egozcue, J. J. (2006).** "Compositional Data and Their Analysis: An Introduction," *Geological Society, London, Special Publications*, 264(1), 1–10.
+   - Modern introductory paper on compositional data analysis
 
-## Data Sources
+7. **Filzmoser, P., Hron, K., & Templ, M. (2018).** *Applied Compositional Data Analysis: With Worked Examples in R*. Springer.
+   - Practical textbook on compositional data analysis using R
 
-6. **World Bank (2024).** *World Development Indicators*. https://databank.worldbank.org/
-   - PPP conversion factors and official exchange rates
+8. **Egozcue, J. J., Pawlowsky-Glahn, V., Mateu-Figueras, G., & Barceló-Vidal, C. (2003).** "Isometric Logratio Transformations for Compositional Data Analysis," *Mathematical Geology*, 35(3), 279–300.
+   - Mathematical foundations of log-ratio transformations including clr (centered log-ratio)
 
-7. **International Monetary Fund (IMF) (2024).** *World Economic Outlook Database*. https://www.imf.org/en/Publications/WEO
+## Real Effective Exchange Rates (REER) and Currency Valuation
+
+9. **Chinn, M. D. (2006).** "A Primer on Real Effective Exchange Rates: Determinants, Overvaluation, Trade Flows and Competitive Devaluation," *Open Economies Review*, 17(1), 115–143.
+   - Survey of REER definition, determinants, and empirical analysis
+
+10. **Comunale, M., & Hessel, J. (2014).** "Current Account Imbalances in the Euro Area: Competitiveness or Financial Center?" DNB Working Paper No. 443.
+    - Research on competitiveness indicator construction in multi-currency environments
+
+## Time Series Analysis and Regime Switching
+
+11. **Hamilton, J. D. (1989).** "A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle," *Econometrica*, 57(2), 357–384.
+    - Proposal of Markov-switching models (foundation for regime transition analysis)
+
+12. **Perron, P. (1989).** "The Great Crash, the Oil Price Shock, and the Unit Root Hypothesis," *Econometrica*, 57(6), 1361–1401.
+    - Testing methods for time series data with structural breaks
+
+13. **Stock, J. H., & Watson, M. W. (2001).** "Vector Autoregressions," *Journal of Economic Perspectives*, 15(4), 101–115.
+    - Explanation of VAR models and their application to economic analysis
 
 ## Currency Crises and Emerging Markets
 
-8. **Kaminsky, G. L., & Reinhart, C. M. (1999).** "The Twin Crises: The Causes of Banking and Balance-of-Payments Problems," *American Economic Review*, 89(3), 473–500.
+14. **Kaminsky, G. L., & Reinhart, C. M. (1999).** "The Twin Crises: The Causes of Banking and Balance-of-Payments Problems," *American Economic Review*, 89(3), 473–500.
+    - Influential paper analyzing the relationship between currency crises and banking crises
 
-9. **Reinhart, C. M., & Rogoff, K. S. (2009).** *This Time Is Different: Eight Centuries of Financial Folly*. Princeton University Press.
+15. **Eichengreen, B., Rose, A. K., & Wyplosz, C. (1996).** "Contagious Currency Crises," NBER Working Paper No. 5681.
+    - Research on transmission mechanisms of currency crises
+
+16. **Özatay, F., & Sak, G. (2003).** "The 2000–2001 Financial Crisis in Turkey," in *Managing Currency Crises in Emerging Markets*, University of Chicago Press, 157–184.
+    - Detailed analysis of Turkey's currency crisis (period prior to this study)
+
+## Japanese Economy and Yen Appreciation
+
+17. **Shirakawa, M. (2012).** "Deleveraging and Growth: Is the Developed World Following Japan's Long and Winding Road?" Lecture at the London School of Economics.
+    - Analysis of the Japanese economy including the 2011 extreme yen appreciation period by the then-BOJ Governor
+
+18. **Ito, T., & Mishkin, F. S. (2006).** "Two Decades of Japanese Monetary Policy and the Deflation Problem," in *Monetary Policy with Very Low Inflation in the Pacific Rim*, University of Chicago Press, 131–202.
+    - Long-term analysis of Japanese monetary policy and yen appreciation/deflation
+
+## Data Sources
+
+19. **World Bank (2024).** *World Development Indicators (WDI)*. https://databank.worldbank.org/source/world-development-indicators
+    - Primary source for PPP and exchange rate data used in this study
+    - Indicators: PA.NUS.PPP (PPP conversion factor, GDP), PA.NUS.FCRF (Official exchange rate)
+
+20. **Bank for International Settlements (BIS) (2024).** *Effective Exchange Rate Indices*. https://www.bis.org/statistics/eer.htm
+    - Standard source for Real Effective Exchange Rate (REER) data
+
+21. **International Monetary Fund (IMF) (2024).** *International Financial Statistics (IFS)*. https://data.imf.org/
+    - Comprehensive database for exchange rates and financial statistics
+
+## Visualization and Statistical Methods
+
+22. **Cleveland, W. S., & McGill, R. (1984).** "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods," *Journal of the American Statistical Association*, 79(387), 531–554.
+    - Theoretical foundations of data visualization
+
+23. **Tukey, J. W. (1977).** *Exploratory Data Analysis*. Addison-Wesley.
+    - Classic text on exploratory data analysis
+
+## International Finance and Exchange Policy
+
+24. **Obstfeld, M., & Rogoff, K. (1996).** *Foundations of International Macroeconomics*. MIT Press.
+    - Standard textbook on international macroeconomics
+
+25. **Frankel, J. A., & Rose, A. K. (1995).** "Empirical Research on Nominal Exchange Rates," in *Handbook of International Economics*, Vol. 3, Elsevier, 1689–1729.
+    - Comprehensive survey of empirical research on exchange rates
+
+## Monetary Policy and Central Banks
+
+26. **Clarida, R., Galí, J., & Gertler, M. (1999).** "The Science of Monetary Policy: A New Keynesian Perspective," *Journal of Economic Literature*, 37(4), 1661–1707.
+    - Theoretical framework of modern monetary policy
+
+27. **Bernanke, B. S., & Mishkin, F. S. (1997).** "Inflation Targeting: A New Framework for Monetary Policy?" *Journal of Economic Perspectives*, 11(2), 97–116.
+    - Theory and practice of inflation targeting
+
+## Risk Management and Portfolio Theory
+
+28. **Markowitz, H. (1952).** "Portfolio Selection," *Journal of Finance*, 7(1), 77–91.
+    - Classic paper establishing the foundations of modern portfolio theory
+
+29. **Jorion, P. (2006).** *Value at Risk: The New Benchmark for Managing Financial Risk* (3rd ed.). McGraw-Hill.
+    - Practical textbook on risk management centered on VaR
+
+## Machine Learning and Time Series Forecasting
+
+30. **Hochreiter, S., & Schmidhuber, J. (1997).** "Long Short-Term Memory," *Neural Computation*, 9(8), 1735–1780.
+    - Proposal of LSTM (Long Short-Term Memory) networks (mentioned as future extension in Chapter 8)
+
+31. **Vaswani, A., et al. (2017).** "Attention Is All You Need," in *Advances in Neural Information Processing Systems*, 5998–6008.
+    - Proposal of Transformer models (potential application to time series forecasting)
 
 ---
 
@@ -1465,3 +1916,4 @@ This reference list covers major literature related to the theoretical backgroun
 - **Empirical Analysis**: Explicitly citing public data sources including World Bank WDI, BIS, and IMF
 - **Time Series/Regime Analysis**: Structural change detection methods by Hamilton (1989) and Perron (1989)
 - **Currency Crises**: Twin crises research by Kaminsky & Reinhart (1999), Turkish crisis precedent studies
+- **Future Extensions**: Including recent literature on machine learning (LSTM, Transformer)
