@@ -46,8 +46,7 @@ python3 export_monthly_analysis.py
 ## 📖 ドキュメント / Documentation
 
 ### 論文 / Paper
-- [全文（日本語）](docs/FULL_PAPER_CORRECTED.md) - Full paper in Japanese
-- [Full Paper (English)](docs/FULL_PAPER_EN.md) - 英語版
+- [全文（日本語）](docs/FULL_PAPER_CORRECTED.md)
 
 ### その他 / Others
 - [理論枠組み](docs/CHAPTER2_CORRECTED.md) - MCI座標の数理定義
