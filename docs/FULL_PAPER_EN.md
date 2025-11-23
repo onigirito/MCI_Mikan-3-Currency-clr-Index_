@@ -1626,7 +1626,11 @@ Ultimately, we hope that the Mikan 3-Currency clr Index will be established as a
 
 Chapter 4 analyzed long-term structural changes based on annual data. The 20-year graph (Figure 8.0) shown below captures major structural changes: the 2011 yen appreciation peak, the 2018 Turkish lira crisis, and the 2022 dollar strength period.
 
-However, for actual market participants, capturing movements on shorter time scales is important. This chapter uses monthly data from 2022 to 2025 to analyze short-term dynamics of MCI coordinates.
+![Annual MCI Coordinate Progression (2005-2024)](../annual_mci_plot.png)
+
+*Figure 8.0: Annual MCI coordinate progression (reproduced from Chapter 4). Long-term trends over 20 years can be grasped, but detailed dynamics of recent years are difficult to read.*
+
+However, for actual market participants, capturing movements on shorter time scales is important. The figure above compresses movements since 2022, making it insufficient for analyzing monthly dynamics. This chapter uses monthly data from 2022 to 2025 to analyze short-term dynamics of MCI coordinates.
 
 Monthly observation reveals:
 1. Short-term stress accumulation/release processes smoothed out in annual data
@@ -1638,6 +1642,10 @@ Monthly observation reveals:
 ## 8.2 Monthly MCI Using Annual PPP
 
 The figure below shows monthly MCI coordinates from January 2022 to November 2025, using each year's confirmed PPP values (IMF WEO).
+
+![Monthly MCI (Annual PPP)](../monthly_mci_annual_ppp.png)
+
+*Figure 8.1: Monthly MCI coordinate progression using annual PPP. Orange dotted lines indicate year boundaries (PPP update timing).*
 
 ### Observed Features
 
@@ -1671,6 +1679,10 @@ Therefore, when using annual PPP, there is a time lag before actual purchasing p
 ## 8.3 Continuous Transition Through PPP Interpolation
 
 To eliminate discontinuity at year boundaries, we created a version with monthly linear interpolation of PPP. The following figure shows the results.
+
+![Monthly MCI (Interpolated PPP)](../monthly_mci_interpolated_ppp.png)
+
+*Figure 8.2: MCI coordinate progression using monthly interpolated PPP. Year-boundary jumps are eliminated, showing smooth transitions.*
 
 ### Interpolation Method
 
