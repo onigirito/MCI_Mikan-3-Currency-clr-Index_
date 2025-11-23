@@ -37,7 +37,7 @@ This design ensures that overvaluation of one currency always balances with unde
 ## 📊 データファイル
 
 ### 年次データ（公式）
-- **[mikan_3currency_clr_index_ppp_data.csv](dataset/mikan_3currency_clr_index_ppp_data.csv)** - 2005-2024年の確定値（World Bank WDI）
+- **[mikan_3currency_clr_index_ppp_data.csv](dataset/mikan_3currency_clr_index_ppp_data.csv)** - 2005-2024年の確定値（IMF WEO）
 
 ### 月次データ（2022-2025）
 - **[monthly_mci_analysis.csv](monthly_mci_analysis.csv)** - 月次MCI分析データ（2022-01〜2025-11、47ヶ月）

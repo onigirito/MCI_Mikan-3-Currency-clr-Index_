@@ -8,7 +8,7 @@
 
 **対象通貨：** USD, JPY, TRY
 **期間：** 2005-2024（年次）
-**データソース：** World Bank WDI（PA.NUS.PPP, PA.NUS.FCRF）
+**データソース：** IMF World Economic Outlook（Implied PPP conversion rate, Official exchange rate）
 
 ## 列の説明
 
