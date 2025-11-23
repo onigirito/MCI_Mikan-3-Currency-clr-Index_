@@ -36,9 +36,13 @@ python3 tools/create_monthly_mci.py monthly_rates_data.csv
 python3 export_monthly_analysis.py
 ```
 
-## 📖 ドキュメント
+## 📖 ドキュメント / Documentation
 
-- [全文（FULL_PAPER）](docs/FULL_PAPER_CORRECTED.md) - 論文全体
+### 論文 / Paper
+- [全文（日本語）](docs/FULL_PAPER_CORRECTED.md) - Full paper in Japanese
+- [Full Paper (English)](docs/FULL_PAPER_EN.md) - 英語版
+
+### その他 / Others
 - [理論枠組み](docs/CHAPTER2_CORRECTED.md) - MCI座標の数理定義
 - [月次分析](docs/CHAPTER8_MONTHLY_ANALYSIS.md) - 月次データとPPP補間
 - [ツール使用方法](tools/README.md) - 詳細な使い方
