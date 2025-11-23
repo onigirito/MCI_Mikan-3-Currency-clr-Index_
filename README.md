@@ -1,5 +1,7 @@
 # Mikan 3-Currency clr Index (MCI)
 
+**Web:** https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/
+
 ## 📄 論文 / Paper
 
 | 日本語 | English |
