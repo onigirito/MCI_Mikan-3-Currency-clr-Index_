@@ -456,133 +456,429 @@ The following chapter examines year-by-year trends in detail regarding these sta
 
 ---
 
-# Chapter 4: Empirical Analysis Results: Time-Series Interpretation
+# Chapter 4: Empirical Analysis and Time-Series Structure
 
-## 4.1 Overview
+This chapter analyzes the trajectory of MCI coordinates over 20 years from 2005 to 2024. The following figure shows the annual progression of the $m$ indicator for each currency.
 
-This chapter analyzes the trajectory of MCI coordinates from 2005 to 2024, interpreting them in relation to major economic events.
+![Annual MCI Coordinate Progression (2005-2024)](../annual_mci_plot.png)
 
-## 4.2 Major Period Analysis
+*Figure 4.1: Annual MCI coordinate progression. Blue line represents m[USD], red line represents m[JPY], green line represents m[TRY]. Positive values indicate overvaluation (relatively highly valued within the basket), negative values indicate undervaluation (relatively lowly valued). The sum of all three currencies is always zero.*
 
-### 4.2.1 2011: Super Yen-High Period
-
-| Currency | m[i] Value | Interpretation |
-|----------|------------|----------------|
-| USD | +0.076 | Near average |
-| JPY | **+0.410** | Significantly overvalued |
-| TRY | -0.486 | Undervalued |
-
-**Background**:
-- March 2011: Great East Japan Earthquake → Repatriation expectations push yen higher
-- August 2011: US debt ceiling issue → Dollar weakness
-- Result: USD/JPY reaches historical low of 75 yen level
-
-### 4.2.2 2018: Turkish Lira Crisis
-
-| Currency | m[i] Value | Interpretation |
-|----------|------------|----------------|
-| USD | +0.382 | Overvalued |
-| JPY | +0.323 | Overvalued |
-| TRY | **-0.705** | Severely undervalued |
-
-**Background**:
-- US-Turkey diplomatic tensions (Pastor Brunson issue)
-- Fed rate hike cycle → Emerging market capital outflow
-- Turkey central bank's delayed response → Loss of confidence
-
-### 4.2.3 2022: Dollar Strength Period
-
-| Currency | m[i] Value | Interpretation |
-|----------|------------|----------------|
-| USD | **+0.518** | Most overvalued |
-| JPY | +0.167 | Below average |
-| TRY | -0.685 | Severely undervalued |
-
-**Background**:
-- Fed aggressive rate hikes (0% → 4.5%)
-- BOJ's yield curve control maintenance → JPY weakness
-- Energy crisis → Emerging market instability
-
-### 4.2.4 2024: Current State
-
-| Currency | m[i] Value | Interpretation |
-|----------|------------|----------------|
-| USD | +0.483 | High position |
-| JPY | -0.003 | Near average |
-| TRY | -0.480 | Undervalued but improving |
-
-**Characteristics**:
-- Yen reached near-average position
-- Lira improved significantly from crisis period
-- Dollar maintains high position
+From this figure, three major regime transition points can be visually confirmed: the 2011 yen appreciation peak, the 2018 Turkish lira crisis, and the 2022 dollar strength phase. The following sections analyze each period in detail.
 
 ---
 
-## 4.3 Visual Analysis
+## 4.1 2005-2010: Yen Appreciation Phase and Lira Stability Period
 
-The time-series chart clearly shows:
+Around the analysis starting point of 2005, the US dollar and Japanese yen appeared to be trading at rates close to PPP. In fact, the actual USD/JPY rate in 2005 was approximately 110 JPY/USD, and the OECD's estimated PPP rate for that year was around 120 JPY/USD—not a large difference ($d_{USD\rightarrow JPY} \approx -0.19$, approximately 19% yen overvaluation).
 
-1. **2011 Peak**: m[JPY] reached historical maximum
-2. **2018 Trough**: m[TRY] reached historical minimum
-3. **2022 Peak**: m[USD] reached historical maximum
-4. **Recent Trend**: Three currencies converging toward equilibrium
+Meanwhile, the Turkish lira implemented redenomination in 2005, beginning the stable new lira regime, with the actual rate against the dollar at approximately 1.34 TRY/USD. In terms of price levels, Turkey has lower prices than the US, so the PPP rate was estimated to be slightly lower than the actual rate (e.g., around 0.67 TRY/USD), resulting in $d_{USD\rightarrow TRY} \approx +0.69$ (approximately 99% lira undervaluation).
 
----
+The $m$ indicators calculated from the above for 2005 were:
 
-# Chapter 5: Comparison with Simple PPP Analysis
+- **$m[\text{USD}] \approx +0.165$** (slightly overvalued)
+- **$m[\text{JPY}] \approx +0.358$** (overvalued)
+- **$m[\text{TRY}] \approx -0.523$** (undervalued)
 
-## 5.1 Comparison Objectives
+- Positive value = Overvalued
+- Negative value = Undervalued
 
-This chapter compares simple bilateral PPP deviation analysis with MCI analysis, demonstrating the advantages of MCI.
+Thus, in 2005, both USD and JPY were on the overvalued side, with the yen significantly overvalued (strong yen state) and the lira undervalued. However, the deviation in 2005 was not as large as in later years, and the positional relationships among the three currencies were relatively balanced.
 
-## 5.2 Information Provided by Simple PPP Analysis
+Subsequently, from 2006 to 2007, dollar weakness progressed due to the US twin deficit problem, and the yen was also in a low range under carry trade pressure given ultra-low interest rates. In 2007, the rate was around 1 USD = 117.75 JPY, slightly on the yen-weak side compared to the estimated PPP (approximately 124 JPY/USD) at the time, resulting in $d_{USD\rightarrow JPY} \approx -0.053$ (yen slightly overvalued but improved from 2005). Similarly, the lira trading around 1 USD = 1.30 TRY saw its gap with PPP narrow due to price increases, with $d_{USD\rightarrow TRY} \approx +0.57$. As a result, the $m$ values around 2007 were:
 
-Simple PPP deviation rates:
-- $d_{\text{USDJPY}}$: USD/JPY deviation
-- $d_{\text{USDTRY}}$: USD/TRY deviation
+- **$m[\text{USD}] \approx +0.172$**
+- **$m[\text{JPY}] \approx +0.225$**
+- **$m[\text{TRY}] \approx -0.397$**
 
-**Limitations**:
-- Cannot directly compare JPY and TRY
-- Cannot determine "overall balance"
-- Depends on base currency selection
+USD and JPY were both slightly on the overvalued side, with TRY correspondingly on the undervalued side, but the differences among the three were still small—a stable period where, in terms of the Mikan Theorem ring, the three currency points were positioned almost equidistantly near the ring.
 
-## 5.3 Additional Information from MCI
+However, **the Lehman Shock of 2008** dramatically changed the situation. The rapid global risk-off caused the yen to surge, with USD/JPY advancing to the 103.36 JPY level. This was the result of the yen being bought as a safe-haven asset while carry trade unwinding increased actual demand for yen. Since the PPP rate at the time was still estimated at around 120 JPY, the yen reached a level approximately 16% overvalued against the dollar ($d_{USD\rightarrow JPY} \approx -0.156$).
 
-MCI provides the following additional information:
+Meanwhile, the Turkish lira was also sold during the same crisis, trading around 1 USD = 1.30 TRY. Considering Turkey's high inflation, the PPP rate at this point was estimated at around 0.81 TRY/USD, meaning the lira fell into approximately 60% undervaluation ($d_{USD\rightarrow TRY} \approx +0.47$).
 
-### 5.3.1 Relative Position Within Basket
+These changes are reflected in the $m$ indicators. At 2008:
 
-MCI shows each currency's position within the 3-currency basket:
-- Who is floating highest (overvalued)?
-- Who is sinking lowest (undervalued)?
-- Who is in the middle?
+- **$m[\text{USD}] \approx +0.106$** (moderately overvalued)
+- **$m[\text{JPY}] \approx +0.262$** (overvalued)
+- **$m[\text{TRY}] \approx -0.368$** (undervalued)
 
-### 5.3.2 Structure Visualization
+The $m$ configuration during the Lehman Shock period shows JPY overvalued, TRY undervalued, and USD roughly in the middle. Indeed, $m[\text{JPY}] - m[\text{TRY}] \approx 0.262 - (-0.368) = 0.630$, meaning the JPY/TRY rate deviated approximately 87% from PPP (an extreme divergence of strong yen/weak lira). Thus, 2008-2009 was a regime where the three-currency balance tilted dramatically, with the yen extremely strong and the lira extremely weak.
 
-MCI allows intuitive understanding of:
-- Distance between currencies
-- Movement patterns (divergence/convergence)
-- Relative change speed
+**In 2009**, yen appreciation progressed further, rising to 1 USD = 93.57 JPY. $d_{USD\rightarrow JPY} \approx -0.243$, and the yen reached approximately 22% overvaluation. As a result:
 
-### 5.3.3 Zero-Sum Guaranteed
+- **$m[\text{USD}] \approx +0.120$**
+- **$m[\text{JPY}] \approx +0.363$** (significantly overvalued)
+- **$m[\text{TRY}] \approx -0.482$** (significantly undervalued)
 
-MCI always satisfies:
-$$m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0$$
-
-This mathematically guarantees the "closed basket" constraint.
+The yen shifted further toward overvaluation, and the lira also shifted toward undervaluation.
 
 ---
 
-## 5.4 Mathematical Relationship
+## 4.2 2010-2016: Era of Yen Appreciation Correction and Gradual Lira Decline
 
-The relationship between MCI and bilateral deviation:
+After 2009, countries attempted recovery from the crisis through monetary easing and policy responses, and exchange rates somewhat regained stability. The US maintained ultra-low interest rates under quantitative easing (QE) policy, and the dollar remained soft until around 2011. Meanwhile, in Japan, the currency remained elevated relative to others under continuing deflation, **reaching the strongest post-war level of 1 USD = 79.81 JPY in 2011**. This was still significant yen overvaluation far above PPP, reaching $d_{USD\rightarrow JPY} \approx -0.334$ (approximately 28% yen overvaluation).
 
-$$m[i] - m[j] = d_{i \rightarrow j}$$
+As a result, $m[\text{JPY}]$ recorded extreme positive values during this period. For 2011:
 
-This means:
-- MCI **includes** bilateral deviation information
-- MCI **adds** basket balance information
-- Bilateral deviation is a **partial view** of MCI
+- **$m[\text{USD}] \approx +0.076$** (slightly overvalued)
+- **$m[\text{JPY}] \approx +0.410$** (extremely overvalued)
+- **$m[\text{TRY}] \approx -0.486$** (significantly undervalued)
+
+Both dollar and lira became undervalued relative to the yen, creating balance. In terms of the Mikan ring, the yen's point greatly deviated to the overvalued side of the ring, with the other two currencies clustered small on the opposite side.
+
+However, **this situation changed dramatically from 2013 onward**. With the Bank of Japan's launch of Quantitative and Qualitative Easing (QQE), a major shift toward yen weakness occurred, with USD/JPY rising more than 50% from the 80 yen range to temporarily the 120 yen range in 2013-2015. As a result, at 2013:
+
+- **$m[\text{USD}] \approx +0.170$**
+- **$m[\text{JPY}] \approx +0.256$** (overvalued but declining)
+- **$m[\text{TRY}] \approx -0.426$** (undervalued)
+
+The yen's extreme overvaluation began to ease.
+
+**By 2015**, the actual rate swung to the yen-weak side at 121.04 JPY against the yen's PPP rate against the dollar (approximately 108 JPY/USD), and the long-standing yen overvaluation was nearly resolved. $d_{USD\rightarrow JPY} \approx +0.117$ (approximately 12% yen weakness), and $m[\text{JPY}]$ dropped significantly from +0.410 in 2011 to +0.199.
+
+- **$m[\text{USD}] \approx +0.317$** (overvalued)
+- **$m[\text{JPY}] \approx +0.199$** (overvalued but improved)
+- **$m[\text{TRY}] \approx -0.516$** (undervalued)
+
+The dollar was somewhat weak globally during this period under the influence of continued quantitative easing, but **within this basket**, it strengthened relatively against the yen, so $m[\text{USD}]$ rose from +0.076 in 2011 to +0.317 in 2015, making the dollar the overvalued side within the basket.
+
+Regarding the Turkish lira, the early 2010s saw a gradual declining trend. Despite high inflation (around 10% annually), lira weakness was relatively gradual, and there were suggestions that the real exchange rate remained elevated. In fact, rates around 1 USD = 1.5 TRY only exceeded 2 TRY by 2013, and while Turkey's cumulative inflation was large during the period, the deviation from PPP rate expanded gradually without a sudden divergence. $d_{USD\rightarrow TRY}$ rose from around +0.56 in 2011 to around +0.83 (approximately 130% lira undervaluation) in 2015, but this was a gradual movement that was largely priced in by the market. During this period, $m[\text{TRY}]$ declined from around -0.49 to around -0.52 (further toward undervaluation), and TRY's undervaluation sense strengthened somewhat.
+
+Overall, looking at the progression of $m$ indicators through the mid-2010s, we can see that JPY and USD roles reversed around 2011, and TRY's undervaluation tendency gradually strengthened. The configuration of "significantly overvalued yen / somewhat overvalued dollar / undervalued lira" in 2011 changed to "overvalued (improved) yen / overvalued dollar / undervalued lira" by 2015.
+
+---
+
+## 4.3 2017-2018: Emergence of the Turkish Lira Crisis
+
+From 2016 onward, the structure of the analysis targets transformed dramatically again. The epicenter was the **Turkish lira's sharp decline**.
+
+From **2017** to 2018, currency selling accelerated in Turkey against the backdrop of current account deficit expansion, political instability, and loss of central bank credibility, and the lira experienced a historic crash against the dollar. Rates around 1 USD = 3.65 TRY at the beginning of 2017 plunged to momentarily over 7 TRY by August 2018.
+
+**2017** situation:
+
+- **$m[\text{USD}] \approx +0.345$** (overvalued)
+- **$m[\text{JPY}] \approx +0.280$** (overvalued)
+- **$m[\text{TRY}] \approx -0.625$** (significantly undervalued)
+
+Turkey's inflation rate also surged during this period, reaching around 20% annually by 2018, but the pace of exchange rate decline exceeded even that, and the deviation from PPP rate expanded to unprecedented levels.
+
+Looking closely at **2018**, the estimated 2018 average PPP was approximately 1.63 TRY/USD while the actual average rate was approximately 4.84 TRY/USD, resulting in $d_{USD\rightarrow TRY} = \ln(4.84/1.63) \approx +1.086$, meaning the lira was in an extreme state of approximately 196% undervaluation in real value terms.
+
+According to the Mikan Theorem, this deviation manifests as a sharp drop in $m[\text{TRY}]$. Indeed, the $m$ values for 2018 were:
+
+- **$m[\text{USD}] \approx +0.382$** (overvalued)
+- **$m[\text{JPY}] \approx +0.323$** (overvalued)
+- **$m[\text{TRY}] \approx -0.705$** (extremely undervalued)
+
+Due to the lira's crash, $m[\text{TRY}]$ dropped sharply from around -0.52 in 2015 to -0.71 (toward extreme undervaluation). Meanwhile, $m[\text{USD}]$ and $m[\text{JPY}]$ shifted relatively toward the overvalued direction.
+
+The dollar particularly rose as a safe-haven asset during the Turkey crisis, causing $m[\text{USD}]$ to rise to around +0.38 (dollar overvalued). The yen similarly saw its relative valuation rise, but the swing was not as large as the dollar's (the yen in 2018 was roughly at or slightly above PPP).
+
+Reinterpreting this 2018 situation through the Mikan Theorem ring, **the lira's point moved greatly to the undervalued side of the ring**, with the dollar and yen points gathering on the opposite (overvalued) side. Indeed, $m[\text{TRY}] - m[\text{JPY}] \approx -0.705 - 0.323 = -1.028$, meaning the JPY/TRY exchange rate deviated significantly from PPP (the Turkish lira was approximately 180% undervalued against the yen in real terms).
+
+This was precisely a phase where the structural positional relationship between TRY and JPY (as well as USD) fundamentally changed. In other words, **2018 was a major regime transition point in this analysis period**, the year when TRY's role transformed from "somewhat undervalued emerging market currency" to "extremely undervalued unstable currency." That distortion was absorbed by the other two currencies, creating a configuration where the dollar was positioned as a relatively strong currency and the yen as a quasi-safe-haven asset.
+
+---
+
+## 4.4 2019-2024: New Equilibrium After the Crash and Further Fluctuations
+
+From 2019 onward, the global economy experienced major shocks including US-China trade friction and the pandemic (COVID-19), and major currencies fluctuated, but within this analysis basket, **TRY's extreme weakness continued to stand out**.
+
+### 2019-2020: Further Lira Decline
+
+From 2019 to 2020, the Turkish lira temporarily stabilized but entered a declining trend again from late 2020.
+
+**2019**:
+- **$m[\text{USD}] \approx +0.394$** (overvalued)
+- **$m[\text{JPY}] \approx +0.340$** (overvalued)
+- **$m[\text{TRY}] \approx -0.734$** (extremely undervalued)
+
+**2020** (COVID-19 pandemic):
+- **$m[\text{USD}] \approx +0.419$** (significantly overvalued)
+- **$m[\text{JPY}] \approx +0.361$** (significantly overvalued)
+- **$m[\text{TRY}] \approx -0.781$** (extremely undervalued)
+
+In 2020, $m[\text{TRY}]$ dropped to -0.78, reaching the most undervalued level during the analysis period.
+
+### 2021: Deepening Currency Crisis
+
+In **2021**, repeated rate cuts by the central bank and policy distrust led to a currency crisis-like crash. When rates reached around 1 USD = 8.89 TRY at the end of 2021, lira credit concerns peaked in the market, and the government took extraordinary measures including deposit protection schemes.
+
+- **$m[\text{USD}] \approx +0.429$** (significantly overvalued)
+- **$m[\text{JPY}] \approx +0.323$** (overvalued)
+- **$m[\text{TRY}] \approx -0.753$** (extremely undervalued)
+
+### 2022: Dollar Strength / Yen Weakness Phase
+
+Prices also surged from late 2021 through 2022, with the 2022 inflation rate recording over 70% annually. But lira weakness progressed even faster, with the 2022 average actual rate at approximately 16.57 TRY/USD against PPP estimate of around 5.0 TRY/USD, reaching $d_{USD\rightarrow TRY} = \ln(16.57/5.0) \approx +1.20$. This was one of the largest deviation margins during the analysis period.
+
+Meanwhile, **the US dollar rapidly gained value from the global monetary tightening (Fed rate hike) stance**, with the dollar index (DXY) reaching a 20-year high in 2022. The yen, meanwhile, weakened independently due to the Bank of Japan's stance of maintaining low interest rates, with yen weakness progressing to nearly 1 USD = 131.46 JPY in 2022.
+
+In response to these movements, **2022 saw divergent fortunes for the dollar and yen** within this three-currency basket. Yen weakness means upward deviation from the yen's PPP (actual rate > PPP), resulting in $d_{USD\rightarrow JPY} = \ln(131.46/92.5) \approx +0.35$ (approximately 42% yen weakness).
+
+**2022 $m$ indicators**:
+
+- **$m[\text{USD}] \approx +0.518$** (**extremely overvalued**)
+- **$m[\text{JPY}] \approx +0.167$** (overvalued)
+- **$m[\text{TRY}] \approx -0.685$** (extremely undervalued)
+
+Dollar strength is partly autonomous movement as the reserve currency, but manifests as overvaluation against yen and lira, with $m[\text{USD}]$ shifting even further positive (toward overvaluation).
+
+The characteristic of this year is that **not only TRY but also JPY deviated upward from PPP (opposite to 2011)**. That is, with the dollar standing alone strong against the other two currencies and the yen also being sold due to domestic factors, the following new configuration emerged:
+
+- **USD extremely overvalued** ($m[\text{USD}] = +0.518$, maximum during analysis period)
+- **JPY moderately overvalued** ($m[\text{JPY}] = +0.167$, lowest since 2015)
+- **TRY extremely undervalued** ($m[\text{TRY}] = -0.685$)
+
+USD runs away within the basket, JPY remains in overvalued territory but TRY's extreme undervaluation satisfies the zero-sum constraint.
+
+In terms of the Mikan Theorem ring, the dollar's point greatly deviates to the overvalued side of the ring, with yen and lira each in different positions. The distance between JPY and TRY itself is also large ($m[\text{JPY}] - m[\text{TRY}] \approx 0.167 - (-0.685) = 0.852$), so the deviation between them is also large.
+
+### 2023: Adjustment Phase
+
+Entering **2023**, financial suppression measures for regime maintenance in Turkey temporarily worked, and the lira stabilized for several months. However, when policy direction changed after the presidential election, exchange rate adjustment occurred, with USD/TRY surging from June and exceeding 23.77 TRY/USD by year-end 2023. Inflation also re-accelerated, reaching nearly 50% by year-end.
+
+Meanwhile, the US dollar entered a slight adjustment phase against major currencies from mid-2023, and the yen recovered somewhat but remained in the weak range around 140 JPY/USD.
+
+**2023 $m$ indicators**:
+
+- **$m[\text{USD}] \approx +0.498$** (significantly overvalued)
+- **$m[\text{JPY}] \approx +0.084$** (slightly overvalued)
+- **$m[\text{TRY}] \approx -0.582$** (extremely undervalued)
+
+Though not as extreme as 2022, the configuration of "significantly undervalued TRY / overvalued USD / moderately overvalued JPY" continued.
+
+### 2024: Current Situation
+
+Regarding **2024**, the Turkish central bank's shift to significant rate hikes from the beginning of the year has calmed lira decline, but given the high prices and negative real interest rates, fundamental stability is expected to take time.
+
+**2024 $m$ indicators**:
+
+- **$m[\text{USD}] \approx +0.483$** (significantly overvalued)
+- **$m[\text{JPY}] \approx -0.003$** (nearly neutral)
+- **$m[\text{TRY}] \approx -0.480$** (significantly undervalued)
+
+2024 became the year when the yen first turned negative (to the undervalued side). This was because yen weakness progressed further, reaching $d_{USD\rightarrow JPY} \approx +0.49$ (approximately 63% yen weakness).
+
+---
+
+## 4.5 Summary of Time-Series Analysis
+
+From the above time-series analysis from 2005 to 2024, **three major turning points—2011, 2018, and 2022**—emerged.
+
+### Regime Transition Points
+
+1. **2011**: Regime transition of the yen through correction of super-yen-high
+   - $m[\text{JPY}]$ improved from extreme +0.41 overvaluation to +0.20 by 2015
+
+2. **2018**: Regime transition of the lira through the Turkish lira crisis
+   - $m[\text{TRY}]$ dropped sharply from -0.52 to -0.71 (toward extreme undervaluation)
+
+3. **2022**: Unipolar dollar overvaluation phase due to changes in global financial environment
+   - $m[\text{USD}]$ rose to +0.52 (maximum during analysis period)
+
+### Structural Changes for Each Currency
+
+In each of these phases, this paper's indicator $m[i]$ clearly captured the structural changes. Especially regarding post-2018, TRY's $m$ has greatly deviated from its previous range (around -0.4 to -0.5) and become entrenched at low levels of -0.7 or below, which can be evaluated as **having entered a new regime**.
+
+Furthermore, as a side effect, USD's $m$ has also shifted from its stable period (around +0.1 to +0.3) to +0.4 to +0.5, suggesting that the dollar's position within the basket has relatively changed.
+
+For the yen, due to special circumstances (long-term low inflation and policy differences), it dropped significantly from positive territory to near zero around 2022, but has been slightly corrected since 2023, and appears to be moving subordinately to dollar/lira movements in the medium term.
+
+Thus, this model makes it possible to describe changes in each currency's structural role along the time axis, and the following chapter further considers its characteristics through comparison with simple PPP models
+
+---
+
+# Chapter 5: Comparison with Simple PPP
+
+This chapter compares the analysis results based on the Mikan Theorem proposed in this paper with conventional simple PPP-based analysis results. A representative example of simple PPP analysis is the method of directly using bilateral purchasing power parity deviation as an indicator. Here, we focus on two currencies—the Japanese yen and Turkish lira—as an example, calculating the JPY/TRY PPP deviation indicator for comparison.
+
+---
+
+## 5.1 Definition of Bilateral PPP Deviation
+
+When considering the PPP deviation between JPY and TRY, this dataset defines the deviation on a **TRY/JPY** (how many yen per 1 Turkish lira) rate basis. Denoting this as $d_{\text{TRY/JPY}}$:
+
+$$d_{\text{TRY/JPY}} = \ln \frac{S_{\text{TRY/JPY}}^{\text{act}}}{S_{\text{TRY/JPY}}^{PPP}}$$
+
+Where:
+- $S_{\text{TRY/JPY}}^{\text{act}} = S_{\text{USD/JPY}}^{\text{act}} / S_{\text{USD/TRY}}^{\text{act}}$ (actual cross rate)
+- $S_{\text{TRY/JPY}}^{PPP} = \text{PPP}_{JPY} / \text{PPP}_{TRY}$ (PPP-based cross rate)
+
+Transforming this equation:
+
+$$d_{\text{TRY/JPY}} = \ln S_{\text{USD/JPY}}^{\text{act}} - \ln S_{\text{USD/TRY}}^{\text{act}} - (\ln \text{PPP}_{JPY} - \ln \text{PPP}_{TRY})$$
+
+$$= \left(\ln \frac{S_{\text{USD/JPY}}^{\text{act}}}{\text{PPP}_{JPY}}\right) - \left(\ln \frac{S_{\text{USD/TRY}}^{\text{act}}}{\text{PPP}_{TRY}}\right)$$
+
+$$= d_{USD\rightarrow JPY} - d_{USD\rightarrow TRY}$$
+
+In other words, **the TRY/JPY PPP deviation can be expressed as the difference between USD/JPY and USD/TRY PPP deviations**.
+
+### Sign Interpretation
+
+- **$d_{\text{TRY/JPY}} > 0$**: TRY/JPY actual rate is higher than PPP → Turkish lira is overvalued against yen
+- **$d_{\text{TRY/JPY}} < 0$**: TRY/JPY actual rate is lower than PPP → Turkish lira is undervalued against yen
+
+---
+
+## 5.2 Relationship with the Mikan Theorem Model
+
+As derived in Chapter 2, the $m[i]$ of the Mikan Theorem model satisfies the following difference relationships:
+
+$$m[\text{USD}] - m[\text{JPY}] = d_{USD\rightarrow JPY}$$
+$$m[\text{USD}] - m[\text{TRY}] = d_{USD\rightarrow TRY}$$
+
+Taking the difference between JPY and TRY from these equations:
+
+$$m[\text{JPY}] - m[\text{TRY}] = (m[\text{USD}] - m[\text{TRY}]) - (m[\text{USD}] - m[\text{JPY}])$$
+
+$$= d_{USD\rightarrow TRY} - d_{USD\rightarrow JPY}$$
+
+$$= -d_{\text{TRY/JPY}}$$
+
+Therefore, **the Mikan Theorem model's $m[\text{JPY}] - m[\text{TRY}]$ equals the sign-reversed simple PPP indicator $d_{\text{TRY/JPY}}$**.
+
+This relationship is important. Because while both models return matching values for bilateral deviation, they differ in how information is expressed.
+
+---
+
+## 5.3 Comparison Using Concrete Examples
+
+Let us compare both methods using actual data.
+
+### 2007 Example
+
+In 2007, the yen was slightly undervalued ($d_{USD\rightarrow JPY} \approx -0.053$) and the lira was also somewhat undervalued ($d_{USD\rightarrow TRY} \approx +0.569$):
+
+**Simple PPP indicator**:
+$$d_{\text{TRY/JPY}} = d_{USD\rightarrow JPY} - d_{USD\rightarrow TRY} \approx -0.053 - 0.569 = -0.622$$
+
+This indicates a situation where "the Turkish lira is approximately 54% undervalued against the yen" ($e^{-0.622} \approx 0.54$).
+
+**Mikan Theorem model**:
+- $m[\text{USD}] \approx +0.172$ (dollar slightly overvalued)
+- $m[\text{JPY}] \approx +0.225$ (yen slightly overvalued)
+- $m[\text{TRY}] \approx -0.397$ (lira undervalued)
+
+Taking the difference:
+$$m[\text{JPY}] - m[\text{TRY}] \approx 0.225 - (-0.397) = 0.622 = -d_{\text{TRY/JPY}}$$
+
+Both match except for sign.
+
+### Interpretation Differences
+
+**Simple PPP** yields a **single value** $d_{\text{TRY/JPY}} = -0.622$ from which we can conclude "lira is undervalued against yen," but **we cannot see each currency's relationship to USD separately**.
+
+**The Mikan Theorem model** expresses the value corresponding to $d_{\text{TRY/JPY}}$ as the difference $m[\text{JPY}] - m[\text{TRY}] = 0.622$, and further visualizes the breakdown as individual $m[\text{JPY}]$ and $m[\text{TRY}]$ levels.
+
+In fact, at 2007:
+- $m[\text{JPY}] = +0.225$ → **yen is slightly overvalued**
+- $m[\text{TRY}] = -0.397$ → **lira is undervalued**
+
+We can individually read that "the yen is valued somewhat high" and "the lira is valued low." Understanding that these combine to produce the bilateral deviation of 0.622 makes **clear how much each currency contributes to the deviation**.
+
+---
+
+### 2009 Example (Post-Lehman Shock)
+
+In 2009, the yen surged and the lira declined:
+
+**Simple PPP indicator**:
+$$d_{\text{TRY/JPY}} = d_{USD\rightarrow JPY} - d_{USD\rightarrow TRY} \approx -0.243 - 0.602 = -0.845$$
+
+This indicates an extreme situation where "the Turkish lira is approximately 57% undervalued against the yen."
+
+**Mikan Theorem model**:
+- $m[\text{USD}] \approx +0.120$
+- $m[\text{JPY}] \approx +0.363$ (**yen significantly overvalued**)
+- $m[\text{TRY}] \approx -0.482$ (**lira significantly undervalued**)
+
+$$m[\text{JPY}] - m[\text{TRY}] \approx 0.363 - (-0.482) = 0.845 = -d_{\text{TRY/JPY}}$$
+
+### Interpretive Advantage
+
+Simple PPP shows from $d_{\text{TRY/JPY}} = -0.845$ only that there is a "large deviation between yen and lira," but the breakdown is invisible.
+
+The Mikan Theorem model clearly separates:
+- **Extreme yen overvaluation** ($m[\text{JPY}] = +0.363$, reflecting post-Lehman yen strength)
+- **Significant lira undervaluation** ($m[\text{TRY}] = -0.482$, reflecting emerging market selloff)
+
+These **two factors** are clearly separated. For example, even if $d_{\text{TRY/JPY}}$ is a large negative in some year, whether the breakdown is "yen near neutral with lira extremely undervalued" or "lira neutral but yen extremely overvalued" would have different policy implications. This model helps discern that difference.
+
+---
+
+### 2018 Example (Turkish Lira Crisis)
+
+In 2018, $d_{\text{TRY/JPY}} = d_{USD\rightarrow JPY} - d_{USD\rightarrow TRY} \approx 0.058 - 1.086 = -1.028$, yielding a negative sign with very large absolute value (approximately 1.03).
+
+This means "the yen is abnormally overvalued against the Turkish lira" (conversely, the lira is approximately 64% undervalued against the yen, $e^{-1.028} \approx 0.36$)—seemingly counterintuitive content. However, the reality is that **the lira's decline was larger than the yen's this year**, so the yen was only relatively overvalued.
+
+**The Mikan Theorem model** shows for 2018:
+- $m[\text{USD}] \approx +0.382$ (dollar overvalued)
+- $m[\text{JPY}] \approx +0.323$ (yen overvalued)
+- $m[\text{TRY}] \approx -0.705$ (**lira extremely undervalued**)
+
+$$m[\text{JPY}] - m[\text{TRY}] \approx 0.323 - (-0.705) = 1.028 = -d_{\text{TRY/JPY}}$$
+
+What **simple PPP** shows only as "extreme yen-high/lira-low deviation" is shown in **this model as the breakdown: "the yen is also on the overvalued side, but the lira's undervaluation is even more severe."**
+
+This breakdown information is considered important for investors and policy authorities analyzing causes during exchange rate abnormalities. In other words, what simple PPP shows only as "distortion between two currencies" is **decomposed in this model into "the structure of which currency is causing the distortion."**
+
+---
+
+## 5.4 Quantitative Comparison and Consistency
+
+As described above, the Mikan Theorem model and simple PPP model return matching values for bilateral deviation, but this model is superior from the perspective of simultaneous multi-currency comparison.
+
+For example, this model can **display all three pairs USD-JPY, USD-TRY, JPY-TRY relationships at once** (as a set of $m[\text{USD}], m[\text{JPY}], m[\text{TRY}]$).
+
+On the other hand, simple PPP analysis requires calculating three bilateral indicators separately, necessitating consideration of their consistency. In fact, the following relationship should hold:
+
+$$d_{\text{TRY/JPY}} = d_{USD\rightarrow JPY} - d_{USD\rightarrow TRY}$$
+
+However, they may not strictly match due to data errors, etc. This model incorporates this consistency condition from the beginning, so it can **analyze three currencies in a form where bilateral inconsistencies do not exist**.
+
+Even for actual data, if there are PPP estimation errors or asynchronicity, simple PPP indicators may contain contradictions, but $m[i]$ has the property of absorbing such contradictions (since the sum is forced to zero at each time point, errors do not accumulate unilaterally).
+
+---
+
+## 5.5 Differences in Visual Interpretation
+
+Bilateral PPP deviation $d$ is a single value, typically shown on a time-series chart.
+
+In contrast, this model's $m$ consists of 3 variables, and can conceivably be visualized through 2D plots (e.g., a plane plot with $m[\text{USD}]$ on the x-axis and $m[\text{JPY}]$ on the y-axis). This connects to the concept of the "Mikan Theorem ring," and **plotting the positions of 3 points should immediately show which currency is relatively high and which is low**.
+
+With simple PPP, separate graphs must be drawn for each bilateral combination, making it inferior in visual comprehensiveness. This model's advantage lies in **being able to express multi-currency relationships in a single frame**.
+
+For example, when visualizing the 2018 Turkish lira crisis situation:
+
+**Simple PPP** requires:
+- USD/JPY deviation graph
+- USD/TRY deviation graph
+- TRY/JPY deviation graph
+
+—three independent graphs.
+
+**The Mikan Theorem model** requires:
+- Arrangement of 3 points (USD, JPY, TRY) on a 2D plane
+
+—**one plot** to grasp the overall picture. On this plot, TRY's point is positioned far on the undervalued side (negative region), while USD and JPY points are positioned close together on the overvalued side (positive region), visible at a glance.
+
+---
+
+## 5.6 Summary
+
+From the above, compared to simple PPP analysis, this model:
+
+1. **Enables factor decomposition of bilateral deviation**
+2. **Provides a consistent framework for handling multiple currencies simultaneously**
+3. **Can show relationships visually and structurally**
+
+and thus can be said to be superior in these respects.
+
+However, simple PPP analysis is also useful as individual bilateral evaluation, and reading it together with this model's results deepens understanding. In fact, using each time point's $m[i]$ derived in previous chapters, bilateral PPP deviations can easily be reproduced—**the two are complementary**.
 
 ---
 
