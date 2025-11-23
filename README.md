@@ -2,6 +2,12 @@
 
 PPP（購買力平価）を基準とした3通貨（USD・JPY・TRY）の構造的評価指標。
 
+## 背景
+
+本指標は、小説「果物世界」内で考案された「ミカン定理」を実装したものです。果物を通貨に見立てた寓話的な形式で為替理論を解説しており、🍈（メロン）= USD、🌰（栗）= JPY、🍊（オレンジ）= TRY という対応になっています。
+
+→ [ミカン定理：原典](docs/ORIGINAL_MIKAN_THEORY.md)
+
 ## 📊 データファイル
 
 ### 年次データ（公式）
@@ -32,7 +38,9 @@ python3 export_monthly_analysis.py
 
 ## 📖 ドキュメント
 
+- [全文（FULL_PAPER）](docs/FULL_PAPER_CORRECTED.md) - 論文全体
 - [理論枠組み](docs/CHAPTER2_CORRECTED.md) - MCI座標の数理定義
+- [月次分析](docs/CHAPTER8_MONTHLY_ANALYSIS.md) - 月次データとPPP補間
 - [ツール使用方法](tools/README.md) - 詳細な使い方
 - [データ仕様](dataset/README.md) - データセット詳細
 
