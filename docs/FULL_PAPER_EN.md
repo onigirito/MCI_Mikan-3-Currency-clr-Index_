@@ -460,7 +460,7 @@ The following chapter examines year-by-year trends in detail regarding these sta
 
 This chapter analyzes the trajectory of MCI coordinates over 20 years from 2005 to 2024. The following figure shows the annual progression of the $m$ indicator for each currency.
 
-![Annual MCI Coordinate Progression (2005-2024)](../annual_mci_plot.png)
+![Annual MCI Coordinate Progression (2005-2024)](annual_mci_plot.png)
 
 *Figure 4.1: Annual MCI coordinate progression. Blue line represents m[USD], red line represents m[JPY], green line represents m[TRY]. Positive values indicate overvaluation (relatively highly valued within the basket), negative values indicate undervaluation (relatively lowly valued). The sum of all three currencies is always zero.*
 
@@ -1626,7 +1626,7 @@ Ultimately, we hope that the Mikan 3-Currency clr Index will be established as a
 
 Chapter 4 analyzed long-term structural changes based on annual data. The 20-year graph (Figure 8.0) shown below captures major structural changes: the 2011 yen appreciation peak, the 2018 Turkish lira crisis, and the 2022 dollar strength period.
 
-![Annual MCI Coordinate Progression (2005-2024)](../annual_mci_plot.png)
+![Annual MCI Coordinate Progression (2005-2024)](annual_mci_plot.png)
 
 *Figure 8.0: Annual MCI coordinate progression (reproduced from Chapter 4). Long-term trends over 20 years can be grasped, but detailed dynamics of recent years are difficult to read.*
 
@@ -1643,7 +1643,7 @@ Monthly observation reveals:
 
 The figure below shows monthly MCI coordinates from January 2022 to November 2025, using each year's confirmed PPP values (IMF WEO).
 
-![Monthly MCI (Annual PPP)](../monthly_mci_annual_ppp.png)
+![Monthly MCI (Annual PPP)](monthly_mci_annual_ppp.png)
 
 *Figure 8.1: Monthly MCI coordinate progression using annual PPP. Orange dotted lines indicate year boundaries (PPP update timing).*
 
@@ -1680,7 +1680,7 @@ Therefore, when using annual PPP, there is a time lag before actual purchasing p
 
 To eliminate discontinuity at year boundaries, we created a version with monthly linear interpolation of PPP. The following figure shows the results.
 
-![Monthly MCI (Interpolated PPP)](../monthly_mci_interpolated_ppp.png)
+![Monthly MCI (Interpolated PPP)](monthly_mci_interpolated_ppp.png)
 
 *Figure 8.2: MCI coordinate progression using monthly interpolated PPP. Year-boundary jumps are eliminated, showing smooth transitions.*
 
