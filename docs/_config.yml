@@ -1,0 +1,49 @@
+# Jekyll configuration for Mikan 3-Currency clr Index (MCI)
+# GitHub Pages SEO optimization
+
+# Site settings
+title: "Mikan 3-Currency clr Index (MCI) - PPP-based Currency Valuation"
+description: "Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating USD, JPY, and TRY currencies. Analyze over/undervaluation in a zero-sum basket."
+url: "https://onigirito.github.io"
+baseurl: "/MCI_Mikan-3-Currency-clr-Index_"
+lang: en
+
+# Author
+author:
+  name: onigirito
+
+# SEO and social
+twitter:
+  card: summary
+
+social:
+  name: Mikan 3-Currency clr Index
+  links:
+    - https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_
+
+# Open Graph defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: null
+      author: onigirito
+
+# Build settings
+theme: jekyll-theme-minimal
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Plugins (GitHub Pages supported)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude files from build
+exclude:
+  - "*.py"
+  - CORRECTIONS_SUMMARY.md
+  - regenerate_full_paper.py
+  - verify_corrections.py
