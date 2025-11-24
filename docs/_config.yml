@@ -21,16 +21,22 @@ social:
   links:
     - https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_
 
-# Open Graph defaults
+# Open Graph defaults and layout
 defaults:
   - scope:
       path: ""
+      type: "pages"
     values:
+      layout: default
       image: null
       author: onigirito
+  - scope:
+      path: "*.md"
+    values:
+      layout: default
 
 # Build settings
-theme: jekyll-theme-minimal
+# theme: jekyll-theme-minimal  # Disabled to use custom layout with MathJax
 markdown: kramdown
 kramdown:
   input: GFM
