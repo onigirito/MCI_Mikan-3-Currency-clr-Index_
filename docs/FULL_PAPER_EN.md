@@ -220,9 +220,9 @@ Setting $x=(K_{USD}, K_{JPY}, K_{TRY})$, the clr transformation $\mathrm{clr}(x)
 
 $$\mathrm{clr}(x)_i = \ln K_i - \frac{1}{3}(\ln K_{USD} + \ln K_{JPY} + \ln K_{TRY})$$
 
-Since $\ln K_{USD} = d_{USD\rightarrow USD} = 0$ (deviation of dollar against itself is 0), this expression exactly matches definition (1) of $m[i]$. That is:
+Since $\ln K_{USD} = d_{USD\rightarrow USD} = 0$ (deviation of dollar against itself is 0), calculating the above expression yields the sign-inverted form of definition (1) of $m[i]$. That is:
 
-$$m[i] = \mathrm{clr}(K_{USD}, K_{JPY}, K_{TRY})_i$$
+$$m[i] = -\mathrm{clr}(K_{USD}, K_{JPY}, K_{TRY})_i$$
 
 This result shows that our model is constructed according to the CoDA framework. Specifically, we obtain the zero-sum $m[i]$ by applying the clr transformation to the "composition of currency values (degrees of undervaluation) $K_i$." In Aitchison geometry, compositions are represented as points on the simplex, and in clr transformation space, they are projected onto Euclidean space. Therefore, the $m[i]$ vector can essentially be viewed as the Euclidean space representation of the "PPP deviation composition."
 
