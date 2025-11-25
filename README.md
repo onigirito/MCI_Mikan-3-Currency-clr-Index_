@@ -4,6 +4,8 @@
 
 ## 📄 論文 / Paper
 
+**SSRN:** [https://ssrn.com/abstract=XXXXX](https://ssrn.com/abstract=XXXXX) *(Update with your SSRN link)*
+
 | 日本語 | English |
 |--------|---------|
 | [全文（日本語）](docs/FULL_PAPER_CORRECTED.md) | [Full Paper (English)](docs/FULL_PAPER_EN.md) |
@@ -42,10 +44,11 @@ This design ensures that overvaluation of one currency always balances with unde
 - **[mikan_3currency_clr_index_ppp_data.csv](dataset/mikan_3currency_clr_index_ppp_data.csv)** - 2005-2024年の確定値（IMF WEO）
 
 ### 月次データ（2022-2025）
-- **[monthly_mci_analysis.csv](monthly_mci_analysis.csv)** - 月次MCI分析データ（2022-01〜2025-11、47ヶ月）
+- **[monthly_mci_analysis.csv](dataset/monthly_mci_analysis.csv)** - 月次MCI分析データ（2022-01〜2025-11、47ヶ月）
   - PPP基準、MCI座標、月次変動率を含む
 - **[mci_monthly_recent.csv](dataset/mci_monthly_recent.csv)** - 月次MCI生データ
-- **[monthly_rates_data.csv](monthly_rates_data.csv)** - 月次為替レート（元データ）
+- **[monthly_rates_data.csv](dataset/monthly_rates_data.csv)** - 月次為替レート（元データ）
+- **[monthly_rates_template.csv](dataset/monthly_rates_template.csv)** - データ入力用テンプレート
 
 ## 🔧 ツール
 
@@ -58,10 +61,10 @@ python3 tools/calculate_mci_from_rates.py --usdjpy 157 --usdtry 42.3 --ppp-year 
 ```bash
 # 1. 月次レートCSVを更新
 # 2. MCIを再計算
-python3 tools/create_monthly_mci.py monthly_rates_data.csv
+python3 tools/create_monthly_mci.py dataset/monthly_rates_data.csv
 
 # 3. 分析CSVを生成
-python3 export_monthly_analysis.py
+python3 tools/export_monthly_analysis.py
 ```
 
 ## 📖 ドキュメント / Documentation
@@ -82,5 +85,33 @@ PPP基準: 16.63（2025年推定）
 
 ## 📝 分析レポート
 
-- [客観的評価](objective_evaluation.py) - MCIの有効性検証
-- [月次分析](analyze_monthly_mci.py) - 月次変動の詳細分析
+- [客観的評価](tools/objective_evaluation.py) - MCIの有効性検証
+- [月次分析](tools/analyze_monthly_mci.py) - 月次変動の詳細分析
+
+---
+
+## 💼 Commercial Use Notice
+
+This project is **MIT licensed** - you can use it freely for any purpose, including commercial use.
+
+However, for **commercial use** (business products, paid services, trading platforms, financial tools, etc.), I'd appreciate if you:
+
+1. **Let me know** - Open an [issue](https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/issues) or send me an email
+2. **Consider sponsoring** - Support continued development via [GitHub Sponsors](https://github.com/sponsors/onigirito)
+3. **Give proper attribution** - Cite the SSRN paper or link to this repository
+
+**Not legally required, but it supports continued research and development.** 🙏
+
+If you're building something cool with MCI, I'd love to hear about it!
+
+---
+
+## 📜 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+**Citation:**
+```
+Honda, Y. (2025). Mikan 3-Currency clr Index: A Compositional Data Analysis Framework
+for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=XXXXX
+```
