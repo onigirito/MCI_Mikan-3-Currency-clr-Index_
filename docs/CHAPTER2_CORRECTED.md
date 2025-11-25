@@ -92,9 +92,9 @@ $$\mathrm{clr}(x)_i = \ln \frac{x_i}{g(x)}$$
 
 $$\mathrm{clr}(x)_i = \ln K_i - \frac{1}{3}(\ln K_{USD} + \ln K_{JPY} + \ln K_{TRY})$$
 
-となる。$\ln K_{USD} = d_{USD\rightarrow USD} = 0$（ドル自身との乖離は0）だから、上式はまさに$m[i]$の定義(1)と一致する。すなわち、
+となる。$\ln K_{USD} = d_{USD\rightarrow USD} = 0$（ドル自身との乖離は0）だから、上式を計算すると$m[i]$の定義(1)の符号を反転したものとなる。すなわち、
 
-$$m[i] = \mathrm{clr}(K_{USD}, K_{JPY}, K_{TRY})_i$$
+$$m[i] = -\mathrm{clr}(K_{USD}, K_{JPY}, K_{TRY})_i$$
 
 この結果は本モデルがCoDAの枠組みに則って構築されていることを示している。すなわち、各通貨の「価値（過小評価度合い）$K_i$の組成」をclr変換することでゼロサムの$m[i]$を得ているのである。Aitchison幾何学において組成は単純形 (simplex) 上の点として表現され、clr変換空間ではそれがユークリッド空間に射影される。したがって$m[i]$ベクトルは本質的に「PPP乖離組成」のユークリッド空間表現とみなせる。
 
