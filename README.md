@@ -4,6 +4,8 @@
 
 ## 📄 論文 / Paper
 
+**SSRN:** [https://ssrn.com/abstract=XXXXX](https://ssrn.com/abstract=XXXXX) *(Update with your SSRN link)*
+
 | 日本語 | English |
 |--------|---------|
 | [全文（日本語）](docs/FULL_PAPER_CORRECTED.md) | [Full Paper (English)](docs/FULL_PAPER_EN.md) |
@@ -84,3 +86,31 @@ PPP基準: 16.63（2025年推定）
 
 - [客観的評価](objective_evaluation.py) - MCIの有効性検証
 - [月次分析](analyze_monthly_mci.py) - 月次変動の詳細分析
+
+---
+
+## 💼 Commercial Use Notice
+
+This project is **MIT licensed** - you can use it freely for any purpose, including commercial use.
+
+However, for **commercial use** (business products, paid services, trading platforms, financial tools, etc.), I'd appreciate if you:
+
+1. **Let me know** - Open an [issue](https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/issues) or send me an email
+2. **Consider sponsoring** - Support continued development via [GitHub Sponsors](https://github.com/sponsors/onigirito)
+3. **Give proper attribution** - Cite the SSRN paper or link to this repository
+
+**Not legally required, but it supports continued research and development.** 🙏
+
+If you're building something cool with MCI, I'd love to hear about it!
+
+---
+
+## 📜 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+**Citation:**
+```
+Honda, Y. (2025). Mikan 3-Currency clr Index: A Compositional Data Analysis Framework
+for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=XXXXX
+```
