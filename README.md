@@ -53,18 +53,9 @@ This design ensures that overvaluation of one currency always balances with unde
 ## 📖 ドキュメント / Documentation
 
 - [理論枠組み](docs/CHAPTER2_CORRECTED.md) - MCI座標の数理定義 / Mathematical definition of MCI coordinates
-- [月次分析](docs/CHAPTER8_MONTHLY_ANALYSIS.md) - 月次データとPPP補間 / Monthly data and PPP interpolation
+- [短期変動の分析](docs/CHAPTER8_MONTHLY_ANALYSIS.md) - 月次変動率による価格推定の試み / Price estimation using monthly variation rates
 - [ツール使用方法](tools/README.md) - 詳細な使い方 / Tool usage details
 - [データ仕様](dataset/README.md) - データセット詳細 / Dataset specifications
-
-## 🎯 現在の状況（2025-11）
-
-```
-PPP基準: 16.63（2025年推定）
-現在位置: m[TRY] = -0.453
-価格: TRY/JPY = 3.66
-判定: 正常域
-```
 
 ---
 
