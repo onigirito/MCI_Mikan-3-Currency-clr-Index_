@@ -85,8 +85,8 @@ PPP基準: 16.63（2025年推定）
 
 ## 📝 分析レポート
 
-- [客観的評価](tools/objective_evaluation.py) - MCIの有効性検証
-- [月次分析](tools/analyze_monthly_mci.py) - 月次変動の詳細分析
+- [客観的評価](objective_evaluation.py) - MCIの有効性検証
+- [月次分析](analyze_monthly_mci.py) - 月次変動の詳細分析
 
 ---
 
