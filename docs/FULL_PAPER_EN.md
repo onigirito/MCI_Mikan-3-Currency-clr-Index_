@@ -1775,7 +1775,130 @@ The MCI improvement trend may be interpretable as a sign of future currency stab
 
 ---
 
-## 8.6 Chapter Summary
+## 8.6 Estimating Future Price Ranges Using Monthly MCI
+
+### Boundedness and Statistical Estimation Possibility
+
+An important mathematical property of the Mikan 3-Currency clr Index is **boundedness**. While actual exchange rates can theoretically fluctuate in the range $0 \to \infty$, making direct estimation of future fluctuation ranges difficult, the $m[i]$ coordinates are mapped into a mathematically constrained space due to the zero-sum constraint (Equation 1).
+
+The observed ranges of $m[i]$ in monthly interpolated data (January 2022 to November 2025, 47 months) are as follows:
+
+| Currency | Observed Range | Range Width | Average |
+|----------|---------------|-------------|---------|
+| USD | [+0.392, +0.597] | 0.205 | +0.484 |
+| JPY | [-0.100, +0.195] | 0.295 | +0.056 |
+| TRY | [-0.596, -0.304] | 0.292 | -0.539 |
+
+This observed range is more limited compared to the approximately $\pm 0.8$ range observed in annual data (20 years). Monthly-level fluctuations are moderate when excluding PPP jumps:
+
+| Currency | Max Monthly Rise | Max Monthly Fall | Average Monthly Change |
+|----------|-----------------|------------------|----------------------|
+| USD | +0.059 | -0.028 | 0.010 |
+| JPY | +0.051 | -0.054 | 0.017 |
+| TRY | +0.046 | -0.079 | 0.016 |
+
+This boundedness suggests the possibility of calculating the short-term theoretical range of motion for $m[i]$ using statistical methods.
+
+### Reverse Calculation for Target Price Setting
+
+By making assumptions about future values of $m[i]$, future exchange rates can be estimated using the following reverse calculation formula:
+
+$$
+S_{\text{A/B,future}} = \text{PPP}_{\text{A/B,future}} \times \exp(m[A]_{\text{target}} - m[B]_{\text{target}})
+$$
+
+Where:
+- $\text{PPP}_{\text{future}}$ can be estimated from inflation rate forecasts for each country
+- $m[i]_{\text{target}}$ is set from current trend extrapolation or statistical ranges
+
+This method enables estimation of future price ranges based on statistical evidence, going beyond mere ex-post evaluation.
+
+### Practical Example: USD/JPY Price Range Estimation for December 2025
+
+**Current Status (as of November 2025)**:
+
+The latest MCI coordinates (November 2025) using monthly interpolated PPP are as follows:
+
+- $m[\text{USD}] = +0.404$ (maintaining overvaluation)
+- $m[\text{JPY}] = -0.100$ (undervalued side)
+- $m[\text{TRY}] = -0.304$ (undervalued but improving trend)
+
+**Trend Analysis**:
+
+The momentum observed from monthly data since 2023 is as follows:
+
+- **USD**: Gradually declining from peak of +0.60 in 2022, hovering around +0.40 since latter half of 2024
+- **JPY**: Continuously declining from +0.15 in 2023, reaching -0.10 in 2025 with slight continued decline
+- **TRY**: Converging trend from -0.60 in 2022, improving to -0.30 as of November 2025
+
+**Scenario Setting**:
+
+Assuming current momentum is maintained until December 2025, the following scenarios are set:
+
+| Scenario | m[USD] | m[JPY] | m[TRY] | Rationale |
+|----------|--------|--------|--------|-----------|
+| **A (Momentum Maintenance)** | +0.40 | -0.11 | -0.29 | Continuation of current trends (USD flat, JPY slight decline, TRY convergence) |
+| **B (Accelerated Convergence)** | +0.38 | -0.13 | -0.25 | Overall accelerated convergence toward neutral |
+| **C (Momentum Reversal)** | +0.42 | -0.08 | -0.34 | USD slight increase, JPY slight recovery, TRY rebound |
+
+**PPP Estimation Setting**:
+
+PPP estimates for December 2025 are set as follows (considering current values and remaining one month of inflation):
+
+- $\text{PPP}_{\text{USDJPY, December 2025}} \approx 93.3$ (November 2025: 93.2, assuming near-flat)
+- $\text{PPP}_{\text{USDTRY, December 2025}} \approx 21.2$ (November 2025: 20.8, Turkish inflation continuing)
+
+**USD/JPY Price Range Estimation**:
+
+The USD/JPY estimates for each scenario are as follows:
+
+$$
+\begin{align}
+\text{Scenario A}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.40 - (-0.11)) = 93.3 \times \exp(0.51) \approx 156 \\
+\text{Scenario B}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.38 - (-0.13)) = 93.3 \times \exp(0.51) \approx 156 \\
+\text{Scenario C}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.42 - (-0.08)) = 93.3 \times \exp(0.50) \approx 154
+\end{align}
+$$
+
+**Consideration of Statistical Fluctuation Range**:
+
+Considering typical fluctuation ranges in monthly data (approximately $\pm 0.05$) and assuming $m[\text{USD}] - m[\text{JPY}] \in [0.46, 0.56]$, the theoretical fluctuation range for USD/JPY is:
+
+$$
+\begin{align}
+\text{Lower bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.46) \approx 148 \\
+\text{Upper bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.56) \approx 158
+\end{align}
+$$
+
+Therefore, considering the statistical range of monthly fluctuations, USD/JPY for December 2025 is estimated to fluctuate **within the range of 148-158 yen**. The central scenario is approximately 155 yen.
+
+### Limitations and Caveats
+
+This method is based on the following assumptions, and loses validity if these are violated:
+
+1. **Momentum Maintenance**: Assumes current trends continue. If regime shifts (see Chapter 6) occur, $m[i]$ momentum breaks down
+2. **PPP Estimation Accuracy**: Future PPP depends on inflation rate forecasts, so estimation accuracy declines with sudden inflation rate changes
+3. **Absence of Exogenous Shocks**: Exogenous shocks such as geopolitical crises or sudden monetary policy shifts are not captured by this model
+4. **Basket-Internal Limitation**: This estimation only reflects relative relationships within the 3-currency basket and does not consider factors outside the basket (e.g., EUR, CNY movements)
+5. **Short-term Forecast Limitations**: This method assumes short-term forecasts of 1-3 months, with uncertainty increasing for longer-term forecasts
+
+Therefore, this method should be positioned as a **short-term structural analysis auxiliary tool**, and for actual trading decisions, combination with external indicators (DXY, interest rate differentials, VIX, etc.) mentioned in Chapter 7 is essential.
+
+### Summary
+
+Estimating future price ranges using monthly MCI yielded the following insights:
+
+1. **Boundedness**: $m[i]$ fluctuates moderately at the monthly level (average 0.01-0.02/month), enabling calculation of short-term ranges using statistical methods
+2. **Reverse Calculation for Target Price Setting**: Theoretical ranges of exchange rates can be derived from assumed values of $m[i]$ and future PPP
+3. **Practical Application**: The estimated range for USD/JPY in December 2025 is 148-158 yen (center 155 yen)
+4. **Positioning as Short-term Forecast Tool**: This method is applicable to short-term forecasts of 1-3 months but assumes combination with external indicators and loses validity during regime transitions
+
+This analytical approach demonstrates that the Mikan 3-Currency clr Index is not merely a retrospective evaluation tool but has aspects as a framework for short-term future analysis based on statistical evidence.
+
+---
+
+## 8.7 Chapter Summary
 
 Monthly analysis yielded the following insights:
 
