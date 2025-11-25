@@ -50,23 +50,6 @@ This design ensures that overvaluation of one currency always balances with unde
 - **[monthly_rates_data.csv](dataset/monthly_rates_data.csv)** - 月次為替レート（元データ）
 - **[monthly_rates_template.csv](dataset/monthly_rates_template.csv)** - データ入力用テンプレート
 
-## 🔧 ツール
-
-### リアルタイム計算
-```bash
-python3 tools/calculate_mci_from_rates.py --usdjpy 157 --usdtry 42.3 --ppp-year 2024
-```
-
-### 月次データ更新
-```bash
-# 1. 月次レートCSVを更新
-# 2. MCIを再計算
-python3 tools/create_monthly_mci.py dataset/monthly_rates_data.csv
-
-# 3. 分析CSVを生成
-python3 tools/export_monthly_analysis.py
-```
-
 ## 📖 ドキュメント / Documentation
 
 - [理論枠組み](docs/CHAPTER2_CORRECTED.md) - MCI座標の数理定義 / Mathematical definition of MCI coordinates
@@ -82,11 +65,6 @@ PPP基準: 16.63（2025年推定）
 価格: TRY/JPY = 3.66
 判定: 正常域
 ```
-
-## 📝 分析レポート
-
-- [客観的評価](objective_evaluation.py) - MCIの有効性検証
-- [月次分析](analyze_monthly_mci.py) - 月次変動の詳細分析
 
 ---
 
