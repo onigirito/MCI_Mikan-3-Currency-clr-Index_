@@ -10,7 +10,7 @@
 
 ## Abstract
 
-This paper proposes a novel relative evaluation index called the "Mikan 3-Currency clr Index" for three currencies—US Dollar (USD), Japanese Yen (JPY), and Turkish Lira (TRY)—based on Purchasing Power Parity (PPP) theory. By applying an approach analogous to the centered log-ratio (clr) transformation from Compositional Data Analysis (CoDA), this index expresses PPP deviations in an orthogonalized form, providing a balanced quantification of the "overvaluation/undervaluation" of each currency. Empirical analysis using 20 years of data (2005–2024) demonstrates that this index clearly captures the structural movements of each currency. Furthermore, we argue that this method provides multi-currency balance information not obtainable from simple bilateral PPP comparisons, with potential applications in policy analysis and investment decisions.
+This paper proposes a novel relative evaluation index called the "Mikan 3-Currency clr Index" for three currencies—US Dollar (USD), Japanese Yen (JPY), and Turkish Lira (TRY)—based on Purchasing Power Parity (PPP) theory. By applying an approach analogous to the centered log-ratio (clr) transformation from Compositional Data Analysis (CoDA), this index expresses PPP deviations in a coordinate system via clr transformation, providing a balanced quantification of the "overvaluation/undervaluation" of each currency. Empirical analysis using 20 years of data (2005–2024) demonstrates that this index clearly captures the structural movements of each currency. Furthermore, we argue that this method provides multi-currency balance information not obtainable from simple bilateral PPP comparisons, with potential applications in policy analysis and investment decisions.
 
 **Keywords**: Purchasing Power Parity, Exchange Rate, Compositional Data Analysis, clr Transformation, Currency Valuation, USD/JPY/TRY
 
@@ -52,7 +52,8 @@ Simple PPP deviation rates (e.g., $d_{\text{USDJPY}} = \ln(S_{\text{USDJPY}} / \
 
 When calculating each currency pair's deviation rate independently, the following inconsistency arises:
 
-- $d_{\text{USDJPY}}, d_{\text{USDTRY}}, d_{\text{TRYJPY}}$ each have independent values, but from a triangular arbitrage perspective, $d_{\text{TRYJPY}} = d_{\text{USDTRY}} - d_{\text{USDJPY}}$ should hold
+- For nominal exchange rates (in logarithms), triangular arbitrage ensures that $\ln S_{\text{TRYJPY}} = \ln S_{\text{USDTRY}} - \ln S_{\text{USDJPY}}$ always holds
+- However, PPP deviation rates $d_{A \to B} = \ln(S_{AB} / \text{PPP}_B)$ each involve different PPP benchmarks, so independently defining $d_{\text{USD} \to \text{JPY}}, d_{\text{USD} \to \text{TRY}}, d_{\text{TRY} \to \text{JPY}}$ does not guarantee inter-currency consistency
 
 ### 1.2.3 Difficulty in Visualizing the Overall Picture
 
