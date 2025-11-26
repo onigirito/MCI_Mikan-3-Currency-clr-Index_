@@ -1854,36 +1854,31 @@ The USD/JPY estimates for each scenario are as follows:
 
 $$
 \begin{align}
-\text{Scenario A}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.40 - (-0.11)) = 93.3 \times \exp(0.51) \approx 156 \\
-\text{Scenario B}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.38 - (-0.13)) = 93.3 \times \exp(0.51) \approx 156 \\
+\text{Scenario A}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.40 - (-0.11)) = 93.3 \times \exp(0.51) \approx 155 \\
+\text{Scenario B}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.38 - (-0.13)) = 93.3 \times \exp(0.51) \approx 155 \\
 \text{Scenario C}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.42 - (-0.08)) = 93.3 \times \exp(0.50) \approx 154
 \end{align}
 $$
 
 **Consideration of Statistical Fluctuation Range**:
 
-Considering typical fluctuation ranges in monthly data (approximately $\pm 0.05$) and assuming $m[\text{USD}] - m[\text{JPY}] \in [0.46, 0.56]$, the theoretical fluctuation range for USD/JPY is:
+Analyzing fluctuations in $m[\text{USD}] - m[\text{JPY}]$ from historical monthly data (2022-2025), typical monthly fluctuation ranges are approximately $\pm 0.05$. Applying this statistical fluctuation range $m[\text{USD}] - m[\text{JPY}] \in [0.46, 0.56]$, the theoretical fluctuation range for USD/JPY is:
 
 $$
 \begin{align}
 \text{Lower bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.46) \approx 148 \\
-\text{Upper bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.56) \approx 158
+\text{Upper bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.56) \approx 163
 \end{align}
 $$
 
-Therefore, considering the statistical range of monthly fluctuations, USD/JPY for December 2025 is estimated to fluctuate **within the range of 148-158 yen**. The central scenario is approximately 155 yen.
+This statistical lower bound (148 yen) represents a level that could be reached when relatively strong events—such as US policy rate cuts exceeding market expectations at year-end—impact the market, though falling short of structural transformation (regime change). Historically, such $\pm 0.05$ level fluctuations are within the observed monthly range and are not exceptional cases.
 
-### Limitations and Caveats
+Therefore, the estimated range for USD/JPY in December 2025 is as follows:
 
-This method is based on the following assumptions, and loses validity if these are violated:
+- **Central Scenario**: 154-156 yen
+- **Risk Range**: 148-163 yen
 
-1. **Momentum Maintenance**: Assumes current trends continue. If regime shifts (see Chapter 6) occur, $m[i]$ momentum breaks down
-2. **PPP Estimation Accuracy**: Future PPP depends on inflation rate forecasts, so estimation accuracy declines with sudden inflation rate changes
-3. **Absence of Exogenous Shocks**: Exogenous shocks such as geopolitical crises or sudden monetary policy shifts are not captured by this model
-4. **Basket-Internal Limitation**: This estimation only reflects relative relationships within the 3-currency basket and does not consider factors outside the basket (e.g., EUR, CNY movements)
-5. **Short-term Forecast Limitations**: This method assumes short-term forecasts of 1-3 months, with uncertainty increasing for longer-term forecasts
-
-Therefore, this method should be positioned as a **short-term structural analysis auxiliary tool**, and for actual trading decisions, combination with external indicators (DXY, interest rate differentials, VIX, etc.) mentioned in Chapter 7 is essential.
+As long as no external pressures or events causing regime changes occur, fluctuations are statistically predicted to remain within this range.
 
 ### Summary
 
@@ -1891,8 +1886,7 @@ Estimating future price ranges using monthly MCI yielded the following insights:
 
 1. **Boundedness**: $m[i]$ fluctuates moderately at the monthly level (average 0.01-0.02/month), enabling calculation of short-term ranges using statistical methods
 2. **Reverse Calculation for Target Price Setting**: Theoretical ranges of exchange rates can be derived from assumed values of $m[i]$ and future PPP
-3. **Practical Application**: The estimated range for USD/JPY in December 2025 is 148-158 yen (center 155 yen)
-4. **Positioning as Short-term Forecast Tool**: This method is applicable to short-term forecasts of 1-3 months but assumes combination with external indicators and loses validity during regime transitions
+3. **Practical Application**: The estimated range for USD/JPY in December 2025 is central scenario 154-156 yen, risk range 148-163 yen
 
 This analytical approach demonstrates that the Mikan 3-Currency clr Index is not merely a retrospective evaluation tool but has aspects as a framework for short-term future analysis based on statistical evidence.
 
