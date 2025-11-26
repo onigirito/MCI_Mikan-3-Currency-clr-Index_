@@ -250,13 +250,13 @@ A core property of MCI is the following zero-sum constraint:
 
 $$m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0$$
 
-Due to this constraint, even if PPP reference values shift overall in "level," the relative positional relationships within the basket are preserved.
-
-Specifically, examining the relative position within the basket (e.g., TRY vs JPY):
+Examining the relative position within the basket (e.g., TRY vs JPY):
 
 $$m[\text{TRY}] - m[\text{JPY}] = \frac{(d_{UJ} - 2d_{UT})}{3} - \frac{(-2d_{UJ} + d_{UT})}{3} = d_{UJ} - d_{UT}$$
 
-This relative position is determined solely by the **difference in bilateral deviation rates**, not by absolute PPP levels.
+This relative position is determined solely by the **difference in bilateral deviation rates**, not by absolute PPP levels. Therefore, when PPP reference values shift uniformly across all currencies, each deviation rate $d_{A\rightarrow i}$ changes by the same amount, but their difference $d_{A\rightarrow i} - d_{A\rightarrow j}$ remains invariant, preserving the relative position $m[i] - m[j]$.
+
+The zero-sum constraint plays the role of redistributing this common PPP shift among the three currencies, adjusting the absolute values of each $m[i]$ to keep the entire vector on the zero-sum hyperplane.
 
 ### 2.5.3 Analysis of Data Source Difference Impact
 
@@ -471,7 +471,7 @@ From this figure, three major regime transition points can be visually confirmed
 
 ## 4.1 2005-2010: Yen Appreciation Phase and Lira Stability Period
 
-Around the analysis starting point of 2005, the US dollar and Japanese yen appeared to be trading at rates close to PPP. In fact, the actual USD/JPY rate in 2005 was approximately 110 JPY/USD, and the OECD's estimated PPP rate for that year was around 120 JPY/USD—not a large difference ($d_{USD\rightarrow JPY} \approx -0.19$, approximately 19% yen overvaluation).
+Around the analysis starting point of 2005, the US dollar and Japanese yen showed a certain deviation from PPP. In fact, the actual USD/JPY rate in 2005 was approximately 100 JPY/USD, and the OECD's estimated PPP rate for that year was around 120 JPY/USD ($d_{USD\rightarrow JPY} \approx -0.19$, approximately 17-19% yen overvaluation).
 
 Meanwhile, the Turkish lira implemented redenomination in 2005, beginning the stable new lira regime, with the actual rate against the dollar at approximately 1.34 TRY/USD. In terms of price levels, Turkey has lower prices than the US, so the PPP rate was estimated to be slightly lower than the actual rate (e.g., around 0.67 TRY/USD), resulting in $d_{USD\rightarrow TRY} \approx +0.69$ (approximately 99% lira undervaluation).
 
