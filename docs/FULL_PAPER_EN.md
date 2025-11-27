@@ -435,8 +435,8 @@ During major regime transition periods (2011 super-yen-high period, 2018 Turkish
 The data used in this analysis and the calculated $m$ values are published in the following formats to ensure reproducibility and transparency:
 
 - **GitHub Repository**: https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_
-- **Dataset**: `annual_mci_2005_2024.csv` (all data for 2005-2024)
-- **Specification**: Detailed calculation method specifications (`specification_ppp_annual.md`)
+- **Dataset**: [`annual_mci_2005_2024.csv`](../dataset/annual_mci_2005_2024.csv) (all data for 2005-2024)
+- **Specification**: Detailed calculation method specifications ([`specification_ppp_annual.md`](specification_ppp_annual.md))
 - **Verification script**: Python script for formula verification
 
 This enables third-party verification and extension to other periods or currencies.

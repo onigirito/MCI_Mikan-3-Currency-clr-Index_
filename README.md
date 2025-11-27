@@ -37,18 +37,24 @@ The relative value m[i] of each currency has the following properties:
 This design ensures that overvaluation of one currency always balances with undervaluation of others, visualizing the dynamic equilibrium among the selected three currencies.
 
 > 理論の原典は著者の小説「果物世界」に収録されています → [ミカン定理：原典](docs/ORIGINAL_MIKAN_THEORY.md)
+## 📊 データファイル / Data Files
 
-## 📊 データファイル
+### 年次データ（2005-2024）/ Annual Data (2005-2024)
+- **[`annual_mci_2005_2024.csv`](dataset/annual_mci_2005_2024.csv)** - 年次PPP・年次MCI（IMF WEO確定値） / Annual PPP and MCI (IMF WEO official values)
 
-### 年次データ（公式）
-- **[annual_mci_2005_2024.csv](dataset/annual_mci_2005_2024.csv)** - 2005-2024年の確定値（IMF WEO）
+### 年次データ（公式）/ Annual Data (Official)
+- **[`annual_mci_2005_2024.csv`](dataset/annual_mci_2005_2024.csv)** - 年次PPP・年次MCI（2005-2024、IMF WEO確定値） / Annual PPP and MCI (2005-2024, IMF WEO official values)
+  - 用途: 長期トレンド分析、論文の主要データ / Use: Long-term trend analysis, main paper data
 
-### 月次データ（2022-2025）
-- **[monthly_mci_fixed_ppp_2022_2025.csv](dataset/monthly_mci_fixed_ppp_2022_2025.csv)** - 月次MCI（固定PPP版、2022-01〜2025-11、47ヶ月）
-  - 年次固定PPP + 月次為替レート、PPP_changedフラグ付き
-- **[monthly_mci_interpolated_ppp_2022_2025.csv](dataset/monthly_mci_interpolated_ppp_2022_2025.csv)** - 月次MCI（補間PPP版、2022-01〜2025-11）
-  - 月次補間PPP + 月次為替レート、より滑らかな分析用
-- **[monthly_exchange_rates_2022_2025.csv](dataset/monthly_exchange_rates_2022_2025.csv)** - 月次為替レート（元データ）
+### 月次データ（2022-2025）/ Monthly Data (2022-2025)
+- **[`monthly_mci_fixed_ppp_2022_2025.csv`](dataset/monthly_mci_fixed_ppp_2022_2025.csv)** - 固定PPP・月次MCI（論文図8.1使用） / Fixed annual PPP, monthly MCI (used in Fig 8.1)
+  - 年次PPP固定、月次為替レート、PPP_changedフラグ付き / Annual PPP fixed, monthly exchange rates, with PPP_changed flag
+- **[`monthly_mci_interpolated_ppp_2022_2025.csv`](dataset/monthly_mci_interpolated_ppp_2022_2025.csv)** - 補間PPP・月次MCI（論文図8.2使用） / Interpolated PPP, monthly MCI (used in Fig 8.2)
+  - PPP月次補間、より滑らかな推移を表示 / Monthly PPP interpolation, smoother transitions
+- **[`monthly_exchange_rates_2022_2025.csv`](dataset/monthly_exchange_rates_2022_2025.csv)** - 月次為替レート（元データ） / Monthly exchange rates (source data)
+
+詳細は [データセット仕様書](dataset/README.md) を参照 / See [Dataset Specifications](dataset/README.md) for details
+
 
 ## 📖 ドキュメント / Documentation
 
