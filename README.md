@@ -44,11 +44,11 @@ This design ensures that overvaluation of one currency always balances with unde
 - **[annual_mci_2005_2024.csv](dataset/annual_mci_2005_2024.csv)** - 2005-2024年の確定値（IMF WEO）
 
 ### 月次データ（2022-2025）
-- **[monthly_mci_fixed_ppp_2022_2025.csv](dataset/monthly_mci_fixed_ppp_2022_2025.csv)** - 月次MCI分析データ（2022-01〜2025-11、47ヶ月）
-  - PPP基準、MCI座標、月次変動率を含む
-- **[mci_monthly_recent.csv](dataset/mci_monthly_recent.csv)** - 月次MCI生データ
+- **[monthly_mci_fixed_ppp_2022_2025.csv](dataset/monthly_mci_fixed_ppp_2022_2025.csv)** - 月次MCI（固定PPP版、2022-01〜2025-11、47ヶ月）
+  - 年次固定PPP + 月次為替レート、PPP_changedフラグ付き
+- **[monthly_mci_interpolated_ppp_2022_2025.csv](dataset/monthly_mci_interpolated_ppp_2022_2025.csv)** - 月次MCI（補間PPP版、2022-01〜2025-11）
+  - 月次補間PPP + 月次為替レート、より滑らかな分析用
 - **[monthly_exchange_rates_2022_2025.csv](dataset/monthly_exchange_rates_2022_2025.csv)** - 月次為替レート（元データ）
-- **[monthly_rates_template.csv](dataset/monthly_rates_template.csv)** - データ入力用テンプレート
 
 ## 📖 ドキュメント / Documentation
 
