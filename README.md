@@ -37,18 +37,19 @@ The relative value m[i] of each currency has the following properties:
 This design ensures that overvaluation of one currency always balances with undervaluation of others, visualizing the dynamic equilibrium among the selected three currencies.
 
 > 理論の原典は著者の小説「果物世界」に収録されています → [ミカン定理：原典](docs/ORIGINAL_MIKAN_THEORY.md)
+## 📊 データファイル / Data Files
 
-## 📊 データファイル
+### 年次データ（2005-2024）/ Annual Data (2005-2024)
+- **[`annual_mci_2005_2024.csv`](dataset/annual_mci_2005_2024.csv)** - 年次PPP・年次MCI（IMF WEO確定値） / Annual PPP and MCI (IMF WEO official values)
 
-### 年次データ（公式）
-- **[mikan_3currency_clr_index_ppp_data.csv](dataset/mikan_3currency_clr_index_ppp_data.csv)** - 2005-2024年の確定値（IMF WEO）
+### 月次データ（2022-2025）/ Monthly Data (2022-2025)
+- **[`monthly_mci_fixed_ppp_2022_2025.csv`](dataset/monthly_mci_fixed_ppp_2022_2025.csv)** - 固定PPP・月次MCI（論文図8.1使用） / Fixed annual PPP, monthly MCI (used in Fig 8.1)
+  - 年次PPP固定、月次為替レート、MCI座標、月次変動を含む / Annual PPP fixed, monthly exchange rates, MCI coordinates, monthly changes
+- **[`monthly_mci_interpolated_ppp_2022_2025.csv`](dataset/monthly_mci_interpolated_ppp_2022_2025.csv)** - 補間PPP・月次MCI（論文図8.2使用） / Interpolated PPP, monthly MCI (used in Fig 8.2)
+  - PPP月次補間、より滑らかな推移を表示 / Monthly PPP interpolation, smoother transitions
+- **[`monthly_exchange_rates_2022_2025.csv`](dataset/monthly_exchange_rates_2022_2025.csv)** - 月次為替レート（元データ） / Monthly exchange rates (source data)
 
-### 月次データ（2022-2025）
-- **[monthly_mci_analysis.csv](dataset/monthly_mci_analysis.csv)** - 月次MCI分析データ（2022-01〜2025-11、47ヶ月）
-  - PPP基準、MCI座標、月次変動率を含む
-- **[mci_monthly_recent.csv](dataset/mci_monthly_recent.csv)** - 月次MCI生データ
-- **[monthly_rates_data.csv](dataset/monthly_rates_data.csv)** - 月次為替レート（元データ）
-- **[monthly_rates_template.csv](dataset/monthly_rates_template.csv)** - データ入力用テンプレート
+詳細は [データセット仕様書](dataset/README.md) を参照 / See [Dataset Specifications](dataset/README.md) for details
 
 ## 📖 ドキュメント / Documentation
 
