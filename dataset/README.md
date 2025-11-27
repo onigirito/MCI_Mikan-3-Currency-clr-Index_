@@ -29,9 +29,8 @@
   - 最新の月次MCIデータ（`monthly_mci_analysis.csv`のサブセット）
   - 用途: クイックリファレンス
 
-### 5. 入力データ・テンプレート
+### 5. 入力データ
 - **`monthly_rates_data.csv`** - 月次為替レート入力データ（元データ）
-- **`monthly_rates_template.csv`** - データ入力用テンプレート
 
 ---
 
