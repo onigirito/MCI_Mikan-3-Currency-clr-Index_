@@ -24,7 +24,8 @@ ANNUAL_PPP = {
     2022: {"JPY": 92.5, "TRY": 4.975},
     2023: {"JPY": 92.84, "TRY": 8.074},
     2024: {"JPY": 93.2, "TRY": 12.55},
-    2025: {"JPY": 93.52, "TRY": 16.51},
+    2025: {"JPY": 93.52, "TRY": 16.51},  # IMF WEO October 2025 estimate
+    2026: {"JPY": 93.88, "TRY": 21.72},  # Extrapolated from trend (+0.38%/yr for JPY, +31.5% for TRY)
 }
 
 def interpolate_ppp(year: int, month: int) -> Dict[str, float]:
@@ -34,12 +35,7 @@ def interpolate_ppp(year: int, month: int) -> Dict[str, float]:
     Logic: PPP(year, month) = PPP(year) + (PPP(year+1) - PPP(year)) * (month - 1) / 12
     """
     current_year_ppp = ANNUAL_PPP[year]
-
-    # For December 2025, use 2025 value (no next year data)
-    if year == 2025:
-        next_year_ppp = current_year_ppp
-    else:
-        next_year_ppp = ANNUAL_PPP[year + 1]
+    next_year_ppp = ANNUAL_PPP[year + 1]
 
     # Linear interpolation
     ppp_jpy = current_year_ppp["JPY"] + (next_year_ppp["JPY"] - current_year_ppp["JPY"]) * (month - 1) / 12
