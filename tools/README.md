@@ -79,7 +79,7 @@ python3 tools/create_monthly_mci.py monthly_rates_template.csv
 
 ```
 dataset/
-  ├── mikan_3currency_clr_index_ppp_data.csv  # 年次公式データ（2005-2024）
+  ├── annual_mci_2005_2024.csv  # 年次公式データ（2005-2024）
   └── mci_monthly_recent.csv                   # 月次データ（2022-2025、推定含む）
 
 tools/
