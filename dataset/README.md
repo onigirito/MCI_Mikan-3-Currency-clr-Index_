@@ -3,14 +3,14 @@
 ## ファイル一覧
 
 ### 1. 年次PPP・年次MCI（公式データ）
-- **`annual_mci_2005_2024.csv`**
+- **[`annual_mci_2005_2024.csv`](annual_mci_2005_2024.csv)**
   - 期間: 2005-2024年（年次）
   - PPP: IMF WEO年次確定値
   - MCI: 年平均為替レートから算出
   - 用途: 長期トレンド分析、論文の主要データ
 
 ### 2. 年次PPP・月次MCI（固定PPP版）
-- **`monthly_mci_fixed_ppp_2022_2025.csv`**
+- **[`monthly_mci_fixed_ppp_2022_2025.csv`](monthly_mci_fixed_ppp_2022_2025.csv)**
   - 期間: 2022-01～2025-11（月次、47ヶ月）
   - PPP: 年次固定（年内は同一PPP値を使用）
   - MCI: 月次為替レートから算出
@@ -18,7 +18,7 @@
   - 用途: 短期変動分析、月次価格推定
 
 ### 3. 月次PPP・月次MCI（補間版）
-- **`monthly_mci_interpolated_ppp_2022_2025.csv`**
+- **[`monthly_mci_interpolated_ppp_2022_2025.csv`](monthly_mci_interpolated_ppp_2022_2025.csv)**
   - 期間: 2022-01～2025-11（月次）
   - PPP: 年次PPPを月次で線形補間
   - MCI: 補間PPP + 月次為替レートから算出
@@ -26,7 +26,7 @@
 
 
 ### 4. 入力データ
-- **`monthly_exchange_rates_2022_2025.csv`** - 月次為替レート入力データ（元データ）
+- **[`monthly_exchange_rates_2022_2025.csv`](monthly_exchange_rates_2022_2025.csv)** - 月次為替レート入力データ（元データ）
 
 ---
 
