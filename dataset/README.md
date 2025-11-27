@@ -45,19 +45,20 @@
 - **PPP（購買力平価）**: IMF World Economic Outlook (WEO)
   - Implied PPP conversion rate (PPPEX)
   - 単位: LCU per international dollar
-- **為替レート**: IMF International Financial Statistics (IFS) / World Bank WDI
-  - Official exchange rate, period average
+- **為替レート**: IMF International Financial Statistics (IFS)
+  - Official exchange rate, period average (年次平均)
   - 単位: LCU per USD
 
 #### 月次データ（2022-2025）
 - **PPP（購買力平価）**: IMF WEO年次値を使用
   - 年内固定方式: 年次PPP値を月内で一定として使用
   - 補間方式: 年次PPP値を月次で線形補間（実験的）
-- **為替レート**: 実際の市場月次平均レート
-  - データソース: IMF IFS または World Bank WDI
-  - 月次為替レート（S_USDJPY, S_USDTRY）は実測値を使用
+- **為替レート**: IMF International Financial Statistics (IFS)
+  - Official exchange rate, period average (月次平均)
+  - 単位: LCU per USD
+  - 月次為替レート（S_USDJPY, S_USDTRY）は実際の市場月次平均レートを使用
 
-**注**: IMF IFSとWorld Bank WDIの公式為替レートは概ね同一の値を提供しています。本データセットでは実務上の利便性から、いずれかのソースから取得した月次平均レートを使用しています。
+**注**: 全データソースをIMFに統一することで、PPP（IMF WEO）と為替レート（IMF IFS）の整合性を確保しています。年次データと月次データの為替レート平均値は完全に一致しています。
 
 ## 列の説明
 
