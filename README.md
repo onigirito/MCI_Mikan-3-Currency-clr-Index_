@@ -12,15 +12,15 @@
 
 ---
 
-PPP（購買力平価）を基準とした3通貨（USD・JPY・TRY）の構造的評価指標。
+任意の3通貨に適用可能なPPP（購買力平価）ベースの構造的評価指標（本論文ではUSD・JPY・TRYを分析）。
 
-A structural evaluation index for three currencies (USD, JPY, TRY) based on PPP (Purchasing Power Parity).
+A PPP (Purchasing Power Parity) based structural evaluation framework applicable to any three currencies (this paper analyzes USD, JPY, and TRY).
 
 ## 概要 / Overview
 
-MCIは、3通貨間のPPP乖離を**ゼロサム制約**のもとで定量化する指標です。
+MCIは、任意の3通貨間のPPP乖離を**ゼロサム制約**のもとで定量化する汎用的フレームワークです（本実装ではUSD・JPY・TRYを使用）。
 
-MCI quantifies PPP deviations among three currencies under a **zero-sum constraint**.
+MCI is a general framework that quantifies PPP deviations among any three currencies under a **zero-sum constraint** (this implementation uses USD, JPY, and TRY).
 
 各通貨の相対価値 m[i] は以下の性質を持ちます：
 - **m[i] < 0**: その通貨がバスケット内で割安
@@ -32,9 +32,9 @@ The relative value m[i] of each currency has the following properties:
 - **m[i] > 0**: The currency is overvalued within the basket
 - **Always m[USD] + m[JPY] + m[TRY] = 0** (Zero-sum conservation law)
 
-この設計により、一つの通貨の過大評価は必ず他通貨の過小評価と釣り合い、3通貨間の力学的バランスを可視化できます。
+この設計により、一つの通貨の過大評価は必ず他通貨の過小評価と釣り合い、選択した3通貨間の力学的バランスを可視化できます。
 
-This design ensures that overvaluation of one currency always balances with undervaluation of others, visualizing the dynamic equilibrium among the three currencies.
+This design ensures that overvaluation of one currency always balances with undervaluation of others, visualizing the dynamic equilibrium among the selected three currencies.
 
 > 理論の原典は著者の小説「果物世界」に収録されています → [ミカン定理：原典](docs/ORIGINAL_MIKAN_THEORY.md)
 
@@ -52,8 +52,8 @@ This design ensures that overvaluation of one currency always balances with unde
 
 ## 📖 ドキュメント / Documentation
 
-- [理論枠組み](docs/CHAPTER2_CORRECTED.md) - MCI座標の数理定義 / Mathematical definition of MCI coordinates
-- [短期変動の分析](docs/CHAPTER8_MONTHLY_ANALYSIS.md) - 月次変動率による価格推定の試み / Price estimation using monthly variation rates
+- [全文（日本語）](docs/FULL_PAPER_CORRECTED.md) - 完全版論文 / Full paper (Japanese)
+- [Full Paper (English)](docs/FULL_PAPER_EN.md) - 完全版論文（英語）/ Full paper (English)
 - [ツール使用方法](tools/README.md) - 詳細な使い方 / Tool usage details
 - [データ仕様](dataset/README.md) - データセット詳細 / Dataset specifications
 
