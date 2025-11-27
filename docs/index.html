@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Mikan 3-Currency clr Index (MCI) - PPP-based Valuation for USD, JPY, TRY</title>
-    <meta name="title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Valuation for USD, JPY, TRY">
-    <meta name="description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating USD, JPY, and TRY currencies. Analyze over/undervaluation in a zero-sum basket.">
+    <title>Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies</title>
+    <meta name="title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies">
+    <meta name="description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating any three currencies. This paper analyzes USD, JPY, and TRY. Analyze over/undervaluation in a zero-sum basket.">
     <meta name="keywords" content="Mikan 3-Currency clr Index, MCI, PPP, clr transformation, currency valuation, USD JPY TRY, purchasing power parity, compositional data analysis, CoDA, centered log-ratio, exchange rate">
     <meta name="robots" content="index, follow">
     <meta name="author" content="onigirito">
@@ -15,15 +15,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/">
-    <meta property="og:title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Valuation for USD, JPY, TRY">
-    <meta property="og:description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating USD, JPY, and TRY currencies.">
+    <meta property="og:title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies">
+    <meta property="og:description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating any three currencies. This paper analyzes USD, JPY, and TRY.">
     <meta property="og:site_name" content="Mikan 3-Currency clr Index">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/">
-    <meta name="twitter:title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Valuation for USD, JPY, TRY">
-    <meta name="twitter:description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating USD, JPY, and TRY currencies.">
+    <meta name="twitter:title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies">
+    <meta name="twitter:description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating any three currencies. This paper analyzes USD, JPY, and TRY.">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/">
@@ -48,7 +48,7 @@
         "name": "Mikan 3-Currency clr Index (MCI)",
         "alternateName": "MCI",
         "url": "https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/",
-        "description": "PPP-based currency valuation framework using centered log-ratio (clr) transformation for USD, JPY, and TRY",
+        "description": "PPP-based currency valuation framework using centered log-ratio (clr) transformation for any three currencies (this paper: USD, JPY, and TRY)",
         "author": {
             "@type": "Person",
             "name": "onigirito"
@@ -90,8 +90,8 @@
 
     <main>
         <div class="summary">
-            <p class="summary-en">A PPP-based structural valuation index for three currencies (USD, JPY, TRY) using centered log-ratio (clr) transformation from Compositional Data Analysis (CoDA).</p>
-            <p class="summary-ja">PPP（購買力平価）を基準とした3通貨（USD・JPY・TRY）の構造的評価指標です。組成データ解析（CoDA）のclr変換を用いて、ゼロサム制約下での通貨の過大評価・過小評価を分析します。</p>
+            <p class="summary-en">A PPP-based structural valuation framework applicable to any three currencies (this paper analyzes USD, JPY, and TRY) using centered log-ratio (clr) transformation from Compositional Data Analysis (CoDA).</p>
+            <p class="summary-ja">PPP（購買力平価）を基準とした、任意の3通貨に適用可能な評価指標です（本論文ではUSD・JPY・TRYを分析）。組成データ解析（CoDA）のclr変換を用いて、ゼロサム制約下での通貨の過大評価・過小評価を分析します。</p>
         </div>
 
         <section>
@@ -100,10 +100,10 @@
             <ul>
                 <li>Uses <strong>Purchasing Power Parity (PPP)</strong> as the equilibrium baseline</li>
                 <li>Applies <strong>centered log-ratio (clr) transformation</strong> from Compositional Data Analysis (CoDA)</li>
-                <li>Evaluates <strong>USD, JPY, and TRY</strong> in a zero-sum basket structure</li>
+                <li>Evaluates <strong>any three currencies</strong> in a zero-sum basket structure (this paper uses <strong>USD, JPY, and TRY</strong>)</li>
                 <li>Identifies currency <strong>over/undervaluation</strong> relative to PPP fundamentals</li>
             </ul>
-            <p>MCIは、PPPを均衡基準とし、CoDAのclr変換を適用することで、3通貨間の相対的な過大評価・過小評価を構造的に捉える指標です。</p>
+            <p>MCIは、任意の3通貨間（本論文ではUSD・JPY・TRY）の相対的な過大評価・過小評価を構造的に捉える汎用的な指標です。PPPを均衡基準とし、CoDAのclr変換を適用します。</p>
             <p>月次データを用いた分析と価格推定については<a href="FULL_PAPER_CORRECTED#第8章-月次分析とppp更新頻度の影響">第8章</a>を参照してください。<br>
             For monthly data analysis and price estimation, see <a href="FULL_PAPER_EN#chapter-8-monthly-analysis-and-ppp-update-frequency">Chapter 8</a>.</p>
         </section>
