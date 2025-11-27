@@ -1,8 +1,39 @@
-# Dataset: Mikan 3-Currency clr Index (PPP Annual Data)
+# Dataset: Mikan 3-Currency clr Index
 
-## ファイル
+## ファイル一覧
 
-- `mikan_3currency_clr_index_ppp_data.csv` - 2005-2024年のPPP年次データ
+### 1. 年次PPP・年次MCI（公式データ）
+- **`mikan_3currency_clr_index_ppp_data.csv`**
+  - 期間: 2005-2024年（年次）
+  - PPP: IMF WEO年次確定値
+  - MCI: 年平均為替レートから算出
+  - 用途: 長期トレンド分析、論文の主要データ
+
+### 2. 年次PPP・月次MCI（固定PPP版）
+- **`monthly_mci_analysis.csv`**
+  - 期間: 2022-01～2025-11（月次、47ヶ月）
+  - PPP: 年次固定（年内は同一PPP値を使用）
+  - MCI: 月次為替レートから算出
+  - 特徴: `PPP_changed`フラグでPPP更新月を明示、`D_mTRY`（TRY座標の月次変化）を含む
+  - 用途: 短期変動分析、月次価格推定
+
+### 3. 月次PPP・月次MCI（補間版）
+- **`monthly_mci_interpolated.csv`**
+  - 期間: 2022-01～2025-11（月次）
+  - PPP: 年次PPPを月次で線形補間
+  - MCI: 補間PPP + 月次為替レートから算出
+  - 用途: より滑らかな月次分析（実験的）
+
+### 4. 最新月次データ
+- **`mci_monthly_recent.csv`**
+  - 最新の月次MCIデータ（`monthly_mci_analysis.csv`のサブセット）
+  - 用途: クイックリファレンス
+
+### 5. 入力データ・テンプレート
+- **`monthly_rates_data.csv`** - 月次為替レート入力データ（元データ）
+- **`monthly_rates_template.csv`** - データ入力用テンプレート
+
+---
 
 ## データ概要
 
