@@ -19,27 +19,35 @@ import csv
 import math
 from typing import Dict
 
-# Annual PPP values
+# Annual PPP values (December values)
 ANNUAL_PPP = {
     2022: {"JPY": 92.5, "TRY": 4.975},
     2023: {"JPY": 92.84, "TRY": 8.074},
     2024: {"JPY": 93.2, "TRY": 12.55},
-    2025: {"JPY": 93.52, "TRY": 16.51},  # IMF WEO October 2025 estimate
-    2026: {"JPY": 93.88, "TRY": 21.72},  # Extrapolated from trend (+0.38%/yr for JPY, +31.5% for TRY)
+    2025: {"JPY": 93.52, "TRY": 16.51},  # IMF WEO October 2025 estimate (to be published in 2026)
 }
 
 def interpolate_ppp(year: int, month: int) -> Dict[str, float]:
     """
     Calculate interpolated PPP for a given year-month.
 
-    Logic: PPP(year, month) = PPP(year) + (PPP(year+1) - PPP(year)) * (month - 1) / 12
-    """
-    current_year_ppp = ANNUAL_PPP[year]
-    next_year_ppp = ANNUAL_PPP[year + 1]
+    Logic: Annual PPP = December value
+    Interpolate from previous year's Dec to current year's Dec
+    PPP(year, month) = PPP(year-1) + (PPP(year) - PPP(year-1)) * month / 12
 
-    # Linear interpolation
-    ppp_jpy = current_year_ppp["JPY"] + (next_year_ppp["JPY"] - current_year_ppp["JPY"]) * (month - 1) / 12
-    ppp_try = current_year_ppp["TRY"] + (next_year_ppp["TRY"] - current_year_ppp["TRY"]) * (month - 1) / 12
+    Example: 2025-01 starts from 2024 Dec, 2025-12 reaches 2025 Dec
+    """
+    # Previous year's December PPP
+    if year == 2022:
+        prev_year_ppp = ANNUAL_PPP[2022]  # For 2022-01, start from 2022 value
+    else:
+        prev_year_ppp = ANNUAL_PPP[year - 1]
+
+    current_year_ppp = ANNUAL_PPP[year]
+
+    # Linear interpolation from previous Dec to current Dec
+    ppp_jpy = prev_year_ppp["JPY"] + (current_year_ppp["JPY"] - prev_year_ppp["JPY"]) * month / 12
+    ppp_try = prev_year_ppp["TRY"] + (current_year_ppp["TRY"] - prev_year_ppp["TRY"]) * month / 12
 
     return {"JPY": ppp_jpy, "TRY": ppp_try}
 
