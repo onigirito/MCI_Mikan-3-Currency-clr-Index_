@@ -1622,288 +1622,227 @@ Ultimately, we hope that the Mikan 3-Currency clr Index will be established as a
 
 ---
 
-# Chapter 8: Monthly Analysis and PPP Update Frequency
+# Chapter 8: Monthly Analysis and the Impact of PPP Update Frequency
 
-## 8.1 Significance of Monthly Observation
+## 8.1 Significance of Monthly Observations
 
-Chapter 4 analyzed long-term structural changes based on annual data. The 20-year graph (Figure 8.0) shown below captures major structural changes: the 2011 yen appreciation peak, the 2018 Turkish lira crisis, and the 2022 dollar strength period.
+Chapter 4 analyzed long-term structural changes based on annual data. The 20-year graph reproduced below (Figure 8.0) captures major structural changes: the yen appreciation peak in 2011, the Turkish lira crisis in 2018, and the dollar strength phase in 2022.
 
-![Annual MCI Coordinate Progression (2005-2024)](annual_mci_plot.png)
+![Annual MCI Coordinate Evolution (2005-2024)](annual_mci_plot.png)
 
-*Figure 8.0: Annual MCI coordinate progression (reproduced from Chapter 4). Long-term trends over 20 years can be grasped, but detailed dynamics of recent years are difficult to read.*
+*Figure 8.0: Evolution of annual MCI coordinates (reproduced from Chapter 4). While long-term trends over 20 years are discernible, detailed dynamics of recent years are difficult to interpret.*
 
-However, for actual market participants, capturing movements on shorter time scales is important. The figure above compresses movements since 2022, making it insufficient for analyzing monthly dynamics. This chapter uses monthly data from 2022 to 2025 to analyze short-term dynamics of MCI coordinates.
+However, for actual market participants, capturing fluctuations on shorter time horizons is critical. In the above graph, movements since 2022 are compressed, making it insufficient for monthly dynamic analysis. This chapter analyzes short-term dynamics of MCI coordinates using monthly data from 2022 to 2025.
 
-Monthly observation reveals:
-1. Short-term stress accumulation/release processes smoothed out in annual data
-2. Structural response speed to market events
-3. Leading movements signaling regime transitions
+Monthly observations reveal the accumulation and resolution processes of short-term stress that are smoothed out in annual data, structural response speeds to market events, and leading movements that signal regime transitions.
 
 ---
 
-## 8.2 Monthly MCI Using Annual PPP
+## 8.2 Monthly MCI with Annual PPP
 
-The figure below shows monthly MCI coordinates from January 2022 to November 2025, using each year's confirmed PPP values (IMF WEO).
+The following figure shows monthly MCI coordinates from January 2022 to November 2025. PPP values are the confirmed annual values from IMF WEO.
 
 ![Monthly MCI (Annual PPP)](monthly_mci_annual_ppp.png)
 
-*Figure 8.1: Monthly MCI coordinate progression using annual PPP. Orange dotted lines indicate year boundaries (PPP update timing).*
+*Figure 8.1: Evolution of monthly MCI coordinates using annual PPP. Orange dotted lines indicate year boundaries (PPP update timing).*
 
-### Observed Features
+### Observed Characteristics
 
-Several important features can be read from this graph:
+Several important features emerge from this graph.
 
 **1. Discontinuity at Year Boundaries (Axis Shift)**
 
-At year boundaries marked by orange dotted lines, MCI coordinates jump sharply. **This is not because exchange rates fluctuated dramatically, but because the PPP values (the "axis" for MCI calculation) were annually updated—a superficial change.**
+At the year boundaries marked by orange dotted lines, MCI coordinates jump abruptly. This is not due to rapid exchange rate fluctuations, but rather an apparent change resulting from the annual update of PPP values that serve as the reference for MCI calculation.
 
-Particularly notable:
-- **January 2023**: m[TRY] jumps from about -0.75 to -0.45 (+0.30)
-- **January 2024**: m[TRY] jumps from about -0.71 to -0.43 (+0.28)
+Particularly notable are the sharp rises in m[TRY] from approximately -0.75 to -0.45 in January 2023 (+0.30) and from approximately -0.71 to -0.43 in January 2024 (+0.28). These jumps indicate that the "yardstick" used for calculating MCI coordinates changed as the IMF substantially revised PPP reference values to reflect Turkey's high inflation.
 
-These jumps indicate that **the "measuring stick" for calculating MCI coordinates changed** due to the IMF significantly revising PPP benchmark values to reflect Turkey's high inflation. Note that the Turkish lira did not surge in the foreign exchange market.
+**2. Within-Year Dynamics**
 
-**2. Intra-Year Dynamics**
-
-Between year boundaries, MCI coordinates transition relatively smoothly. The decline in m[TRY] in late 2022 (-0.6 → -0.75) shows structural stress accumulation progressing without waiting for PPP updates.
+Between year boundaries, MCI coordinates transition relatively smoothly. The decline in m[TRY] during the second half of 2022 (-0.6 → -0.75) indicates the accumulation of structural stress that progressed without waiting for PPP updates.
 
 **3. Information Lag**
 
-PPP is inherently a lagging indicator. IMF and World Bank official PPP estimates:
-- Are published after the relevant year
-- May be revised retroactively
-- Are calibrated based on large-scale surveys (ICP) conducted every three years
-
-Therefore, when using annual PPP, there is a time lag before actual purchasing power changes are reflected in MCI coordinates.
+PPP is inherently a lagging indicator. Official PPP estimates from the IMF and World Bank are published for a given year in subsequent years, may be revised retrospectively, and are calibrated based on large-scale surveys (ICP) conducted every three years. Therefore, when using annual PPP, there is a time lag before actual purchasing power changes are reflected in MCI coordinates.
 
 ---
 
-## 8.3 Continuous Transition Through PPP Interpolation
+## 8.3 Continuous Evolution through PPP Interpolation
 
-To eliminate discontinuity at year boundaries, we created a version with monthly linear interpolation of PPP. The following figure shows the results.
+To eliminate discontinuities at year boundaries, we created a version with monthly linear interpolation of PPP.
 
 ![Monthly MCI (Interpolated PPP)](monthly_mci_interpolated_ppp.png)
 
-*Figure 8.2: MCI coordinate progression using monthly interpolated PPP. Year-boundary jumps are eliminated, showing smooth transitions.*
+*Figure 8.2: Evolution of MCI coordinates using monthly interpolated PPP. Jumps at year boundaries are eliminated, showing smooth transitions.*
 
 ### Interpolation Method
 
-Monthly PPP interpolation was performed as follows:
+The annual PPP values from IMF WEO represent purchasing power parity as of December of that year. Therefore, monthly interpolation is implemented as linear interpolation from December of the previous year to December of the current year.
 
 ```
-PPP(t) = PPP(year_start) + (PPP(year_end) - PPP(year_start)) × (month - 1) / 12
+PPP(year, month) = PPP(year-1) + (PPP(year) - PPP(year-1)) × month / 12
 ```
 
-Where:
-- `year_start`: Confirmed PPP value for the current year
-- `year_end`: Confirmed (or estimated) PPP value for the next year
-- `month`: Current month (1-12)
+Where `PPP(year-1)` is the PPP value for December of the previous year (= confirmed annual PPP value for the previous year), `PPP(year)` is the PPP value for December of the current year (= confirmed or estimated annual PPP value for the current year), and `month` is the current month (1-12).
 
-This linear interpolation allows PPP to change gradually each month, eliminating sharp jumps at year boundaries.
+Interpolation example (2024):
+```
+2024-01: PPP_JPY = 92.84 + (93.2 - 92.84) × 1/12 = 92.87
+2024-06: PPP_JPY = 92.84 + (93.2 - 92.84) × 6/12 = 93.02
+2024-12: PPP_JPY = 92.84 + (93.2 - 92.84) × 12/12 = 93.20
+```
 
-### Features of Interpolated Graph
+This interpolation completely eliminates jumps at year boundaries (December → January):
+```
+2023-12: JPY=92.84, TRY=8.074   (December 2023 value)
+2024-01: JPY=92.87, TRY=8.447   (Interpolation toward December 2024 begins)
+```
 
-**1. Smooth Transition**
+### Characteristics of Monthly MCI Graphs
 
-Year-boundary jumps disappear, and MCI coordinates more faithfully reflect actual market movements.
+**1. Trend Clarification**
 
-**2. Trend Clarification**
+m[TRY] has risen gradually over approximately three years from around -0.60 (early 2022) to around -0.47 (November 2025). m[JPY] has declined continuously from around +0.19 (early 2022) to around -0.01 (November 2025), while m[USD] has fluctuated in the range of +0.41 to +0.60, standing at +0.49 as of November 2025.
 
-- m[TRY]: Gradual improvement from around -0.6 to around -0.3 over about 3 years
-- m[JPY]: Continuous yen depreciation trend reflected, from around +0.2 to around -0.1
-- m[USD]: Relatively stable around +0.4
+**2. Visualization of Short-term Stress**
 
-**3. Visualization of Short-Term Stress**
+Short-term stress events are clearly observable, such as the bottoming out of m[TRY] (around -0.77) before and after Şimşek's appointment in June 2023.
 
-Short-term stress events like the m[TRY] plunge around May 2023 (-0.35 → -0.50) can be more clearly observed.
+**3. Relationship between Stress and Currency Depreciation: Structural Transition in the Turkish Lira**
 
-**4. Relationship Between Stress and Currency Depreciation**
+While the lira has consistently depreciated in the dollar/lira exchange rate, the MCI graph shows m[TRY] converging toward zero. This apparently contradictory movement can be explained by understanding what MCI represents.
 
-In USD/TRY exchange, the lira continues to depreciate consistently. However, the MCI graph shows m[TRY] converging toward zero (improving). This seemingly contradictory movement can be explained by understanding the essence of what MCI shows.
+MCI reflects not "price movements" but rather "the nature of structural stress." Taking the yen as an example, m[JPY] is currently near zero, but this does not mean the deviation rate from PPP is zero. In fact, the yen remains undervalued in PPP comparisons. Zero in MCI indicates "a structurally balanced position within the basket."
 
-What MCI reflects is not "price movements" but "the state of structural stress." Taking the yen as an example, m[JPY] is currently near zero, but this does not mean the PPP deviation rate is zero. In fact, the yen remains undervalued by PPP comparison. Zero in MCI indicates "a structurally balanced position within the basket."
+**Period of Structural Stress Accumulation for the Lira (First Half of 2022 to July 2023)**
 
-For the lira, before 2020, unorthodox monetary policy under the Erdogan administration (insistence on low interest rates despite high inflation and foreign exchange intervention) continued, attempting to artificially support the currency against market mechanisms. As a result, structural stress accumulated and MCI swung deeply into negative territory (bottoming at -0.78 in 2020).
+According to monthly data, m[TRY] deteriorated continuously from -0.595 in January 2022, bottoming at -0.766 in July 2023.
 
-In June 2023, Finance Minister Şimşek took office and normalization toward policy rates matching inflation proceeded. This changed the nature of lira depreciation from "artificial maintenance against the market" to "natural adjustment matching inflation." Prices continue to fall, but as this decline reflects economic reality, structural stress has been released, and MCI shows a clear convergence trend. Notably, this convergence trend clearly emerged only after Şimşek's appointment, with no significant improvement observed during the 2021-2022 period.
+- January to December 2022: -0.595 → -0.755 (deterioration of approximately -0.16). Unorthodox monetary policy continued under the Erdoğan administration. Adherence to low interest rates amid high inflation and currency interventions went against market mechanisms, and attempts to artificially support the currency accumulated structural stress.
+
+- January to May 2023: -0.738 → -0.637 (temporary rising trend). However, no structural policy shift occurred, and deterioration resumed after June.
+
+- June to July 2023: -0.715 → -0.766 (sharp deterioration, bottoming). Finance Minister Şimşek assumed office on June 3, 2023. Immediately after his appointment, markets faced uncertainty about policy shifts, with m[TRY] falling to -0.715 in June and reaching a minimum of -0.766 in July. This can be interpreted as temporary stress maximization during the transition period of policy change.
+
+**Structural Transition and Formation of Convergence Trend (August 2023 onward)**
+
+A clear convergence trend formed after August 2023. From August to December 2023: -0.744 → -0.711 (rise begins), throughout 2024: -0.696 → -0.517 (substantial rise), January to November 2025: -0.503 → -0.472 (continuous rise).
+
+As policy interest rates were normalized to match inflation rates under Finance Minister Şimşek, the nature of lira depreciation changed from "artificial maintenance against the market" to "natural adjustment commensurate with inflation." While prices continue to decline, the decline now reflects economic realities, structural stress has been resolved, and the MCI shows a clear convergence trend.
+
+Over approximately two and a half years from the bottom (July 2023), m[TRY] has risen approximately 0.29 points from -0.766 to -0.472, showing a stable convergence rate of approximately 0.12 points annually. This reflects policy consistency and recovery of market confidence.
 
 ---
 
-## 8.4 Comparison and Interpretation of Both Methods
+## 8.4 Monthly MCI as a Leading Indicator
 
-### Usage Guidelines
-
-| Aspect | Annual PPP | Interpolated PPP |
-|--------|------------|------------------|
-| **Data Fidelity** | Based on official statistics | Includes estimates |
-| **Continuity** | Discontinuous at year boundaries | Continuous |
-| **Application** | Rigorous analysis, academic research | Trend analysis, visualization |
-| **Ease of Interpretation** | Requires jump explanation | Intuitive |
-
-### Preservation of Economic Meaning
-
-Importantly, regardless of which method is used, the following properties are preserved:
-
-1. **Zero-Sum Constraint**: $m[\text{USD}] + m[\text{JPY}] + m[\text{TRY}] = 0$
-2. **Relative Order**: Overvaluation/undervaluation relationships among the 3 currencies are maintained
-3. **Long-Term Trends**: Consistency with annual data
-
-The interpolated version provides "visual smoothness," but both are equivalent for fundamental structural analysis.
-
----
-
-## 8.5 Monthly MCI as a Leading Indicator
-
-Monthly data analysis suggests the leading indicator properties of MCI.
+Analysis of monthly data suggests the nature of MCI as a leading indicator.
 
 ### Leading Nature of Structural Improvement
 
-In the interpolated graph, m[TRY] shows a gradual improvement trend from late 2023. This indicates:
+In the monthly MCI graph, m[TRY] has shown a gradual upward trend since the second half of 2023. This reflects convergence pressure toward PPP (extreme undervaluation is unsustainable and will adjust in some form), resolution of structural stress (inflation rate decline and normalization of monetary policy are progressing), and lag in reflection to market prices (there is a time lag before structural improvements are reflected in prices).
 
-1. **PPP Convergence Pressure**: Extremely undervalued states are unsustainable and will be adjusted somehow
-2. **Structural Stress Release**: Inflation rate decline and monetary policy normalization progressing
-3. **Market Price Reflection Delay**: Time lag before structural improvement is reflected in prices
-
-The MCI improvement trend may be interpretable as a sign of future currency stabilization. However, this does not predict "when convergence will occur" but rather indicates "structural pressure toward convergence."
+The convergence trend of MCI can potentially be interpreted as a sign of future currency stabilization. However, this does not predict "convergence timing" but rather indicates "structural pressure toward convergence direction."
 
 ### Limitations
 
-- Complete leading nature cannot be expected since PPP itself is a lagging indicator
-- Cannot respond to sudden changes from policy changes or geopolitical events
-- Even monthly data smooths out daily/weekly short-term fluctuations
+Since PPP itself is a lagging indicator, complete leading nature cannot be expected. It cannot respond to sudden changes due to policy shifts or geopolitical events, and even monthly data smooths out daily and weekly short-term fluctuations.
 
 ---
 
-## 8.6 Estimating Future Price Ranges Using Monthly MCI
+## 8.5 Estimation of Future Price Ranges Using Monthly MCI
 
-### Boundedness and Statistical Estimation Possibility
+### Boundedness of the Range of Motion and Possibility of Statistical Estimation
 
-An important mathematical property of the Mikan 3-Currency clr Index is **boundedness**. While actual exchange rates can theoretically fluctuate in the range $0 \to \infty$, making direct estimation of future fluctuation ranges difficult, the $m[i]$ coordinates are mapped into a mathematically constrained space due to the zero-sum constraint (Equation 1).
+An important mathematical property of the Mikan 3-Currency clr Index is the boundedness of the range of motion. Since actual exchange rates can theoretically fluctuate in the range of $0 \to \infty$, directly inferring future fluctuation ranges is difficult. However, $m[i]$ coordinates are mapped into a mathematically constrained space due to the zero-sum constraint (Equation (1)).
 
-The observed ranges of $m[i]$ in monthly interpolated data (January 2022 to November 2025, 47 months) are as follows:
+The observed ranges of $m[i]$ in monthly interpolated data (January 2022 to November 2025, 47 months) are as follows.
 
-| Currency | Observed Range | Range Width | Average |
-|----------|---------------|-------------|---------|
-| USD | [+0.392, +0.597] | 0.205 | +0.484 |
-| JPY | [-0.100, +0.195] | 0.295 | +0.056 |
-| TRY | [-0.596, -0.304] | 0.292 | -0.539 |
+| Currency | Minimum | Maximum | Range Width |
+|----------|---------|---------|-------------|
+| USD | +0.406 | +0.597 | 0.191 |
+| JPY | -0.015 | +0.197 | 0.212 |
+| TRY | -0.766 | -0.472 | 0.294 |
 
-This observed range is more limited compared to the approximately $\pm 0.8$ range observed in annual data (20 years). Monthly-level fluctuations are moderate when excluding PPP jumps:
+This observed range is more limited compared to the range of approximately $\pm 0.8$ observed in annual data (20 years). Fluctuations in monthly interpolated data are gentle as follows.
 
-| Currency | Max Monthly Rise | Max Monthly Fall | Average Monthly Change |
-|----------|-----------------|------------------|----------------------|
-| USD | +0.059 | -0.028 | 0.010 |
-| JPY | +0.051 | -0.054 | 0.017 |
-| TRY | +0.046 | -0.079 | 0.016 |
+| Currency | Max Monthly Rise | Timing | Max Monthly Fall | Timing | Avg Monthly Change |
+|----------|------------------|--------|------------------|--------|--------------------|
+| USD | +0.058 | June 2023 | -0.029 | August 2024 | 0.011 |
+| JPY | +0.047 | August 2024 | -0.039 | April 2022 | 0.017 |
+| TRY | +0.036 | February 2023 | -0.077 | June 2023 | 0.019 |
 
-This boundedness suggests the possibility of calculating the short-term theoretical range of motion for $m[i]$ using statistical methods.
+Notable timings:
 
-### Reverse Calculation for Target Price Setting
+- **TRY maximum fall (June 2023, -0.077)**: Month of Finance Minister Şimşek's appointment. Reflects maximization of structural stress during policy transition period.
+- **JPY maximum fall (April 2022, -0.039)**: US long-term interest rates surged (2.4%→3.0%) following FOMC's QT acceleration agreement and CPI 8.5% announcement. Period when yen depreciation pressure arose from rapid widening of US-Japan interest rate differential.
+- **JPY maximum rise (August 2024, +0.047)**: Corresponds to Bank of Japan's monetary policy transition period.
+- **USD maximum rise (June 2023, +0.058)**: Relative rise within the basket accompanying TRY's sharp fall (result of zero-sum constraint).
 
-By making assumptions about future values of $m[i]$, future exchange rates can be estimated using the following reverse calculation formula:
+This boundedness suggests the possibility of calculating the theoretical short-term range of motion for $m[i]$ using statistical methods.
+
+### Setting Target Prices through Back-Calculation
+
+By making assumptions about future values of $m[i]$, future exchange rates can be estimated using the following back-calculation formula.
 
 $$
 S_{\text{A/B,future}} = \text{PPP}_{\text{A/B,future}} \times \exp(m[A]_{\text{target}} - m[B]_{\text{target}})
 $$
 
-Where:
-- $\text{PPP}_{\text{future}}$ can be estimated from inflation rate forecasts for each country
-- $m[i]_{\text{target}}$ is set from current trend extrapolation or statistical ranges
-
-This method enables estimation of future price ranges based on statistical evidence, going beyond mere ex-post evaluation.
+Where $\text{PPP}_{\text{future}}$ can be estimated from inflation rate forecasts for each country, and $m[i]_{\text{target}}$ is set from extrapolation of current trends or statistical ranges. This method enables estimation of future price ranges based on statistical evidence, going beyond mere ex-post evaluation.
 
 ### Practical Example: USD/JPY Price Range Estimation for December 2025
 
-**Current Status (as of November 2025)**:
+**Current Situation Assessment (as of November 2025)**
 
-The latest MCI coordinates (November 2025) using monthly interpolated PPP are as follows:
+The latest MCI coordinates using monthly interpolated PPP (November 2025) are $m[\text{USD}] = +0.487$ (maintaining overvaluation), $m[\text{JPY}] = -0.015$ (nearly neutral), $m[\text{TRY}] = -0.472$ (undervalued).
 
-- $m[\text{USD}] = +0.404$ (maintaining overvaluation)
-- $m[\text{JPY}] = -0.100$ (undervalued side)
-- $m[\text{TRY}] = -0.304$ (undervalued but improving trend)
+**Trend Analysis**
 
-**Trend Analysis**:
+Trends observed from monthly data since 2023 are as follows. USD has declined gradually from a peak of +0.597 in 2023 to +0.487 as of November 2025. JPY has declined continuously from +0.197 in 2022 to nearly neutral (-0.015) as of November 2025. TRY has been on an upward trend from the bottom of -0.766 in July 2023 to -0.472 as of November 2025.
 
-The momentum observed from monthly data since 2023 is as follows:
+**Scenario Setting**
 
-- **USD**: Gradually declining from peak of +0.60 in 2022, hovering around +0.40 since latter half of 2024
-- **JPY**: Continuously declining from +0.15 in 2023, reaching -0.10 in 2025 with slight continued decline
-- **TRY**: Converging trend from -0.60 in 2022, improving to -0.30 as of November 2025
-
-**Scenario Setting**:
-
-Assuming current momentum is maintained until December 2025, the following scenarios are set:
+Based on November 2025 observed values (USD: +0.487, JPY: -0.015, TRY: -0.472), we extrapolate observed statistical trends to December 2025.
 
 | Scenario | m[USD] | m[JPY] | m[TRY] | Rationale |
 |----------|--------|--------|--------|-----------|
-| **A (Momentum Maintenance)** | +0.40 | -0.11 | -0.29 | Continuation of current trends (USD flat, JPY slight decline, TRY convergence) |
-| **B (Accelerated Convergence)** | +0.38 | -0.13 | -0.25 | Overall accelerated convergence toward neutral |
-| **C (Momentum Reversal)** | +0.42 | -0.08 | -0.34 | USD slight increase, JPY slight recovery, TRY rebound |
+| A (Inertia) | +0.485 | -0.025 | -0.460 | Continuation of JPY decline and TRY convergence trends |
+| B (Slightly Stronger Yen) | +0.478 | 0.000 | -0.478 | JPY approaches zero, USD declines in linkage at statistical ratio (approx. 60%) |
+| C (Slightly Weaker Yen) | +0.480 | -0.020 | -0.460 | JPY decline continues, TRY convergence continues |
 
-**PPP Estimation Setting**:
+**Estimated Ranges for December 2025**
 
-PPP estimates for December 2025 are set as follows (considering current values and remaining one month of inflation):
+Results calculated using estimated PPP values (JPY: 93.52, TRY: 16.51) and m values for each scenario are as follows.
 
-- $\text{PPP}_{\text{USDJPY, December 2025}} \approx 93.3$ (November 2025: 93.2, assuming near-flat)
-- $\text{PPP}_{\text{USDTRY, December 2025}} \approx 21.2$ (November 2025: 20.8, Turkish inflation continuing)
+| Currency Pair | Central Scenario | Risk Range |
+|---------------|------------------|------------|
+| **USD/JPY** | **¥151–156** | **¥147–162** |
+| **USD/TRY** | **₺42.3–43.0** | **₺40.4–44.7** |
+| **TRY/JPY** | **¥3.51–3.67** | **¥3.28–4.01** |
 
-**USD/JPY Price Range Estimation**:
+The central scenario is the range derived from the three scenarios, and the risk range is a statistical fluctuation range considering past monthly fluctuations (±0.05).
 
-The USD/JPY estimates for each scenario are as follows:
+This fluctuation range of ±0.05 is comparable in magnitude to the largest events during the observation period—FOMC's QT acceleration in April 2022 (JPY monthly fluctuation -0.039) and the Bank of Japan's policy transition in August 2024 (JPY monthly fluctuation +0.047). In other words, it indicates levels that could be reached if regime-change-level structural changes occur.
 
-$$
-\begin{align}
-\text{Scenario A}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.40 - (-0.11)) = 93.3 \times \exp(0.51) \approx 155 \\
-\text{Scenario B}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.38 - (-0.13)) = 93.3 \times \exp(0.51) \approx 155 \\
-\text{Scenario C}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.42 - (-0.08)) = 93.3 \times \exp(0.50) \approx 154
-\end{align}
-$$
-
-**Consideration of Statistical Fluctuation Range**:
-
-Analyzing fluctuations in $m[\text{USD}] - m[\text{JPY}]$ from historical monthly data (2022-2025), typical monthly fluctuation ranges are approximately $\pm 0.05$. Applying this statistical fluctuation range $m[\text{USD}] - m[\text{JPY}] \in [0.46, 0.56]$, the theoretical fluctuation range for USD/JPY is:
-
-$$
-\begin{align}
-\text{Lower bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.46) \approx 148 \\
-\text{Upper bound}: \quad S_{\text{USDJPY}} &= 93.3 \times \exp(0.56) \approx 163
-\end{align}
-$$
-
-This statistical lower bound (148 yen) represents a level that could be reached when relatively strong events—such as US policy rate cuts exceeding market expectations at year-end—impact the market, though falling short of structural transformation (regime change). Historically, such $\pm 0.05$ level fluctuations are within the observed monthly range and are not exceptional cases.
-
-Therefore, the estimated range for USD/JPY in December 2025 is as follows:
-
-- **Central Scenario**: 154-156 yen
-- **Risk Range**: 148-163 yen
-
-As long as no external pressures or events causing regime changes occur, fluctuations are statistically predicted to remain within this range.
-
-### Summary
-
-Estimating future price ranges using monthly MCI yielded the following insights:
-
-1. **Boundedness**: $m[i]$ fluctuates moderately at the monthly level (average 0.01-0.02/month), enabling calculation of short-term ranges using statistical methods
-2. **Reverse Calculation for Target Price Setting**: Theoretical ranges of exchange rates can be derived from assumed values of $m[i]$ and future PPP
-3. **Practical Application**: The estimated range for USD/JPY in December 2025 is central scenario 154-156 yen, risk range 148-163 yen
-
-This analytical approach demonstrates that the Mikan 3-Currency clr Index is not merely a retrospective evaluation tool but has aspects as a framework for short-term future analysis based on statistical evidence.
+December 2025 is a period when the possibility of additional interest rate cuts by the US Federal Reserve is being discussed in markets, and if the decision's content or magnitude significantly deviates from market expectations, fluctuations equivalent to the risk range may materialize.
 
 ---
 
-## 8.7 Chapter Summary
+## 8.6 Summary of This Chapter
 
-Monthly analysis yielded the following insights:
+This chapter revealed short-term structural dynamics that cannot be captured with annual data through MCI analysis using monthly data.
 
-1. **PPP Update Frequency Impact**: Using annual PPP causes MCI coordinates to jump at year boundaries, making short-term interpretation difficult
-2. **Effectiveness of Interpolation**: Monthly interpolated PPP provides smooth transitions, facilitating trend analysis
-3. **Equivalence of Both Methods**: For fundamental structural analysis, both methods provide equivalent information
-4. **Leading Indicator Potential**: Monthly MCI improvement trends may suggest future price adjustments
+By constructing datasets suitable for analysis through monthly linear interpolation of PPP, regime transition events and MCI coordinate trends could be clearly visualized. Major events during the observation period concentrated at turning points of monetary policy, including Finance Minister Şimşek's appointment (June 2023), FOMC's QT acceleration (April 2022), and the Bank of Japan's monetary policy transition (August 2024).
 
-The monthly analysis presented in this chapter complements the practical operational guidelines from Chapter 7 on a shorter time scale. Combining long-term structural understanding through annual data with short-term dynamic tracking through monthly data further enhances the practicality of the Mikan 3-Currency clr Index.
+The structural transition of the Turkish lira was captured in detail. m[TRY] bottomed at -0.766 in July 2023 and rose to -0.472 over approximately two and a half years thereafter. This indicates that under Finance Minister Şimşek, policy interest rate normalization to match inflation rates changed the nature of lira depreciation from "artificial maintenance against the market" to "natural adjustment commensurate with inflation." While prices continue to decline, structural stress has been resolved.
+
+As a mathematical property of MCI, the boundedness of the range of motion is important. While actual exchange rates can theoretically fluctuate in an infinite range, m[i] coordinates are mapped into a space constrained by the zero-sum constraint. This boundedness enables estimation of future price ranges using statistical methods.
+
+In the practical example for December 2025, we derived a central scenario of ¥151–156 and a risk range of ¥147–162 for USD/JPY from three scenarios. The risk range assumes fluctuation ranges comparable to past major events (FOMC's QT acceleration, Bank of Japan policy transition), indicating levels that could be reached if regime-change-level structural changes occur.
+
+The monthly analysis presented in this chapter complements the practical operational guidelines presented in Chapter 7 on a shorter time horizon. By combining long-term structural understanding through annual data with short-term dynamic tracking through monthly data, the practical utility of the Mikan 3-Currency clr Index is further enhanced.
 
 ---
-
 # References
 
 ## Purchasing Power Parity (PPP) and Exchange Rate Determination Theory
