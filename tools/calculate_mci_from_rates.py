@@ -15,7 +15,7 @@ import math
 
 def load_ppp_data(year):
     """指定年のPPPデータを読み込む"""
-    with open('dataset/mikan_3currency_clr_index_ppp_data.csv', 'r') as f:
+    with open('dataset/annual_mci_2005_2024.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             if int(row['year']) == year:
@@ -95,7 +95,7 @@ def main():
 
     # 比較年が指定されている場合
     if args.compare:
-        with open('dataset/mikan_3currency_clr_index_ppp_data.csv', 'r') as f:
+        with open('dataset/annual_mci_2005_2024.csv', 'r') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 if int(row['year']) == args.compare:

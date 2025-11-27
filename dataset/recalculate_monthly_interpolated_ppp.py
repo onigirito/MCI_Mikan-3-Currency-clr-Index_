@@ -58,10 +58,9 @@ def calculate_mci(S_USDJPY: float, S_USDTRY: float, PPP_JPY: float, PPP_TRY: flo
     d_USDTRY = math.log(S_USDTRY / PPP_TRY)
 
     # MCI coordinates (centered log-ratio transformation)
-    d_sum = d_USDJPY + d_USDTRY
-    m_USD = (2 * 0 - d_sum) / 3  # d_USDUSD = 0
-    m_JPY = (2 * d_USDJPY - d_sum) / 3
-    m_TRY = (2 * d_USDTRY - d_sum) / 3
+    m_USD = (d_USDJPY + d_USDTRY) / 3
+    m_JPY = (-2 * d_USDJPY + d_USDTRY) / 3
+    m_TRY = (d_USDJPY - 2 * d_USDTRY) / 3
 
     # Cross rate
     S_TRYJPY = S_USDJPY / S_USDTRY

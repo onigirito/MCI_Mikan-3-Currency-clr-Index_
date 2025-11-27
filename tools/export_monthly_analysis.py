@@ -32,7 +32,7 @@ data[0]['pct_TRYJPY'] = ''
 data[0]['PPP_changed'] = ''
 
 # 出力
-output_file = 'monthly_mci_analysis.csv'
+output_file = 'monthly_mci_fixed_ppp_2022_2025.csv'
 fieldnames = [
     'date',
     'S_USDJPY',

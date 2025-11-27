@@ -15,7 +15,7 @@ import math
 
 # データ読み込み
 data = []
-with open('dataset/mikan_3currency_clr_index_ppp_data.csv', 'r') as f:
+with open('dataset/annual_mci_2005_2024.csv', 'r') as f:
     reader = csv.DictReader(f)
     for row in reader:
         data.append({
