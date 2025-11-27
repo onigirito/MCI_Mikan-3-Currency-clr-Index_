@@ -1725,9 +1725,7 @@ What MCI reflects is not "price movements" but "the state of structural stress."
 
 For the lira, before 2020, unorthodox monetary policy under the Erdogan administration (insistence on low interest rates despite high inflation and foreign exchange intervention) continued, attempting to artificially support the currency against market mechanisms. As a result, structural stress accumulated and MCI swung deeply into negative territory (bottoming at -0.78 in 2020).
 
-In June 2023, Finance Minister Şimşek took office and normalization toward policy rates matching inflation proceeded. This changed the nature of lira depreciation from "artificial maintenance against the market" to "natural adjustment matching inflation." Prices continue to fall, but as this decline reflects economic reality, structural stress has been released, and MCI shows a clear convergence trend.
-
-Meanwhile, gradual improvement is also seen in 2021-2022, but the factors for improvement during this period are complex. Whether this is the "measuring stick catch-up" effect of PPP estimates themselves being adjusted to more accurately reflect Turkey's actual inflation, or structural stress release after the 2018 shock, cannot be completely separated.
+In June 2023, Finance Minister Şimşek took office and normalization toward policy rates matching inflation proceeded. This changed the nature of lira depreciation from "artificial maintenance against the market" to "natural adjustment matching inflation." Prices continue to fall, but as this decline reflects economic reality, structural stress has been released, and MCI shows a clear convergence trend. Notably, this convergence trend clearly emerged only after Şimşek's appointment, with no significant improvement observed during the 2021-2022 period.
 
 ---
 
