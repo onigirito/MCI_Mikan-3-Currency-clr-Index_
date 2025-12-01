@@ -113,7 +113,7 @@ This paper is organized as follows:
 
 - **Chapter 2**: Details the theoretical framework and mathematical definitions of the Mikan 3-Currency clr Index. Explains the basic formula (Equation 1), zero-sum constraint, and mathematical properties of the three-currency decomposition.
 
-- **Chapter 3**: Explains data and methodology. Shows the data source (World Bank WDI), PPP deviation calculation procedures, and statistical characteristics.
+- **Chapter 3**: Explains data and methodology. Shows the data source (IMF WEO/IFS), PPP deviation calculation procedures, and statistical characteristics.
 
 - **Chapter 4**: Conducts empirical analysis for 2005–2024, analyzing the time-series structure and index behavior during major economic events (2011 super-yen-high period, 2018 Turkish lira crisis, 2022 dollar strength, etc.).
 
@@ -307,8 +307,8 @@ Exchange rate and PPP data for USD, JPY, and TRY from 2005 to 2024 were used for
 
 **Exchange Rates:**
 
-- **Source**: World Bank WDI / IMF IFS
-- **Indicator**: PA.NUS.FCRF (Official exchange rate, period average)
+- **Source**: IMF International Financial Statistics (IFS)
+- **Indicator**: Official exchange rate, period average
 - **Unit**: LCU per USD
 - **Target**: USD/JPY, USD/TRY annual average rates
 
@@ -1496,7 +1496,7 @@ Emerging market currencies like TRY are strongly affected by geopolitical risks 
 ### 7.9.1 Monthly Monitoring (When Using Annual Data)
 
 **Step 1: Data Update**
-- Obtain latest PPP and exchange rate data from World Bank (published annually, usually February–March)
+- Obtain latest PPP and exchange rate data from IMF WEO/IFS (published annually, usually April and October)
 - Calculate $m_i(t)$ for the latest year
 
 **Step 2: Statistics Update**
@@ -1913,54 +1913,59 @@ The monthly analysis presented in this chapter complements the practical operati
 
 ## Data Sources
 
-19. **World Bank (2024).** *World Development Indicators (WDI)*. https://databank.worldbank.org/source/world-development-indicators
-    - Primary source for PPP and exchange rate data used in this study
+19. **International Monetary Fund (IMF) (2024).** *World Economic Outlook (WEO)*. https://www.imf.org/en/Publications/WEO
+    - Primary source for PPP data used in this study
+    - Indicator: Implied PPP conversion rate (PPPEX)
+
+20. **International Monetary Fund (IMF) (2024).** *International Financial Statistics (IFS)*. https://data.imf.org/
+    - Primary source for exchange rate data used in this study
+    - Indicator: Official exchange rate, period average
+
+21. **World Bank (2024).** *World Development Indicators (WDI)*. https://databank.worldbank.org/source/world-development-indicators
+    - Alternative source for PPP and exchange rate data (for comparison)
     - Indicators: PA.NUS.PPP (PPP conversion factor, GDP), PA.NUS.FCRF (Official exchange rate)
 
-20. **Bank for International Settlements (BIS) (2024).** *Effective Exchange Rate Indices*. https://www.bis.org/statistics/eer.htm
+22. **Bank for International Settlements (BIS) (2024).** *Effective Exchange Rate Indices*. https://www.bis.org/statistics/eer.htm
     - Standard source for Real Effective Exchange Rate (REER) data
-
-21. **International Monetary Fund (IMF) (2024).** *International Financial Statistics (IFS)*. https://data.imf.org/
-    - Comprehensive database for exchange rates and financial statistics
 
 ## Visualization and Statistical Methods
 
-22. **Cleveland, W. S., & McGill, R. (1984).** "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods," *Journal of the American Statistical Association*, 79(387), 531–554.
+23. **Cleveland, W. S., & McGill, R. (1984).** "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods," *Journal of the American Statistical Association*, 79(387), 531–554.
     - Theoretical foundations of data visualization
 
-23. **Tukey, J. W. (1977).** *Exploratory Data Analysis*. Addison-Wesley.
+24. **Tukey, J. W. (1977).** *Exploratory Data Analysis*. Addison-Wesley.
     - Classic text on exploratory data analysis
 
 ## International Finance and Exchange Policy
 
-24. **Obstfeld, M., & Rogoff, K. (1996).** *Foundations of International Macroeconomics*. MIT Press.
+25. **Obstfeld, M., & Rogoff, K. (1996).** *Foundations of International Macroeconomics*. MIT Press.
     - Standard textbook on international macroeconomics
 
-25. **Frankel, J. A., & Rose, A. K. (1995).** "Empirical Research on Nominal Exchange Rates," in *Handbook of International Economics*, Vol. 3, Elsevier, 1689–1729.
+26. **Frankel, J. A., & Rose, A. K. (1995).** "Empirical Research on Nominal Exchange Rates," in *Handbook of International Economics*, Vol. 3, Elsevier, 1689–1729.
     - Comprehensive survey of empirical research on exchange rates
 
 ## Monetary Policy and Central Banks
 
-26. **Clarida, R., Galí, J., & Gertler, M. (1999).** "The Science of Monetary Policy: A New Keynesian Perspective," *Journal of Economic Literature*, 37(4), 1661–1707.
+27. **Clarida, R., Galí, J., & Gertler, M. (1999).** "The Science of Monetary Policy: A New Keynesian Perspective," *Journal of Economic Literature*, 37(4), 1661–1707.
     - Theoretical framework of modern monetary policy
 
-27. **Bernanke, B. S., & Mishkin, F. S. (1997).** "Inflation Targeting: A New Framework for Monetary Policy?" *Journal of Economic Perspectives*, 11(2), 97–116.
+28. **Bernanke, B. S., & Mishkin, F. S. (1997).** "Inflation Targeting: A New Framework for Monetary Policy?" *Journal of Economic Perspectives*, 11(2), 97–116.
     - Theory and practice of inflation targeting
 
 ## Risk Management and Portfolio Theory
 
-28. **Markowitz, H. (1952).** "Portfolio Selection," *Journal of Finance*, 7(1), 77–91.
+29. **Markowitz, H. (1952).** "Portfolio Selection," *Journal of Finance*, 7(1), 77–91.
     - Classic paper establishing the foundations of modern portfolio theory
 
-29. **Jorion, P. (2006).** *Value at Risk: The New Benchmark for Managing Financial Risk* (3rd ed.). McGraw-Hill.
+30. **Jorion, P. (2006).** *Value at Risk: The New Benchmark for Managing Financial Risk* (3rd ed.). McGraw-Hill.
     - Practical textbook on risk management centered on VaR
 
 ## Machine Learning and Time Series Forecasting
 
-30. **Hochreiter, S., & Schmidhuber, J. (1997).** "Long Short-Term Memory," *Neural Computation*, 9(8), 1735–1780.
+31. **Hochreiter, S., & Schmidhuber, J. (1997).** "Long Short-Term Memory," *Neural Computation*, 9(8), 1735–1780.
     - Proposal of LSTM (Long Short-Term Memory) networks (mentioned as future extension in Chapter 8)
 
-31. **Vaswani, A., et al. (2017).** "Attention Is All You Need," in *Advances in Neural Information Processing Systems*, 5998–6008.
+32. **Vaswani, A., et al. (2017).** "Attention Is All You Need," in *Advances in Neural Information Processing Systems*, 5998–6008.
     - Proposal of Transformer models (potential application to time series forecasting)
 
 ---
@@ -1969,9 +1974,9 @@ The monthly analysis presented in this chapter complements the practical operati
 
 Formal citations for datasets used in this study:
 
-**World Bank (2024).** *World Development Indicators: PPP conversion factor, GDP (LCU per international $)* [Data file]. Retrieved from https://databank.worldbank.org/source/world-development-indicators
+**International Monetary Fund (IMF) (2024).** *World Economic Outlook: Implied PPP conversion rate (PPPEX)* [Data file]. Retrieved from https://www.imf.org/en/Publications/WEO
 
-**World Bank (2024).** *World Development Indicators: Official exchange rate (LCU per US$, period average)* [Data file]. Retrieved from https://databank.worldbank.org/source/world-development-indicators
+**International Monetary Fund (IMF) (2024).** *International Financial Statistics: Official exchange rate, period average* [Data file]. Retrieved from https://data.imf.org/
 
 ---
 
@@ -1981,7 +1986,7 @@ This reference list covers major literature related to the theoretical backgroun
 
 - **Purchasing Power Parity (PPP)**: From Cassel (1918) to Rogoff (1996) and Taylor & Taylor (2004), including theoretical development and "PPP puzzle" discussion
 - **Compositional Data Analysis (CoDA)**: From Aitchison (1986)'s foundational theory to Egozcue et al. (2003)'s mathematical formulation of clr transformation
-- **Empirical Analysis**: Explicitly citing public data sources including World Bank WDI, BIS, and IMF
+- **Empirical Analysis**: Explicitly citing public data sources including IMF (WEO/IFS), World Bank WDI, and BIS
 - **Time Series/Regime Analysis**: Structural change detection methods by Hamilton (1989) and Perron (1989)
 - **Currency Crises**: Twin crises research by Kaminsky & Reinhart (1999), Turkish crisis precedent studies
 - **Future Extensions**: Including recent literature on machine learning (LSTM, Transformer)
