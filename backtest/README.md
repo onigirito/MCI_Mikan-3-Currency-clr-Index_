@@ -278,18 +278,6 @@ python add_rolling_averages.py          # avg_delta_m_*_3m を追加
 
 ---
 
-## 評価レポート
-
-詳細な評価は以下を参照:
-
-**`BACKTEST_EVALUATION_REPORT.md`**
-- バックテスト手法の詳細
-- 全期間 vs 安定期の比較
-- 混乱期（政治イベント期）の特徴
-- 実務的な観点からの総合評価
-
----
-
 ## 注意事項
 
 ### データの制約
