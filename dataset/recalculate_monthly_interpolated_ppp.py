@@ -4,11 +4,12 @@
 Recalculate monthly_mci_interpolated_ppp_2022_2025.csv with proper linear interpolation of PPP values.
 
 Interpolation logic:
-- Each year's January uses that year's annual PPP value
-- From January to December, PPP linearly interpolates to next year's value
-- Example: 2024-01 uses 2024 PPP, 2024-12 approaches 2025 PPP
+- Annual PPP value represents that year's December value
+- Interpolation: Previous year's Dec → Current year's Dec
+- PPP(year, month) = PPP(year-1) + (PPP(year) - PPP(year-1)) * month / 12
+- Example: 2024-01 starts from 2023 Dec (92.84), 2024-12 reaches 2024 Dec (93.2)
 
-Annual PPP values:
+Annual PPP values (December values):
 - 2022: JPY=92.5, TRY=4.975
 - 2023: JPY=92.84, TRY=8.074
 - 2024: JPY=93.2, TRY=12.55
@@ -35,7 +36,10 @@ def interpolate_ppp(year: int, month: int) -> Dict[str, float]:
     Interpolate from previous year's Dec to current year's Dec
     PPP(year, month) = PPP(year-1) + (PPP(year) - PPP(year-1)) * month / 12
 
-    Example: 2025-01 starts from 2024 Dec, 2025-12 reaches 2025 Dec
+    Example:
+    - 2024-01: starts from 2023 Dec (92.84, 8.074), interpolates toward 2024 Dec (93.2, 12.55)
+    - 2024-12: reaches 2024 Dec (93.2, 12.55)
+    - 2025-01: starts from 2024 Dec (93.2, 12.55), interpolates toward 2025 Dec (93.52, 16.51)
     """
     # Previous year's December PPP
     if year == 2022:
