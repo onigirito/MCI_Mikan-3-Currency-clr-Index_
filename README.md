@@ -55,6 +55,10 @@ This design ensures that overvaluation of one currency always balances with unde
 
 詳細は [データセット仕様書](dataset/README.md) を参照 / See [Dataset Specifications](dataset/README.md) for details
 
+### バックテスト / Backtest
+- **[バックテストツール](backtest/README.md)** - 月次価格予想バックテスト（3カ月移動平均手法） / Monthly price prediction backtest (3-month rolling average method)
+- **[定量的評価（日本語）](backtest/BACKTEST_ANALYSIS.md)** - 包括的なバックテスト結果分析 / Comprehensive backtest results analysis (Japanese)
+- **[Quantitative Evaluation (English)](backtest/BACKTEST_ANALYSIS_EN.md)** - 包括的なバックテスト結果分析 / Comprehensive backtest results analysis (English)
 
 ## 📖 ドキュメント / Documentation
 
