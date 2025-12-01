@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MCI Backtest Tools - Monthly Price Prediction"
+description: "Monthly backtest tools for MCI price prediction using 3-month rolling average methodology"
+lang: en
+---
+
 # MCI価格予想バックテストツール / MCI Price Prediction Backtest Tools
 
 第8章の価格予想原理に基づく月次バックテストツール

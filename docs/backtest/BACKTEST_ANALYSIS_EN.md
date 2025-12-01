@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MCI Backtest Quantitative Evaluation (English)"
+description: "Comprehensive quantitative analysis of MCI backtest results (2022-03 to 2025-11, 45 observations)"
+lang: en
+---
+
 # MCI Price Prediction Backtest: Quantitative Evaluation
 
 **Period**: 2022-03 to 2025-11 (45 observations)

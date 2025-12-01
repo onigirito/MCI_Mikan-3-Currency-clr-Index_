@@ -1,3 +1,10 @@
+---
+layout: default
+title: "MCI Backtest Quantitative Evaluation (Japanese)"
+description: "Comprehensive quantitative analysis of MCI backtest results (2022-03 to 2025-11, 45 observations)"
+lang: ja
+---
+
 # MCI価格予想バックテスト：定量的評価
 
 **対象期間**: 2022-03 ～ 2025-11（45観測）
