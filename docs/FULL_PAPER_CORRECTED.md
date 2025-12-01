@@ -113,7 +113,7 @@ USD、JPY、TRY の3通貨を同時に評価し、各通貨の「バスケット
 
 - **第2章**：Mikan 3-Currency clr Index の理論枠組みと数理定義を詳述する。基本公式（式(1)）、ゼロサム制約、および三通貨分解の数学的性質を説明する。
 
-- **第3章**：データと計算方法論を説明する。使用するデータソース（World Bank WDI）、PPP乖離率の計算手順、および統計的特性を示す。
+- **第3章**：データと計算方法論を説明する。使用するデータソース（IMF WEO/IFS）、PPP乖離率の計算手順、および統計的特性を示す。
 
 - **第4章**：2005–2024年の実証分析を行い、時系列構造と主要な経済イベント（2011年超円高期、2018年トルコリラ危機、2022年ドル高局面など）における指標の挙動を分析する。
 
@@ -312,8 +312,8 @@ MCIの「0」は絶対的な数値ではなく**均衡状態**を表す概念で
 
 **為替レート：**
 
-- **ソース**: World Bank WDI / IMF IFS
-- **指標**: PA.NUS.FCRF（Official exchange rate, period average）
+- **ソース**: IMF International Financial Statistics (IFS)
+- **指標**: Official exchange rate, period average
 - **単位**: LCU per USD
 - **取得対象**: USD/JPY、USD/TRY の年次平均レート
 
@@ -1499,7 +1499,7 @@ TRY のような新興国通貨は、地政学的リスク（政治不安、対�
 ### 7.9.1 月次モニタリング（年次データ使用時）
 
 **ステップ1：データ更新**
-- World Bank から最新の PPP・為替レートデータを取得（年1回、通常2–3月公開）
+- IMF WEO/IFS から最新の PPP・為替レートデータを取得（年1回、通常4月・10月公開）
 - 最新年の $m_i(t)$ を算出
 
 **ステップ2：統計更新**
@@ -1916,54 +1916,59 @@ MCIの数理的特性として、可動域の限定性（Boundedness）が重要
 
 ## データソース
 
-19. **World Bank (2024).** *World Development Indicators (WDI)*. https://databank.worldbank.org/source/world-development-indicators
-    - 本研究で使用した PPP および為替レートデータの主要ソース
+19. **International Monetary Fund (IMF) (2024).** *World Economic Outlook (WEO)*. https://www.imf.org/en/Publications/WEO
+    - 本研究で使用したPPPデータの主要ソース
+    - 指標：Implied PPP conversion rate (PPPEX)
+
+20. **International Monetary Fund (IMF) (2024).** *International Financial Statistics (IFS)*. https://data.imf.org/
+    - 本研究で使用した為替レートデータの主要ソース
+    - 指標：Official exchange rate, period average
+
+21. **World Bank (2024).** *World Development Indicators (WDI)*. https://databank.worldbank.org/source/world-development-indicators
+    - PPP・為替レートデータの代替ソース（比較参照用）
     - 指標：PA.NUS.PPP（PPP conversion factor, GDP）、PA.NUS.FCRF（Official exchange rate）
 
-20. **Bank for International Settlements (BIS) (2024).** *Effective Exchange Rate Indices*. https://www.bis.org/statistics/eer.htm
+22. **Bank for International Settlements (BIS) (2024).** *Effective Exchange Rate Indices*. https://www.bis.org/statistics/eer.htm
     - 実質実効為替レート（REER）データの標準的ソース
-
-21. **International Monetary Fund (IMF) (2024).** *International Financial Statistics (IFS)*. https://data.imf.org/
-    - 為替レート、金融統計の包括的データベース
 
 ## 可視化と統計手法
 
-22. **Cleveland, W. S., & McGill, R. (1984).** "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods," *Journal of the American Statistical Association*, 79(387), 531–554.
+23. **Cleveland, W. S., & McGill, R. (1984).** "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods," *Journal of the American Statistical Association*, 79(387), 531–554.
     - データ可視化の理論的基礎
 
-23. **Tukey, J. W. (1977).** *Exploratory Data Analysis*. Addison-Wesley.
+24. **Tukey, J. W. (1977).** *Exploratory Data Analysis*. Addison-Wesley.
     - 探索的データ解析の古典
 
 ## 国際金融と為替政策
 
-24. **Obstfeld, M., & Rogoff, K. (1996).** *Foundations of International Macroeconomics*. MIT Press.
+25. **Obstfeld, M., & Rogoff, K. (1996).** *Foundations of International Macroeconomics*. MIT Press.
     - 国際マクロ経済学の標準的教科書
 
-25. **Frankel, J. A., & Rose, A. K. (1995).** "Empirical Research on Nominal Exchange Rates," in *Handbook of International Economics*, Vol. 3, Elsevier, 1689–1729.
+26. **Frankel, J. A., & Rose, A. K. (1995).** "Empirical Research on Nominal Exchange Rates," in *Handbook of International Economics*, Vol. 3, Elsevier, 1689–1729.
     - 為替レートの実証研究に関する包括的サーベイ
 
 ## 金融政策と中央銀行
 
-26. **Clarida, R., Galí, J., & Gertler, M. (1999).** "The Science of Monetary Policy: A New Keynesian Perspective," *Journal of Economic Literature*, 37(4), 1661–1707.
+27. **Clarida, R., Galí, J., & Gertler, M. (1999).** "The Science of Monetary Policy: A New Keynesian Perspective," *Journal of Economic Literature*, 37(4), 1661–1707.
     - 現代的な金融政策の理論的枠組み
 
-27. **Bernanke, B. S., & Mishkin, F. S. (1997).** "Inflation Targeting: A New Framework for Monetary Policy?" *Journal of Economic Perspectives*, 11(2), 97–116.
+28. **Bernanke, B. S., & Mishkin, F. S. (1997).** "Inflation Targeting: A New Framework for Monetary Policy?" *Journal of Economic Perspectives*, 11(2), 97–116.
     - インフレーション・ターゲティングの理論と実践
 
 ## リスク管理とポートフォリオ理論
 
-28. **Markowitz, H. (1952).** "Portfolio Selection," *Journal of Finance*, 7(1), 77–91.
+29. **Markowitz, H. (1952).** "Portfolio Selection," *Journal of Finance*, 7(1), 77–91.
     - 現代ポートフォリオ理論の基礎を築いた古典的論文
 
-29. **Jorion, P. (2006).** *Value at Risk: The New Benchmark for Managing Financial Risk* (3rd ed.). McGraw-Hill.
+30. **Jorion, P. (2006).** *Value at Risk: The New Benchmark for Managing Financial Risk* (3rd ed.). McGraw-Hill.
     - VaR を中心としたリスク管理の実務的教科書
 
 ## 機械学習と時系列予測
 
-30. **Hochreiter, S., & Schmidhuber, J. (1997).** "Long Short-Term Memory," *Neural Computation*, 9(8), 1735–1780.
+31. **Hochreiter, S., & Schmidhuber, J. (1997).** "Long Short-Term Memory," *Neural Computation*, 9(8), 1735–1780.
     - LSTM（長短期記憶）ネットワークの提案（第8章で将来の拡張として言及）
 
-31. **Vaswani, A., et al. (2017).** "Attention Is All You Need," in *Advances in Neural Information Processing Systems*, 5998–6008.
+32. **Vaswani, A., et al. (2017).** "Attention Is All You Need," in *Advances in Neural Information Processing Systems*, 5998–6008.
     - Transformer モデルの提案（時系列予測への応用可能性）
 
 ---
@@ -1972,9 +1977,9 @@ MCIの数理的特性として、可動域の限定性（Boundedness）が重要
 
 本研究で使用したデータセットの正式な引用：
 
-**World Bank (2024).** *World Development Indicators: PPP conversion factor, GDP (LCU per international $)* [Data file]. Retrieved from https://databank.worldbank.org/source/world-development-indicators
+**International Monetary Fund (IMF) (2024).** *World Economic Outlook: Implied PPP conversion rate (PPPEX)* [Data file]. Retrieved from https://www.imf.org/en/Publications/WEO
 
-**World Bank (2024).** *World Development Indicators: Official exchange rate (LCU per US$, period average)* [Data file]. Retrieved from https://databank.worldbank.org/source/world-development-indicators
+**International Monetary Fund (IMF) (2024).** *International Financial Statistics: Official exchange rate, period average* [Data file]. Retrieved from https://data.imf.org/
 
 ---
 
@@ -1984,7 +1989,7 @@ MCIの数理的特性として、可動域の限定性（Boundedness）が重要
 
 - **購買力平価（PPP）**：Cassel (1918) から Rogoff (1996)、Taylor & Taylor (2004) まで、理論の発展と「PPP パズル」の議論を含む
 - **組成データ解析（CoDA）**：Aitchison (1986) による基礎理論から、Egozcue et al. (2003) による clr 変換の数学的定式化まで
-- **実証分析**：World Bank WDI、BIS、IMF などの公的データソースを明示
+- **実証分析**：IMF（WEO/IFS）、World Bank WDI、BIS などの公的データソースを明示
 - **時系列・レジーム分析**：Hamilton (1989)、Perron (1989) による構造変化の検出手法
 - **通貨危機**：Kaminsky & Reinhart (1999) による双子の危機、トルコ危機の先行研究
 - **将来の拡張**：機械学習（LSTM、Transformer）に関する最新文献を含む
