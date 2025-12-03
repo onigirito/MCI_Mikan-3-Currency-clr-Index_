@@ -1,0 +1,5 @@
+month,adjustment_type,currency_pair,adjustment_value,description
+2023-07,delta_m,USD,-0.005,Turkish crisis correction
+2023-07,delta_m,JPY,0.003,Turkish crisis correction
+2023-07,delta_m,TRY,0.002,Turkish crisis correction
+2024-08,rate_pct,USDJPY,-5.0,JPY rate hike correction

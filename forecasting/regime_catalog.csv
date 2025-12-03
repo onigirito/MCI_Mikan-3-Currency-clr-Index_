@@ -1,0 +1,7 @@
+date,regime_type,description,severity,notes
+2023-06,transition,Turkish policy/election shock start,high,Start of major regime transition in Turkish markets
+2023-07,crisis,Turkish policy/election shock peak,high,Peak volatility in TRY markets
+2023-08,crisis,Turkish policy/election shock continuation,high,Continued high volatility
+2023-09,transition,Turkish policy/election shock end,medium,Recovery from Turkish regime transition
+2024-08,transition,JPY interest rate regime transition,high,Bank of Japan policy shift impacts JPY
+2024-10,transition,JPY interest rate regime continuation,medium,Continued effects of JPY rate policy change
