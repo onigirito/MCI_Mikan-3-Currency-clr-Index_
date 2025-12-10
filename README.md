@@ -4,7 +4,7 @@
 
 ## 📄 論文 / Paper
 
-**SSRN:** [https://ssrn.com/abstract=XXXXX](https://ssrn.com/abstract=XXXXX) *(Update with your SSRN link)*
+**SSRN:** [https://ssrn.com/abstract=5872622](https://ssrn.com/abstract=5872622)
 
 | 日本語 | English |
 |--------|---------|
@@ -92,5 +92,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 **Citation:**
 ```
 Honda, Y. (2025). Mikan 3-Currency clr Index: A Compositional Data Analysis Framework
-for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=XXXXX
+for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=5872622
 ```
