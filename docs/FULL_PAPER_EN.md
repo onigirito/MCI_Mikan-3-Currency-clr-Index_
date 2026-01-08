@@ -1701,7 +1701,7 @@ This interpolation completely eliminates jumps at year boundaries (December → 
 
 **1. Trend Clarification**
 
-m[TRY] has risen gradually over approximately three years from around -0.60 (early 2022) to around -0.47 (November 2025). m[JPY] has declined continuously from around +0.19 (early 2022) to around -0.01 (November 2025), while m[USD] has fluctuated in the range of +0.41 to +0.60, standing at +0.49 as of November 2025.
+m[TRY] has risen gradually over approximately four years from -0.995 (January 2022) to -0.472 (November 2025). m[JPY] has declined continuously from +0.420 (January 2022) to -0.015 (November 2025), while m[USD] has fluctuated in the range of +0.48 to +0.62, standing at +0.487 as of November 2025.
 
 **2. Visualization of Short-term Stress**
 
@@ -1715,13 +1715,13 @@ MCI reflects not "price movements" but rather "the nature of structural stress."
 
 **Period of Structural Stress Accumulation for the Lira (First Half of 2022 to July 2023)**
 
-According to monthly data, m[TRY] deteriorated continuously from -0.595 in January 2022, bottoming at -0.766 in July 2023.
+According to monthly data, m[TRY] started from an extremely severe undervaluation of -0.995 in January 2022 and followed a complex path, bottoming at -0.766 in July 2023.
 
-- January to December 2022: -0.595 → -0.755 (deterioration of approximately -0.16). Unorthodox monetary policy continued under the Erdoğan administration. Adherence to low interest rates amid high inflation and currency interventions went against market mechanisms, and attempts to artificially support the currency accumulated structural stress.
+- January to December 2022: -0.995 → -0.769 (improvement of +0.226). While unorthodox monetary policy continued under the Erdoğan administration, m[TRY] showed numerical improvement. However, the extreme undervaluation of -0.995 in January 2022 itself was likely an anomalous value resulting from the currency crisis at the end of 2021 (recording a historic low of 34 lira/dollar in December). The "improvement" throughout 2022 indicates temporary recovery from crisis levels, but an unstable state without structural policy shifts continued.
 
 - January to May 2023: -0.738 → -0.637 (temporary rising trend). However, no structural policy shift occurred, and deterioration resumed after June.
 
-- June to July 2023: -0.715 → -0.766 (sharp deterioration, bottoming). Finance Minister Şimşek assumed office on June 3, 2023. Immediately after his appointment, markets faced uncertainty about policy shifts, with m[TRY] falling to -0.715 in June and reaching a minimum of -0.766 in July. This can be interpreted as temporary stress maximization during the transition period of policy change.
+- June to July 2023: -0.715 → -0.766 (deterioration of -0.052, bottoming). Finance Minister Şimşek assumed office on June 3, 2023. Immediately after his appointment, markets faced uncertainty about policy shifts, with m[TRY] reaching -0.766 in July, the lowest value during the observation period (excluding the January 2022 anomaly). This can be interpreted as temporary stress maximization during the transition period of policy change.
 
 **Structural Transition and Formation of Convergence Trend (August 2023 onward)**
 
@@ -1753,30 +1753,38 @@ Since PPP itself is a lagging indicator, complete leading nature cannot be expec
 
 ### Boundedness of the Range of Motion and Possibility of Statistical Estimation
 
-An important mathematical property of the Mikan 3-Currency clr Index is the boundedness of the range of motion. Since actual exchange rates can theoretically fluctuate in the range of $0 \to \infty$, directly inferring future fluctuation ranges is difficult. However, $m[i]$ coordinates are mapped into a mathematically constrained space due to the zero-sum constraint (Equation (1)).
+Since actual exchange rates can theoretically fluctuate in the range of $0 \to \infty$, directly inferring future fluctuation ranges is difficult. While $m[i]$ coordinates satisfy the zero-sum constraint ($\sum m[i] = 0$), this constraint itself does not mathematically prevent divergence. Theoretically, extreme values such as $m[\text{TRY}] = -100$, $m[\text{USD}] = +50$, $m[\text{JPY}] = +50$ are possible.
+
+However, empirically, $m[i]$ tends to move within a limited range. The reason is that the definition of $m[i]$ is based on the deviation rate of exchange rates from PPP. For example, for $m[\text{TRY}] = -5$ to occur, the actual exchange rate $S_{\text{USD/TRY}}$ would need to be approximately $\exp(-5) \approx 0.007$ times the PPP value, i.e., about 1/140 of PPP. Such extreme deviations are, in reality, extremely rare phenomena except during denomination implementations or hyperinflation periods.
+
+This empirical boundedness makes it possible to estimate future statistical ranges of motion from past observed ranges.
 
 The observed ranges of $m[i]$ in monthly interpolated data (January 2022 to November 2025, 47 months) are as follows.
 
-| Currency | Minimum | Maximum | Range Width |
-|----------|---------|---------|-------------|
-| USD | +0.406 | +0.597 | 0.191 |
-| JPY | -0.015 | +0.197 | 0.212 |
-| TRY | -0.766 | -0.472 | 0.294 |
+| Currency | Minimum | Maximum | Observed Width |
+|----------|---------|---------|----------------|
+| USD | +0.479 | +0.622 | 0.143 |
+| JPY | -0.015 | +0.420 | 0.435 |
+| TRY | -0.995 | -0.472 | 0.523 |
 
-This observed range is more limited compared to the range of approximately $\pm 0.8$ observed in annual data (20 years). Fluctuations in monthly interpolated data are gentle as follows.
+*Table note: Observed width indicates the difference between the minimum and maximum values recorded during the observation period. This differs from monthly fluctuation width (next table) and represents the total range of variation over the entire period.*
+
+Compared to the range of approximately $\pm 0.8$ observed in annual data (20 years), USD shows limited variation, while JPY and TRY show broader fluctuations. Monthly fluctuations in interpolated data are gentle as follows.
 
 | Currency | Max Monthly Rise | Timing | Max Monthly Fall | Timing | Avg Monthly Change |
 |----------|------------------|--------|------------------|--------|--------------------|
-| USD | +0.058 | June 2023 | -0.029 | August 2024 | 0.011 |
-| JPY | +0.047 | August 2024 | -0.039 | April 2022 | 0.017 |
-| TRY | +0.036 | February 2023 | -0.077 | June 2023 | 0.019 |
+| USD | +0.058 | June 2023 | -0.032 | January 2023 | 0.010 |
+| JPY | +0.047 | August 2024 | -0.061 | April 2022 | 0.019 |
+| TRY | +0.055 | April 2022 | -0.077 | June 2023 | 0.020 |
 
 Notable timings:
 
 - **TRY maximum fall (June 2023, -0.077)**: Month of Finance Minister Şimşek's appointment. Reflects maximization of structural stress during policy transition period.
-- **JPY maximum fall (April 2022, -0.039)**: US long-term interest rates surged (2.4%→3.0%) following FOMC's QT acceleration agreement and CPI 8.5% announcement. Period when yen depreciation pressure arose from rapid widening of US-Japan interest rate differential.
+- **TRY maximum rise (April 2022, +0.055)**: Temporary adjustment phase during market turbulence in the first half of 2022. JPY recorded its maximum fall in the same month, indicating relative movements under zero-sum constraint.
+- **JPY maximum fall (April 2022, -0.061)**: US long-term interest rates surged (2.4%→3.0%) following FOMC's QT acceleration agreement and CPI 8.5% announcement. Period when yen depreciation pressure arose from rapid widening of US-Japan interest rate differential.
 - **JPY maximum rise (August 2024, +0.047)**: Corresponds to Bank of Japan's monetary policy transition period.
 - **USD maximum rise (June 2023, +0.058)**: Relative rise within the basket accompanying TRY's sharp fall (result of zero-sum constraint).
+- **USD maximum fall (January 2023, -0.032)**: Market adjustment phase from late 2022 to early 2023.
 
 This boundedness suggests the possibility of calculating the theoretical short-term range of motion for $m[i]$ using statistical methods.
 
@@ -1798,7 +1806,7 @@ The latest MCI coordinates using monthly interpolated PPP (November 2025) are $m
 
 **Trend Analysis**
 
-Trends observed from monthly data since 2023 are as follows. USD has declined gradually from a peak of +0.597 in 2023 to +0.487 as of November 2025. JPY has declined continuously from +0.197 in 2022 to nearly neutral (-0.015) as of November 2025. TRY has been on an upward trend from the bottom of -0.766 in July 2023 to -0.472 as of November 2025.
+Trends observed from monthly data are as follows. USD has declined gradually from a peak of +0.622 in June 2023 to +0.487 as of November 2025. JPY has declined continuously from +0.420 in January 2022 to nearly neutral (-0.015) as of November 2025. TRY has risen gradually from -0.995 in January 2022, temporarily bottomed at -0.766 in July 2023, and recovered to -0.472 as of November 2025.
 
 **Scenario Setting**
 
