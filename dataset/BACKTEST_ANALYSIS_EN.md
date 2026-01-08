@@ -176,7 +176,7 @@ Bias converges to within ±1% for all currency pairs:
 - Market inertia (3-month trends tend to continue into next month)
 - Relatively gradual changes in m-coordinates
 - Zero-sum constraint maintains balance among 3 currencies
-- Result: **MAE 2.66%, RMSE 6.78%** (extremely high accuracy)
+- Result: **MAE 2.66%, RMSE 3.86%** (extremely high accuracy)
 
 ### 5.2 Currency Pair Characteristics
 
