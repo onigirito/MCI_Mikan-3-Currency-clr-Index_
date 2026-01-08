@@ -1,7 +1,7 @@
 # MCI Price Prediction Backtest: Quantitative Evaluation
 
 **Period**: 2022-03 to 2025-11 (45 observations)
-**Analysis Target**: `backtest_rolling_avg_results.csv`
+**Analysis Target**: `monthly_mci_complete_2022_2025.csv` (with prediction and error columns)
 
 ---
 
@@ -220,4 +220,4 @@ High accuracy during regime-stable periods (especially USDTRY MAE 1.5%) demonstr
 ---
 
 **Analysis Date**: 2025-12-01
-**Data Source**: `backtest_rolling_avg_results.csv`
+**Data Source**: `monthly_mci_complete_2022_2025.csv` (prediction and error columns)

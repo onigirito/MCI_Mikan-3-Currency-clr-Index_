@@ -1,7 +1,7 @@
 # MCI価格予想バックテスト：定量的評価
 
 **対象期間**: 2022-03 ～ 2025-11（45観測）
-**分析対象**: `backtest_rolling_avg_results.csv`
+**分析対象**: `monthly_mci_complete_2022_2025.csv`（予測値・誤差列を含む）
 
 ---
 
@@ -220,4 +220,4 @@ m座標のゼロサム制約は数値的に厳密に満たされており（偏�
 ---
 
 **分析日**: 2025-12-01
-**データソース**: `backtest_rolling_avg_results.csv`
+**データソース**: `monthly_mci_complete_2022_2025.csv`（予測値・誤差列）

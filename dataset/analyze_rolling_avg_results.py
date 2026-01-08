@@ -14,14 +14,23 @@ from typing import List, Dict
 from datetime import datetime
 
 def load_results(csv_path: str) -> List[Dict]:
-    """バックテスト結果を読み込む"""
+    """バックテスト結果を読み込む（予測値がある行のみ）"""
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
-        return list(reader)
+        results = []
+        for r in reader:
+            # 予測値がある行のみ抽出（pred_USDJPYが空でない行）
+            if r.get('pred_USDJPY', '').strip() != '':
+                # S_* を actual_* にマッピング（後方互換性のため）
+                r['actual_USDJPY'] = r['S_USDJPY']
+                r['actual_USDTRY'] = r['S_USDTRY']
+                r['actual_TRYJPY'] = r['S_TRYJPY']
+                results.append(r)
+        return results
 
 def filter_by_start_month(results: List[Dict], start_month: str) -> List[Dict]:
     """指定月以降の結果のみを抽出"""
-    return [r for r in results if r['target_month'] >= start_month]
+    return [r for r in results if r['date'] >= start_month]
 
 def calculate_metrics(errors: List[float]) -> Dict:
     """誤差指標を計算"""
@@ -73,7 +82,7 @@ def get_worst_predictions(results: List[Dict], pair: str, n: int = 5) -> List[Di
     for r in results:
         error = abs(float(r[f'error_pct_{pair}']))
         pair_results.append({
-            'month': r['target_month'],
+            'month': r['date'],
             'error': error,
             'pred': float(r[f'pred_{pair}']),
             'actual': float(r[f'actual_{pair}'])
@@ -83,7 +92,7 @@ def get_worst_predictions(results: List[Dict], pair: str, n: int = 5) -> List[Di
     return pair_results[:n]
 
 def main():
-    csv_path = 'backtest_rolling_avg_results.csv'
+    csv_path = 'monthly_mci_complete_2022_2025.csv'
 
     # 開始月の指定
     start_month = sys.argv[1] if len(sys.argv) > 1 else None
@@ -104,7 +113,7 @@ def main():
 
     print(f"対象月数: {len(results)}ヶ月 (全体: {total_count}ヶ月)")
     if results:
-        print(f"期間: {results[0]['target_month']} 〜 {results[-1]['target_month']}")
+        print(f"期間: {results[0]['date']} 〜 {results[-1]['date']}")
 
     # 各通貨ペアの分析
     pairs = ['USDJPY', 'USDTRY', 'TRYJPY']

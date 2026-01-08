@@ -38,11 +38,10 @@ All backtest-related documents and scripts have been integrated with the dataset
   python analyze_rolling_avg_results.py 2023-08
   ```
 
-- **[バックテスト結果データ / Backtest Results Data](../../dataset/backtest_rolling_avg_results.csv)**
-  - 43カ月分の予測結果 / 43 months of predictions
-
 - **[月次MCI完全版データ / Monthly MCI Complete Data](../../dataset/monthly_mci_complete_2022_2025.csv)**
-  - バックテスト入力データ（v2.0修正済み）/ Backtest input data (v2.0 corrected)
+  - バックテスト入力データと予測結果を統合（v2.0修正済み、25列）
+  - Backtest input data and prediction results integrated (v2.0 corrected, 25 columns)
+  - 43カ月分の予測値・誤差を含む / Includes 43 months of predictions and errors
 
 ---
 
