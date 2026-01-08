@@ -40,9 +40,9 @@ For each observation:
 
 | Pair | N  | Bias | MAE   | RMSE  | ≤2%  | 2-5% | >5%  | Max Error |
 |------|----|---------:|------:|------:|-----:|-----:|-----:|----------:|
-| USD/JPY | 43 | +0.18%   | 2.36% | 3.28% | 35%  | 30%  | 35%  | 8.86%     |
-| USD/TRY | 43 | -0.03%   | 1.98% | 3.50% | 51%  | 35%  | 14%  | 15.15%    |
-| TRY/JPY | 43 | +0.34%   | 3.62% | 4.79% | 19%  | 37%  | 44%  | 14.00%    |
+| USD/JPY | 43 | +0.18%   | 2.36% | 3.28% | 56%  | 30%  | 14%  | 8.86%     |
+| USD/TRY | 43 | -0.03%   | 1.98% | 3.50% | 77%  | 16%  | 7%   | 15.15%    |
+| TRY/JPY | 43 | +0.34%   | 3.62% | 4.79% | 40%  | 35%  | 26%  | 14.00%    |
 | **3-pair avg** | 43 | - | **2.66%** | **6.78%** | - | - | - | - |
 
 ### 2.2 Key Observations
@@ -66,9 +66,9 @@ Extremely high prediction accuracy across the full period:
 #### Error Distribution
 
 **Small prediction errors (|error| ≤ 2%):**
-- USD/JPY: 15/43 (35%)
-- USD/TRY: 22/43 (51%)
-- TRY/JPY: 8/43 (19%)
+- USD/JPY: 24/43 (56%)
+- USD/TRY: 33/43 (77%)
+- TRY/JPY: 17/43 (40%)
 
 **Distribution across all 129 predictions:**
 - ≤2%: 74/129 (57%)
