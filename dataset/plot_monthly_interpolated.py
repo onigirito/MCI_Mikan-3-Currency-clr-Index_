@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-月次MCI グラフ生成（PPP線形補間版）
+月次MCI グラフ生成（PPP線形補間版、モノクロ版）
 
 monthly_mci_complete_2022_2025.csv（2022年m座標修正済み）を使用
 """
@@ -20,9 +20,13 @@ df['date'] = pd.to_datetime(df['date'])
 # プロット
 fig, ax = plt.subplots(figsize=(12, 6))
 
-ax.plot(df['date'], df['m_USD'], 'o-', label='m[USD]', linewidth=2, markersize=4, color='#1f77b4')
-ax.plot(df['date'], df['m_JPY'], 's-', label='m[JPY]', linewidth=2, markersize=4, color='#ff7f0e')
-ax.plot(df['date'], df['m_TRY'], '^-', label='m[TRY]', linewidth=2, markersize=4, color='#2ca02c')
+# モノクロで判読可能なスタイル
+ax.plot(df['date'], df['m_USD'], 'o', label='m[USD]', linewidth=2, markersize=5,
+        color='black', linestyle='-', markerfacecolor='white', markeredgewidth=1.5, markeredgecolor='black')
+ax.plot(df['date'], df['m_JPY'], 's', label='m[JPY]', linewidth=2, markersize=5,
+        color='black', linestyle='--', markerfacecolor='black', markeredgewidth=1.5)
+ax.plot(df['date'], df['m_TRY'], '^', label='m[TRY]', linewidth=2, markersize=5,
+        color='black', linestyle=':', markerfacecolor='gray', markeredgewidth=1.5, markeredgecolor='black')
 
 # ゼロライン
 ax.axhline(y=0, color='gray', linestyle='--', linewidth=0.8, alpha=0.5)
