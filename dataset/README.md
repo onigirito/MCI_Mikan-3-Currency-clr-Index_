@@ -770,10 +770,9 @@ python analyze_rolling_avg_results.py 2023-08
 
 | ドキュメント | 説明 |
 |------------|------|
-| `BACKTEST_README.md` | バックテスト理論詳細 |
+| `README.md` | 本ファイル（データ取得～バックテストの統合ドキュメント） |
 | `BACKTEST_ANALYSIS.md` | バックテスト定量的評価（日本語） |
 | `BACKTEST_ANALYSIS_EN.md` | バックテスト定量的評価（英語） |
-| `DATA_ACQUISITION_SPEC.md` | データ取得仕様書（完全版） |
 
 ### 8.2 IMF公式リソース
 
