@@ -60,9 +60,8 @@ dataset/
 │   ├── backtest_with_rolling_avg.py          # バックテスト実行
 │   └── analyze_rolling_avg_results.py        # 結果分析
 │
-└── ドキュメント（4個）
+└── ドキュメント（3個）
     ├── README.md                              # 本ファイル（統合ドキュメント）
-    ├── BACKTEST_README.md                     # バックテスト詳細理論
     ├── BACKTEST_ANALYSIS.md                   # 定量的評価（日本語）
     └── BACKTEST_ANALYSIS_EN.md                # 定量的評価（英語）
 ```
