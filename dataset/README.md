@@ -73,8 +73,7 @@ dataset/
 |-----------|------|------|------|-------|------|
 | `annual_mci_2005_2024.csv` | 20年年次データ | 2005-2024 | 20 | ~2KB | 長期トレンド分析 |
 | `monthly_mci_fixed_ppp_2022_2025.csv` | 固定PPP版（比較用） | 2022-2025 | 47 | ~8KB | PPP補間の効果検証 |
-| `monthly_mci_complete_2022_2025.csv` | **完全版（推奨）⭐** | 2022-2025 | 47 | ~10KB | **バックテスト入力** |
-| `backtest_rolling_avg_results.csv` | バックテスト結果 | 2022-05~2025-11 | 43 | ~6KB | **予測精度評価** |
+| `monthly_mci_complete_2022_2025.csv` | **完全版（推奨）⭐** | 2022-2025 | 47 | ~12KB | **MCI分析・バックテスト評価** |
 
 **各ファイルの関係:**
 ```
@@ -82,9 +81,7 @@ annual_mci_2005_2024.csv        ← 長期トレンド分析用（20年）
      ↓
 monthly_mci_fixed_ppp_2022_2025.csv    ← 比較検証用（PPP固定版）
      ↓
-monthly_mci_complete_2022_2025.csv     ← メインデータ（PPP線形補間済み）
-     ↓ (バックテスト実行)
-backtest_rolling_avg_results.csv       ← 予測結果（43カ月分）
+monthly_mci_complete_2022_2025.csv     ← メインデータ（PPP線形補間済み + バックテスト結果統合）
 ```
 
 ### 🔧 スクリプト一覧
@@ -308,17 +305,17 @@ curl "https://www.imf.org/external/datamapper/api/v1/PPPEX/JPN/TUR?periods=2021,
 ### 4.3 monthly_mci_complete_2022_2025.csv ⭐
 
 **ファイル名:** `monthly_mci_complete_2022_2025.csv`
-**説明:** 月次MCI完全版データセット（バックテスト用、v2.0修正済み）
+**説明:** 月次MCI完全版データセット（m座標、予測値、誤差を含む統合データ、v2.0修正済み）
 **期間:** 2022年1月～2025年11月（47カ月）
 **行数:** 47行（ヘッダー含めて48行）
-**列数:** 18列
-**用途:** バックテストの入力データ、月次予測の基礎データ、論文の表4・表5の計算元
+**列数:** 25列（基本データ19列 + 予測値3列 + 誤差3列）
+**用途:** MCI分析、バックテスト評価、論文の表4・表5の計算元
 
 #### 特徴
 
 - ✅ **2022年PPPを線形補間済み**（2021年→2022年）
 - ✅ 3カ月移動平均（`avg_delta_m_*_3m`）を含む
-- ✅ バックテストに直接使用可能
+- ✅ **バックテスト結果統合**（予測値・誤差、2022-05～2025-11の43カ月分）
 - ✅ ゼロサム制約を厳密に充足（最大偏差 < 10^-15）
 
 #### データフロー図
@@ -344,10 +341,14 @@ delta_m_* = m[t] - m[t-1] (月次変動)
   ↓
 avg_delta_m_*_3m = rolling(3).mean() (3カ月平均変動)
   ↓
-【バックテストで使用】
+【バックテスト実行】
   ↓
 m_predicted[t+1] = m[t] + avg_delta_m_3m[t]
 S_predicted[t+1] = PPP[t+1] × exp(m_predicted[t+1])
+  ↓ pred_USDJPY, pred_USDTRY, pred_TRYJPY
+【予測誤差】
+  ↓
+error_pct_* = (pred_* - actual_*) / actual_* × 100
 ```
 
 #### 列の詳細説明
@@ -411,6 +412,28 @@ S_predicted[t+1] = PPP[t+1] × exp(m_predicted[t+1])
 **重要:** これらの3カ月平均がバックテストで「翌月予測」に使用されます。
 - 例：2024-10の`avg_delta_m_*_3m`を使って2024-11を予測
 
+##### 🔮 **グループ7: バックテスト結果（予測値と誤差）**
+
+| 列名 | 説明 | 単位 | 計算式 | 備考 |
+|------|------|------|--------|------|
+| `pred_USDJPY` | USD/JPY予測レート | JPY | `PPP_JPY[t] × exp(m_pred_USD[t] - m_pred_JPY[t])` | **予測値：最初の4カ月（2022-01～04）はNaN** |
+| `pred_USDTRY` | USD/TRY予測レート | TRY | `PPP_TRY[t] × exp(m_pred_USD[t] - m_pred_TRY[t])` | **予測値：最初の4カ月（2022-01～04）はNaN** |
+| `pred_TRYJPY` | TRY/JPY予測レート | JPY | `pred_USDJPY / pred_USDTRY` | **予測値：クロスレート** |
+| `error_pct_USDJPY` | USD/JPY予測誤差 | % | `(pred_USDJPY - S_USDJPY) / S_USDJPY × 100` | **誤差：正なら過大評価** |
+| `error_pct_USDTRY` | USD/TRY予測誤差 | % | `(pred_USDTRY - S_USDTRY) / S_USDTRY × 100` | **誤差：正なら過大評価** |
+| `error_pct_TRYJPY` | TRY/JPY予測誤差 | % | `(pred_TRYJPY - S_TRYJPY) / S_TRYJPY × 100` | **誤差：正なら過大評価** |
+
+**予測m座標の計算:**
+```
+m_pred[t] = m[t-1] + avg_delta_m_3m[t-1]
+```
+
+**予測期間:** 2022-05～2025-11（43カ月分）
+
+**予測精度（構造安定期 2023-08～2025-11、28カ月）:**
+- MAE（平均絶対誤差）: 2.34%
+- RMSE（二乗平均平方根誤差）: 3.54%
+
 #### m座標の計算式
 
 **PPP乖離率:**
@@ -473,126 +496,6 @@ S(A/B) = PPP(A/B) × exp(m[A] - m[B])
 - 論文第7章「バックテストによる精度検証」
 
 ---
-
-### 4.4 backtest_rolling_avg_results.csv
-
-**ファイル名:** `backtest_rolling_avg_results.csv`
-**説明:** バックテスト結果データ（予測値vs実績値の比較）
-**期間:** 2022年5月～2025年11月（43カ月分の予測）
-**行数:** 43行（ヘッダー含めて44行）
-**列数:** 14列
-**用途:** バックテスト精度の評価、論文の表4・表5の元データ
-**生成方法:** `python backtest_with_rolling_avg.py --comprehensive`
-
-#### ファイルの役割
-
-このファイルは、**`monthly_mci_complete_2022_2025.csv`の各月のデータを使って翌月を予測した結果**を記録しています。
-
-**バックテストの流れ:**
-```
-2022-04の実績データ（S, PPP, m座標, 3カ月平均）
-  ↓
-2022-05を予測（pred_USDJPY, pred_USDTRY, pred_TRYJPY）
-  ↓
-2022-05の実績値と比較（error_pct_*）
-  ↓
-結果をこのCSVに1行追加
-```
-
-#### 列の詳細説明
-
-##### 📅 **グループ1: 日付情報**
-
-| 列名 | 説明 | 形式 | 例 | 備考 |
-|------|------|------|-----|------|
-| `base_month` | 予測の基準月 | YYYY-MM | 2024-10 | **この月のデータを使って翌月を予測** |
-| `target_month` | 予測対象月（翌月） | YYYY-MM | 2024-11 | **この月を予測した** |
-
-##### 🔮 **グループ2: 予測値（モデルが算出）**
-
-| 列名 | 説明 | 単位 | 計算方法 | 備考 |
-|------|------|------|---------|------|
-| `pred_USDJPY` | USD/JPY予測レート | JPY | `PPP_JPY[t+1] × exp(m_pred_USD[t+1] - m_pred_JPY[t+1])` | **予測値：モデルが計算** |
-| `pred_USDTRY` | USD/TRY予測レート | TRY | `PPP_TRY[t+1] × exp(m_pred_USD[t+1] - m_pred_TRY[t+1])` | **予測値：モデルが計算** |
-| `pred_TRYJPY` | TRY/JPY予測レート | JPY | `pred_USDJPY / pred_USDTRY` | **予測値：クロスレート** |
-
-**予測m座標の計算:**
-```
-m_pred[t+1] = m[t] + avg_delta_m_3m[t]
-```
-
-##### 📊 **グループ3: 実績値（市場の実際の値）**
-
-| 列名 | 説明 | 単位 | データソース | 備考 |
-|------|------|------|-------------|------|
-| `actual_USDJPY` | USD/JPY実績レート | JPY | IMF IFS月次平均 | **実績値：実際の市場レート** |
-| `actual_USDTRY` | USD/TRY実績レート | TRY | IMF IFS月次平均 | **実績値：実際の市場レート** |
-| `actual_TRYJPY` | TRY/JPY実績レート | JPY | `actual_USDJPY / actual_USDTRY` | **実績値：クロスレート** |
-
-##### ❌ **グループ4: 予測誤差（予測精度の評価）**
-
-| 列名 | 説明 | 単位 | 計算式 | 備考 |
-|------|------|------|--------|------|
-| `error_pct_USDJPY` | USD/JPY予測誤差 | % | `((pred - actual) / actual) × 100` | **誤差：正＝過大予測、負＝過小予測** |
-| `error_pct_USDTRY` | USD/TRY予測誤差 | % | `((pred - actual) / actual) × 100` | **誤差：正＝過大予測、負＝過小予測** |
-| `error_pct_TRYJPY` | TRY/JPY予測誤差 | % | `((pred - actual) / actual) × 100` | **誤差：正＝過大予測、負＝過小予測** |
-
-##### 📈 **グループ5: 予測に使用した3カ月平均（参考情報）**
-
-| 列名 | 説明 | 単位 | 備考 |
-|------|------|------|------|
-| `avg_delta_m_USD` | 予測に使用したUSDの3カ月平均変動 | - | **参考：base_monthの`avg_delta_m_USD_3m`** |
-| `avg_delta_m_JPY` | 予測に使用したJPYの3カ月平均変動 | - | **参考：base_monthの`avg_delta_m_JPY_3m`** |
-| `avg_delta_m_TRY` | 予測に使用したTRYの3カ月平均変動 | - | **参考：base_monthの`avg_delta_m_TRY_3m`** |
-
-#### データ例（2024-10 → 2024-11の予測）
-
-```csv
-base_month,target_month,pred_USDJPY,actual_USDJPY,error_pct_USDJPY,...
-2024-10,2024-11,147.02,153.50,-4.22,...
-```
-
-**解釈:**
-- 2024年10月のデータを使って2024年11月を予測
-- USD/JPY予測値: 147.02円
-- USD/JPY実績値: 153.50円
-- 予測誤差: -4.22%（過小予測）
-
-#### ファイルの使い方
-
-**統計分析:**
-```bash
-# 全期間の精度評価
-python analyze_rolling_avg_results.py
-
-# 構造安定期のみ評価（2023-08以降）
-python analyze_rolling_avg_results.py 2023-08
-```
-
-**Pythonで読み込み:**
-```python
-import pandas as pd
-import numpy as np
-
-# バックテスト結果を読み込み
-results = pd.read_csv('backtest_rolling_avg_results.csv')
-
-# MAE（平均絶対誤差）を計算
-mae_usdjpy = results['error_pct_USDJPY'].abs().mean()
-print(f"USD/JPY MAE: {mae_usdjpy:.2f}%")
-
-# RMSE（二乗平均平方根誤差）を計算
-rmse_usdjpy = np.sqrt((results['error_pct_USDJPY'] ** 2).mean())
-print(f"USD/JPY RMSE: {rmse_usdjpy:.2f}%")
-
-# 構造安定期のみ抽出（2023-08以降）
-stable = results[results['target_month'] >= '2023-08']
-mae_stable = stable['error_pct_USDJPY'].abs().mean()
-print(f"USD/JPY MAE (stable): {mae_stable:.2f}%")
-```
-
----
-
 ## 5. バックテスト方法論
 
 ### 5.1 予測手法
@@ -622,7 +525,7 @@ python backtest_with_rolling_avg.py --comprehensive
 ```
 
 **出力:**
-- `backtest_rolling_avg_results.csv`（43カ月分の予測結果）
+- `monthly_mci_complete_2022_2025.csv`に予測値と誤差を追加（25列に拡張）
 - コンソール出力：各月の予測vs実績
 
 #### 単月テスト

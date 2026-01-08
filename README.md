@@ -57,17 +57,14 @@ This design ensures that overvaluation of one currency always balances with unde
   - 用途：論文第8章「固定PPPとの比較」 / Use: Chapter 8 "Comparison with Fixed PPP"
 
 - **[`monthly_mci_complete_2022_2025.csv`](dataset/monthly_mci_complete_2022_2025.csv)** ⭐ **完全版（推奨）/ Complete version (Recommended)**
-  - 期間：2022年1月～2025年11月（47カ月、18列） / Period: Jan 2022 to Nov 2025 (47 months, 18 columns)
+  - 期間：2022年1月～2025年11月（47カ月、25列） / Period: Jan 2022 to Nov 2025 (47 months, 25 columns)
   - 特徴：**2022年PPP線形補間済み**（v2.0修正版） / Features: **2022 PPP linearly interpolated** (v2.0 corrected)
-  - 含む：3カ月移動平均、バックテスト準備完了 / Includes: 3-month rolling averages, backtest-ready
-  - 品質：ゼロサム制約充足（偏差 < 10^-15） / Quality: Zero-sum constraint satisfied (deviation < 10^-15)
-
-- **[`backtest_rolling_avg_results.csv`](dataset/backtest_rolling_avg_results.csv)** - バックテスト結果 / Backtest results
-  - 期間：2022年5月～2025年11月（43カ月分の予測） / Period: May 2022 to Nov 2025 (43 predictions)
+  - 含む：m座標、3カ月移動平均、予測値、誤差 / Includes: m-coordinates, 3-month rolling averages, predictions, errors
+  - バックテスト：2022-05～2025-11（43カ月分の予測結果） / Backtest: May 2022 to Nov 2025 (43 months of predictions)
   - **構造安定期（2023-08以降、28カ月）** / **Stable period (from Aug 2023, 28 months)**
     - MAE（平均絶対誤差）：2.34% / MAE (Mean Absolute Error): 2.34%
     - RMSE（二乗平均平方根誤差）：3.54% / RMSE (Root Mean Square Error): 3.54%
-  - 評価：極めて高い予測精度 / Assessment: Excellent prediction accuracy
+  - 品質：ゼロサム制約充足（偏差 < 10^-15） / Quality: Zero-sum constraint satisfied (deviation < 10^-15)
 
 **📖 統合ドキュメント：** [**dataset/README.md**](dataset/README.md) - データ取得からバックテストまで全て記載 / Comprehensive documentation from data acquisition to backtesting
 
@@ -149,11 +146,11 @@ python backtest_with_rolling_avg.py --comprehensive
 ```python
 import pandas as pd
 
-# バックテスト結果を読み込み / Load backtest results
-results = pd.read_csv('dataset/backtest_rolling_avg_results.csv')
+# 完全版データを読み込み / Load complete dataset
+df = pd.read_csv('dataset/monthly_mci_complete_2022_2025.csv')
 
 # 構造安定期のMAEを計算 / Calculate MAE for stable period
-stable = results[results['target_month'] >= '2023-08']
+stable = df[df['date'] >= '2023-08']
 mae = stable[['error_pct_USDJPY', 'error_pct_USDTRY', 'error_pct_TRYJPY']].abs().mean().mean()
 print(f"MAE (Stable Period): {mae:.2f}%")
 # Output: MAE (Stable Period): 2.34%
