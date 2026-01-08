@@ -73,7 +73,7 @@ This design ensures that overvaluation of one currency always balances with unde
 ## 🔬 バックテスト / Backtest
 
 **予測精度（全期間43カ月）** / **Prediction Accuracy (Full period 43 months)**:
-- MAE: 2.66%, RMSE: 6.78%
+- MAE: 2.66%, RMSE: 3.86%
 - 構造安定期（28カ月）/ Stable period (28 months): MAE 2.34%, RMSE 3.47%
 
 **詳細 / Details**: [定量的評価 / Quantitative Evaluation](dataset/BACKTEST_ANALYSIS.md) ([English](dataset/BACKTEST_ANALYSIS_EN.md))

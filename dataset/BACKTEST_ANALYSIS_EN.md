@@ -43,7 +43,7 @@ For each observation:
 | USD/JPY | 43 | +0.18%   | 2.36% | 3.28% | 56%  | 30%  | 14%  | 8.86%     |
 | USD/TRY | 43 | -0.03%   | 1.98% | 3.50% | 77%  | 16%  | 7%   | 15.15%    |
 | TRY/JPY | 43 | +0.34%   | 3.62% | 4.79% | 40%  | 35%  | 26%  | 14.00%    |
-| **3-pair avg** | 43 | - | **2.66%** | **6.78%** | - | - | - | - |
+| **3-pair avg** | 43 | - | **2.66%** | **3.86%** | - | - | - | - |
 
 ### 2.2 Key Observations
 
@@ -197,40 +197,9 @@ Bias converges to within ±1% for all currency pairs:
 
 ---
 
-## 6. Effects of v2.0 Correction
+## 6. Practical Evaluation
 
-### 6.1 Correction Content
-
-**v1.0 (Before correction):**
-- 2022 PPP as fixed value (JPY=92.5, TRY=4.975)
-
-**v2.0 (After correction):**
-- 2022 PPP linearly interpolated (2021→2022 divided monthly)
-  - JPY: 98.691 → 92.759
-  - TRY: 2.726 → 4.884
-
-**v2.1 (This correction):**
-- Recalculated 2022 m-coordinates using paper equation (1)
-  - Discovered 2022 m-coordinates used old formula (inverted signs)
-  - Corrected full period backtest results
-
-### 6.2 Stable Period Accuracy Improvement
-
-| Metric | v1.0 | v2.0 | Improvement |
-|--------|-----:|-----:|------------:|
-| MAE    | 2.83% | **2.34%** | -0.49pp |
-| RMSE   | 3.98% | **3.47%** | -0.51pp |
-
-**Effects:**
-- MAE improved by 17% (2.83% → 2.34%)
-- RMSE improved by 13% (3.98% → 3.47%)
-- Particularly significant improvement in USD/TRY accuracy
-
----
-
-## 7. Practical Evaluation
-
-### 7.1 Practicality for Full Period
+### 6.1 Practicality for Full Period
 
 #### Extremely High Prediction Accuracy (MAE 2.66%)
 
@@ -247,7 +216,7 @@ For monthly 1-month-ahead prediction:
 | USD/JPY | 2.36% | ⭐⭐⭐ Extremely High Accuracy |
 | TRY/JPY | 3.62% | ⭐⭐ High Accuracy |
 
-### 7.2 Further Accuracy Improvement in Stable Period
+### 6.2 Further Accuracy Improvement in Stable Period
 
 Stable period (from 2023-08) shows even higher accuracy:
 
@@ -257,29 +226,24 @@ Stable period (from 2023-08) shows even higher accuracy:
 
 ---
 
-## 8. Conclusion
+## 7. Conclusion
 
-### 8.1 Major Findings
+### 7.1 Major Findings
 
 1. **Extremely High Prediction Accuracy for Full Period**
-   - MAE 2.66%, RMSE 6.78% (43 months)
+   - MAE 2.66%, RMSE 3.86% (43 months)
    - Practically usable accuracy for monthly 1-month-ahead prediction
 
 2. **Highest Accuracy in Stable Period (MAE 2.34%)**
    - USD/TRY achieves highest accuracy (MAE 1.44%)
    - Extremely high accuracy despite being a high-inflation currency
-   - Effect of PPP linear interpolation (v2.0)
 
 3. **Initial Period (2022) Also Practical**
    - Captured rapid market changes in 2022
    - MAE 2-4% is practically usable
    - Simple 3-month average sufficient
 
-4. **Effects of v2.0/v2.1 Corrections**
-   - PPP linear interpolation: 17% improvement
-   - m-coordinate correction: enabled correct evaluation of full period accuracy
-
-### 8.2 Effectiveness of MCI Framework
+### 7.2 Effectiveness of MCI Framework
 
 **Success:**
 - ✅ Extremely high prediction accuracy for full period
@@ -291,7 +255,7 @@ Stable period (from 2023-08) shows even higher accuracy:
 - Maximum error around 15% (USD/TRY prediction in 2023-06)
 - Cross rates (TRY/JPY) tend to accumulate errors
 
-### 8.3 Evaluation of Prediction Method
+### 7.3 Evaluation of Prediction Method
 
 **Effectiveness of Simple 3-Month Moving Average:**
 
