@@ -110,10 +110,9 @@ python analyze_rolling_avg_results.py 2023-08
 - **[修正サマリー](docs/CORRECTIONS_SUMMARY.md)** - v2.0での修正内容 / Corrections in v2.0
 - **[参考文献](docs/REFERENCES.md)** - 理論的背景 / Theoretical background
 
-### データとツール / Data and Tools
+### データ / Data
 
 - **[データセット統合ドキュメント](dataset/README.md)** - データ取得、CSV列の説明、バックテスト（包括的） / Integrated documentation: data acquisition, CSV columns, backtesting (comprehensive)
-- **[ツール使用方法](tools/README.md)** - 計算ツールの使い方 / Calculation tools usage
 
 ### 理論 / Theory
 
