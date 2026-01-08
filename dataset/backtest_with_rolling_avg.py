@@ -185,7 +185,7 @@ def main():
     args = parser.parse_args()
 
     # データ読み込み
-    csv_path = '../dataset/monthly_mci_backtest_ready_2022_2025.csv'
+    csv_path = 'monthly_mci_complete_2022_2025.csv'
     print(f"Loading data from {csv_path}...")
     data = load_monthly_data(csv_path)
     print(f"Loaded {len(data)} months of data\n")
