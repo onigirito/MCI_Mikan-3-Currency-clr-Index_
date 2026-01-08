@@ -4,7 +4,7 @@
 
 ## 📄 論文 / Paper
 
-**SSRN:** [https://ssrn.com/abstract=XXXXX](https://ssrn.com/abstract=XXXXX) *(Update with your SSRN link)*
+**SSRN:** [https://ssrn.com/abstract=5872622](https://ssrn.com/abstract=5872622)
 
 | 日本語 | English |
 |--------|---------|
@@ -63,7 +63,7 @@ This design ensures that overvaluation of one currency always balances with unde
   - バックテスト：2022-05～2025-11（43カ月分の予測結果） / Backtest: May 2022 to Nov 2025 (43 months of predictions)
   - **構造安定期（2023-08以降、28カ月）** / **Stable period (from Aug 2023, 28 months)**
     - MAE（平均絶対誤差）：2.34% / MAE (Mean Absolute Error): 2.34%
-    - RMSE（二乗平均平方根誤差）：3.54% / RMSE (Root Mean Square Error): 3.54%
+    - RMSE（二乗平均平方根誤差）：3.47% / RMSE (Root Mean Square Error): 3.47%
   - 品質：ゼロサム制約充足（偏差 < 10^-15） / Quality: Zero-sum constraint satisfied (deviation < 10^-15)
 
 **📖 統合ドキュメント：** [**dataset/README.md**](dataset/README.md) - データ取得からバックテストまで全て記載 / Comprehensive documentation from data acquisition to backtesting
@@ -72,32 +72,11 @@ This design ensures that overvaluation of one currency always balances with unde
 
 ## 🔬 バックテスト / Backtest
 
-### 予測手法 / Prediction Method
+**予測精度（全期間43カ月）** / **Prediction Accuracy (Full period 43 months)**:
+- MAE: 2.66%, RMSE: 6.78%
+- 構造安定期（28カ月）/ Stable period (28 months): MAE 2.34%, RMSE 3.47%
 
-過去3カ月のm座標変動平均を翌月に外挿するシンプルな手法 / Simple method: Extrapolate 3-month rolling average of m-coordinate changes to next month
-
-```
-m_predicted[t+1] = m[t] + avg_delta_m_3m[t]
-S_predicted[t+1] = PPP[t+1] × exp(m_predicted[t+1])
-```
-
-### 実行方法 / Execution
-
-```bash
-cd dataset
-
-# 全期間バックテスト（43カ月） / Comprehensive backtest (43 months)
-python backtest_with_rolling_avg.py --comprehensive
-
-# 結果分析 / Analyze results
-python analyze_rolling_avg_results.py 2023-08
-```
-
-### ドキュメント / Documentation
-
-- **[バックテスト実行方法](dataset/README.md#5-バックテスト方法論)** - 詳細な手法とコード例 / Detailed methodology and code examples
-- **[定量的評価（日本語）](dataset/BACKTEST_ANALYSIS.md)** - 包括的な結果分析 / Comprehensive results analysis (Japanese)
-- **[Quantitative Evaluation (English)](dataset/BACKTEST_ANALYSIS_EN.md)** - 包括的な結果分析 / Comprehensive results analysis (English)
+**詳細 / Details**: [定量的評価 / Quantitative Evaluation](dataset/BACKTEST_ANALYSIS.md) ([English](dataset/BACKTEST_ANALYSIS_EN.md))
 
 ---
 
@@ -133,27 +112,9 @@ head dataset/annual_mci_2005_2024.csv
 tail dataset/monthly_mci_complete_2022_2025.csv
 ```
 
-### 2. バックテストを実行 / Run Backtest
+### 2. バックテスト / Run Backtest
 
-```bash
-cd dataset
-python backtest_with_rolling_avg.py --comprehensive
-```
-
-### 3. 結果を分析 / Analyze Results
-
-```python
-import pandas as pd
-
-# 完全版データを読み込み / Load complete dataset
-df = pd.read_csv('dataset/monthly_mci_complete_2022_2025.csv')
-
-# 構造安定期のMAEを計算 / Calculate MAE for stable period
-stable = df[df['date'] >= '2023-08']
-mae = stable[['error_pct_USDJPY', 'error_pct_USDTRY', 'error_pct_TRYJPY']].abs().mean().mean()
-print(f"MAE (Stable Period): {mae:.2f}%")
-# Output: MAE (Stable Period): 2.34%
-```
+詳細は [dataset/README.md](dataset/README.md) と [BACKTEST_ANALYSIS.md](dataset/BACKTEST_ANALYSIS.md) を参照 / See [dataset/README.md](dataset/README.md) and [BACKTEST_ANALYSIS.md](dataset/BACKTEST_ANALYSIS.md) for details
 
 ---
 
@@ -180,7 +141,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 **Citation:**
 ```
 Honda, Y. (2025). Mikan 3-Currency clr Index: A Compositional Data Analysis Framework
-for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=XXXXX
+for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=5872622
 ```
 
 ---
@@ -188,10 +149,10 @@ for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=XXXXX
 ## 🔗 Links
 
 - **Web:** https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/
-- **SSRN:** https://ssrn.com/abstract=XXXXX *(Update with your SSRN link)*
+- **SSRN:** https://ssrn.com/abstract=5872622
 - **Dataset Documentation:** [dataset/README.md](dataset/README.md)
 - **Issues:** [GitHub Issues](https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/issues)
 
 ---
 
-**Version:** 2.0 (2026-01-08) - 2022 PPP interpolation corrected, backtest accuracy improved
+**Version:** 2.1 (2026-01-08) - 2022 m-coordinates corrected, prediction accuracy properly evaluated
