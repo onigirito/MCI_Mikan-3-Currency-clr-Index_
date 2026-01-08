@@ -5,8 +5,11 @@
 過去3カ月のm座標変動平均を使った単一シナリオで予想を行う。
 
 使い方:
+  # 単一月のバックテスト
   python backtest_with_rolling_avg.py --base-month 2022-03
-  python backtest_with_rolling_avg.py --output my_results.csv
+
+  # 全期間のバックテスト（monthly_mci_complete_2022_2025.csvに予測値を追加）
+  python backtest_with_rolling_avg.py --comprehensive
 """
 
 import argparse
@@ -129,58 +132,83 @@ def run_single_backtest(data: List[Dict], base_month: str) -> Dict:
         'avg_delta_m_TRY': base_data['avg_delta_m_TRY_3m']
     }
 
-def run_comprehensive_backtest(data: List[Dict], output_file: str):
+def run_comprehensive_backtest(data: List[Dict], csv_path: str):
     """
-    全期間のバックテストを実行
+    全期間のバックテストを実行し、monthly_mci_complete_2022_2025.csvに予測値と誤差を追加
 
     Args:
         data: 全月次データ
-        output_file: 出力CSVファイル名
+        csv_path: 入力CSVファイル名（上書き保存される）
     """
-    results = []
+    # 予測結果を格納する辞書（target_month -> result）
+    predictions = {}
 
-    # 2022-02から2025-10まで（2025-11を予想対象とするため）
-    for row in data:
+    # 各月について予測を実行
+    for i, row in enumerate(data):
         base_month = row['date']
 
         # 最終月はスキップ（予想対象がない）
-        if base_month == data[-1]['date']:
+        if i == len(data) - 1:
             continue
 
-        print(f"Running backtest: {base_month} -> {get_next_month(base_month)}")
+        target_month = get_next_month(base_month)
+        print(f"Running backtest: {base_month} -> {target_month}")
         result = run_single_backtest(data, base_month)
 
         if 'error' in result:
             print(f"  Skipped: {result['error']}")
             continue
 
-        results.append(result)
+        # 予測結果を保存
+        predictions[target_month] = result
 
         # 結果を表示
         print(f"  USDJPY: {result['pred_USDJPY']:.2f} (actual: {result['actual_USDJPY']:.2f}, error: {result['error_pct_USDJPY']:+.2f}%)")
         print(f"  USDTRY: {result['pred_USDTRY']:.2f} (actual: {result['actual_USDTRY']:.2f}, error: {result['error_pct_USDTRY']:+.2f}%)")
         print(f"  TRYJPY: {result['pred_TRYJPY']:.2f} (actual: {result['actual_TRYJPY']:.2f}, error: {result['error_pct_TRYJPY']:+.2f}%)")
 
-    # CSVに保存
-    if results:
-        with open(output_file, 'w', newline='', encoding='utf-8') as f:
-            fieldnames = results[0].keys()
+    # 元のCSVに予測値と誤差の列を追加
+    if predictions:
+        # 全行に予測値と誤差を追加
+        for row in data:
+            month = row['date']
+            if month in predictions:
+                pred = predictions[month]
+                row['pred_USDJPY'] = pred['pred_USDJPY']
+                row['pred_USDTRY'] = pred['pred_USDTRY']
+                row['pred_TRYJPY'] = pred['pred_TRYJPY']
+                row['error_pct_USDJPY'] = pred['error_pct_USDJPY']
+                row['error_pct_USDTRY'] = pred['error_pct_USDTRY']
+                row['error_pct_TRYJPY'] = pred['error_pct_TRYJPY']
+            else:
+                # 予測がない月はNaN（空文字）
+                row['pred_USDJPY'] = ''
+                row['pred_USDTRY'] = ''
+                row['pred_TRYJPY'] = ''
+                row['error_pct_USDJPY'] = ''
+                row['error_pct_USDTRY'] = ''
+                row['error_pct_TRYJPY'] = ''
+
+        # 元のCSVに上書き保存
+        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+            # 元の列 + 新しい6列
+            fieldnames = list(data[0].keys())
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
-            writer.writerows(results)
+            writer.writerows(data)
 
-        print(f"\n[OK] Results saved to {output_file}")
-        print(f"  Total predictions: {len(results)}")
+        print(f"\n[OK] Predictions added to {csv_path}")
+        print(f"  Total predictions: {len(predictions)}")
+        print(f"  Total rows: {len(data)}")
+        print(f"  Columns: {len(fieldnames)} (added 6 prediction columns)")
     else:
-        print("\n[ERROR] No valid results to save")
+        print("\n[ERROR] No valid predictions to add")
 
 def main():
     parser = argparse.ArgumentParser(description='月次MCI価格予想バックテスト（3カ月平均ベース）')
     parser.add_argument('--base-month', type=str, help='基準月 (YYYY-MM形式、例: 2022-03)')
-    parser.add_argument('--output', type=str, default='backtest_rolling_avg_results.csv',
-                       help='出力CSVファイル名（包括的バックテスト用）')
     parser.add_argument('--comprehensive', action='store_true',
-                       help='全期間の包括的バックテストを実行')
+                       help='全期間の包括的バックテストを実行（monthly_mci_complete_2022_2025.csvに予測値を追加）')
 
     args = parser.parse_args()
 
@@ -191,8 +219,8 @@ def main():
     print(f"Loaded {len(data)} months of data\n")
 
     if args.comprehensive:
-        # 包括的バックテスト
-        run_comprehensive_backtest(data, args.output)
+        # 包括的バックテスト（CSVに予測値を追加）
+        run_comprehensive_backtest(data, csv_path)
     elif args.base_month:
         # 単一月のバックテスト
         result = run_single_backtest(data, args.base_month)
