@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies</title>
+    <meta name="title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies">
+    <meta name="description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating any three currencies. This paper analyzes USD, JPY, and TRY. Analyze over/undervaluation in a zero-sum basket.">
+    <meta name="keywords" content="Mikan 3-Currency clr Index, MCI, PPP, clr transformation, currency valuation, USD JPY TRY, purchasing power parity, compositional data analysis, CoDA, centered log-ratio, exchange rate">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="onigirito">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/">
+    <meta property="og:title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies">
+    <meta property="og:description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating any three currencies. This paper analyzes USD, JPY, and TRY.">
+    <meta property="og:site_name" content="Mikan 3-Currency clr Index">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/">
+    <meta name="twitter:title" content="Mikan 3-Currency clr Index (MCI) - PPP-based Framework for Any Three Currencies">
+    <meta name="twitter:description" content="Mikan 3-Currency clr Index (MCI) is a PPP-based framework using centered log-ratio (clr) transformation for evaluating any three currencies. This paper analyzes USD, JPY, and TRY.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/">
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Mikan 3-Currency clr Index (MCI)",
+        "alternateName": "MCI",
+        "url": "https://onigirito.github.io/MCI_Mikan-3-Currency-clr-Index_/",
+        "description": "PPP-based currency valuation framework using centered log-ratio (clr) transformation for any three currencies (this paper: USD, JPY, and TRY)",
+        "author": {
+            "@type": "Person",
+            "name": "onigirito"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Currency Valuation Index",
+            "description": "A structural evaluation index for three currencies based on Purchasing Power Parity"
+        }
+    }
+    </script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 { color: #0366d6; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        h2 { color: #24292e; margin-top: 30px; }
+        a { color: #0366d6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { padding-left: 20px; }
+        li { margin: 8px 0; }
+        .summary { background: #f6f8fa; padding: 15px; border-radius: 6px; margin: 20px 0; }
+        .summary-en { font-weight: bold; }
+        .summary-ja { color: #586069; margin-top: 10px; }
+        hr { border: none; border-top: 1px solid #eee; margin: 30px 0; }
+        .keywords { font-size: 0.9em; color: #586069; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mikan 3-Currency clr Index (MCI)</h1>
+    </header>
+
+    <main>
+        <div class="summary">
+            <p class="summary-en">A PPP-based structural valuation framework applicable to any three currencies (this paper analyzes USD, JPY, and TRY) using centered log-ratio (clr) transformation from Compositional Data Analysis (CoDA).</p>
+            <p class="summary-ja">PPP（購買力平価）を基準とした、任意の3通貨に適用可能な評価指標です（本論文ではUSD・JPY・TRYを分析）。組成データ解析（CoDA）のclr変換を用いて、ゼロサム制約下での通貨の過大評価・過小評価を分析します。</p>
+        </div>
+
+        <section>
+            <h2>About MCI / MCIについて</h2>
+            <p>The <strong>Mikan 3-Currency clr Index (MCI)</strong> is a novel currency valuation framework that:</p>
+            <ul>
+                <li>Uses <strong>Purchasing Power Parity (PPP)</strong> as the equilibrium baseline</li>
+                <li>Applies <strong>centered log-ratio (clr) transformation</strong> from Compositional Data Analysis (CoDA)</li>
+                <li>Evaluates <strong>any three currencies</strong> in a zero-sum basket structure (this paper uses <strong>USD, JPY, and TRY</strong>)</li>
+                <li>Identifies currency <strong>over/undervaluation</strong> relative to PPP fundamentals</li>
+            </ul>
+            <p>MCIは、任意の3通貨間（本論文ではUSD・JPY・TRY）の相対的な過大評価・過小評価を構造的に捉える汎用的な指標です。PPPを均衡基準とし、CoDAのclr変換を適用します。</p>
+            <p>月次データを用いた分析と価格推定については<a href="FULL_PAPER_CORRECTED#第8章-月次分析とppp更新頻度の影響">第8章</a>を参照してください。<br>
+            For monthly data analysis and price estimation, see <a href="FULL_PAPER_EN#chapter-8-monthly-analysis-and-the-impact-of-ppp-update-frequency">Chapter 8</a>.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Paper / 論文</h2>
+            <p><strong>SSRN:</strong> <a href="https://ssrn.com/abstract=5872622">https://ssrn.com/abstract=5872622</a></p>
+            <ul>
+                <li><a href="FULL_PAPER_CORRECTED">全文（日本語）/ Full Paper (Japanese)</a></li>
+                <li><a href="FULL_PAPER_EN">Full Paper (English)</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Chapters / 章別</h2>
+            <ol>
+                <li><a href="FULL_PAPER_CORRECTED#第1章-序論">序論</a> / <a href="FULL_PAPER_EN#chapter-1-introduction">Introduction</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第2章-理論枠組みと数理定義">理論枠組みと数理定義</a> / <a href="FULL_PAPER_EN#chapter-2-theoretical-framework-and-mathematical-definitions">Theoretical Framework and Mathematical Definitions</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第3章-データと計算方法">データと計算方法</a> / <a href="FULL_PAPER_EN#chapter-3-data-and-calculation-methods">Data and Calculation Methods</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第4章-実証分析と時系列構造">実証分析と時系列構造</a> / <a href="FULL_PAPER_EN#chapter-4-empirical-analysis-and-time-series-structure">Empirical Analysis and Time-Series Structure</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第5章-単純pppとの比較">単純PPPとの比較</a> / <a href="FULL_PAPER_EN#chapter-5-comparison-with-simple-ppp">Comparison with Simple PPP</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第6章-レジーム転換と通貨構造の再配置">レジーム転換と通貨構造の再配置</a> / <a href="FULL_PAPER_EN#chapter-6-regime-shifts-and-currency-structure-realignment">Regime Shifts and Currency Structure Realignment</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第7章-運用指針">運用指針</a> / <a href="FULL_PAPER_EN#chapter-7-practical-guidelines">Practical Guidelines</a></li>
+                <li><a href="FULL_PAPER_CORRECTED#第8章-月次分析とppp更新頻度の影響">月次分析とPPP更新頻度の影響</a> / <a href="FULL_PAPER_EN#chapter-8-monthly-analysis-and-the-impact-of-ppp-update-frequency">Monthly Analysis and PPP Update Frequency</a></li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Specifications / 仕様書</h2>
+            <ul>
+                <li><a href="specification_ppp_annual">PPP年次データ仕様 / PPP Annual Data Specification</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Backtest / バックテスト</h2>
+            <ul>
+                <li><a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/blob/main/dataset/README.md">バックテストツール</a> / <a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/blob/main/dataset/README.md">Backtest Tools</a> - 月次価格予想バックテスト（3カ月移動平均） / Monthly price prediction backtest (3-month rolling average)</li>
+                <li><a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/blob/main/dataset/BACKTEST_ANALYSIS.md">定量的評価</a> / <a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/blob/main/dataset/BACKTEST_ANALYSIS_EN.md">Quantitative Evaluation</a> - 包括的なバックテスト結果分析 / Comprehensive backtest results analysis</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Related Resources / 関連リンク</h2>
+            <ul>
+                <li><a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_">GitHub Repository</a> - Source code and documentation</li>
+                <li><a href="REFERENCES">References / 参考文献</a></li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>💼 Commercial Use Notice</h2>
+            <p>This project is <strong>MIT licensed</strong> - you can use it freely for any purpose, including commercial use.</p>
+            <p>However, for <strong>commercial use</strong> (business products, paid services, trading platforms, financial tools, etc.), I'd appreciate if you:</p>
+            <ol>
+                <li><strong>Let me know</strong> - Open an <a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/issues">issue</a> or send me an email</li>
+                <li><strong>Consider sponsoring</strong> - Support continued development via <a href="https://github.com/sponsors/onigirito">GitHub Sponsors</a></li>
+                <li><strong>Give proper attribution</strong> - Cite the SSRN paper or link to this repository</li>
+            </ol>
+            <p><strong>Not legally required, but it supports continued research and development.</strong> 🙏</p>
+            <p>If you're building something cool with MCI, I'd love to hear about it!</p>
+        </section>
+
+        <section>
+            <h2>📜 License</h2>
+            <p>MIT License - see <a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_/blob/main/LICENSE">LICENSE</a> file for details.</p>
+            <p><strong>Citation:</strong></p>
+            <pre style="background: #f6f8fa; padding: 10px; border-radius: 6px; overflow-x: auto;">Honda, Y. (2025). Mikan 3-Currency clr Index: A Compositional Data Analysis Framework
+for Multi-Currency Valuation. Available at SSRN: https://ssrn.com/abstract=5872622</pre>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Keywords / キーワード</h2>
+            <p class="keywords">
+                Mikan 3-Currency clr Index, MCI, PPP (Purchasing Power Parity), clr transformation, centered log-ratio, currency valuation, USD JPY TRY, compositional data analysis, CoDA, over/undervaluation, zero-sum constraint, exchange rate analysis
+            </p>
+            <p class="keywords">
+                購買力平価, clr変換, 通貨評価, 組成データ解析, 為替レート分析, ゼロサム制約
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>&copy; 2025 onigirito. <a href="https://github.com/onigirito/MCI_Mikan-3-Currency-clr-Index_">View on GitHub</a></small></p>
+    </footer>
+</body>
+</html>
